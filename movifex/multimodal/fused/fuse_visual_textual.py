@@ -6,7 +6,7 @@ import pandas as pd
 from movifex.utils import loadDataFromCSV
 from movifex.datasets.movifex.helper_visualfeats_agg import generatedAggFeatureAddresses, loadAggregatedFeaturesIntoDataFrame
 
-def fuseTextualWithMMTF(cfgRecSys: dict, cfgDatasets: dict):
+def fuseTextualWithMMTFVisual(cfgRecSys: dict, cfgDatasets: dict):
     """
     Fuse the textual data with the MMTF-14K dataset for recommendation, generating the fused dataset as pandas DataFrame
 

@@ -2,10 +2,11 @@
 
 from movifex.utils import readConfigs
 from movifex.pipelines.downloaders.utils import videoFileDownloader
+from movifex.multimodal.fused.fuse_audio_textual import fuseTextualWithMMTFAudio
 from movifex.multimodal.fused.overlap_checker import runVisualTextualDatasetsOverlapChecker
 from movifex.datasets.runDataset import testMoViFexMetadata, testMoViFexEmbeddings, testMovieLens25M
 from movifex.runCore import runShotDetectionFromFrames, runShotDetectionFromFeatures, runAggFeatures
-from movifex.multimodal.fused.fuse_visual_textual import fuseTextualWithMMTF, fuseTextualWithSceneSense
+from movifex.multimodal.fused.fuse_visual_textual import fuseTextualWithMMTFVisual, fuseTextualWithSceneSense
 from movifex.runCore import runTrailerDownloader, runMoviesFrameExtractor, runMoviesFramesFeatureExtractor
 
 def main():
@@ -71,9 +72,12 @@ def main():
             runVisualTextualDatasetsOverlapChecker(cfgRecSys, cfgDatasets)
         elif (subMode == 'visual_text_fusion'):
             # Fusion of the visual (MMTF) and textual features for recommendation
-            # fuseTextualWithMMTF(cfgRecSys, cfgDatasets)
+            # fuseTextualWithMMTFVisual(cfgRecSys, cfgDatasets)
             # Fusion of the visual (SceneSense) and textual features for recommendation
             fuseTextualWithSceneSense(cfgRecSys, cfgDatasets)
+        elif (subMode == 'audio_text_fusion'):
+            # Fusion of the audio (MMTF) and textual features for recommendation
+            fuseTextualWithMMTFAudio(cfgRecSys, cfgDatasets)
     else:
         print(f"Unsupported mode '{mode}' selected! Exiting ...")
     # Finish the program

@@ -5,15 +5,15 @@ config:
     # "ds": working with various datasets and processing them
     # "pipeline": working with various pipelines and processing them
     # "recsys": working with recommendation systems integrated with the framework
-    mode: "pipeline" # Possible values: ["ds", "pipeline", "recsys"]
+    mode: "recsys" # Possible values: ["ds", "pipeline", "recsys"]
     # ------------------------- Framework sub-mode -------------------------
     # Sub-mode of the dataset mode - Possible values: ["movielens_25m", "movifex_meta", "movifex_visual", "mmtf_14k"]
     sub_mode_ds: "movifex_visual"
     # Sub-mode of the pipeline mode
     # Possible values: ["dl_trailers", "frame_extractor", "feat_extractor", "shot_from_frame", "shot_from_feat", "agg_features"]
     sub_mode_pipeline: "frame_extractor"
-    # Sub-mode of the recommendation system mode - Possible values: ["overlap_checker", "visual_text_fusion"]
-    sub_mode_recsys: "visual_text_fusion"
+    # Sub-mode of the recommendation system mode - Possible values: ["overlap_checker", "visual_text_fusion", "audio_text_fusion"]
+    sub_mode_recsys: "audio_text_fusion"
   # ------------------------- Datasets configurations ------------------------
   datasets:
     # Text dataset (MovieLenz 25M)
@@ -144,4 +144,4 @@ config:
       llm_enriched_file_path: "E:/Datasets/LLM-Enriched/Enriched.csv"
     fused:
       # Path to the output directory
-      output_dir: "H:/Datasets/Fused-Tex-Vis-Features"
+      output_dir: "H:/Datasets/Fused-Embeddings"
