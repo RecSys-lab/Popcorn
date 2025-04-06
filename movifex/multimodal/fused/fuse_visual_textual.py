@@ -37,18 +37,20 @@ def fuseTextualWithMMTFVisual(cfgRecSys: dict, cfgDatasets: dict):
     # (2) Read the MMTF-14K dataset
     mmtfDatasetRootUrl = cfgDatasets['visual_dataset']['mmtf']['download_path']
     # Join the paths
-    mmtfVisualAvgCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'Avg', 'AlexNetFeatures - AVG - fc7.csv')
-    mmtfVisualMedCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'Med', 'AlexNetFeatures - MED - fc7.csv')
-    mmtfVisualAvgVarCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'AvgVar', 'AlexNetFeatures - AVGVAR - fc7.csv')
-    mmtfVisualMedMadCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'MedMad', 'AlexNetFeatures - MEDMAD - fc7.csv')
+    mmtfAlexNetVisualAvgCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'Avg', 'AlexNetFeatures - AVG - fc7.csv')
+    mmtfAlexNetVisualMedCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'Med', 'AlexNetFeatures - MED - fc7.csv')
+    mmtfAlexNetVisualAvgVarCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'AvgVar', 'AlexNetFeatures - AVGVAR - fc7.csv')
+    mmtfAlexNetVisualMedMadCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'AlexNet features', 'MedMad', 'AlexNetFeatures - MEDMAD - fc7.csv')
+    mmtfAVFVisualAvgCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'Aesthetic features', 'Avg', 'AestheticFeatures - AVG - All.csv')
+    mmtfAVFVisualMedCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Visual', 'Aesthetic features', 'Med', 'AestheticFeatures - MED - All.csv')
     # Round#1: Load the 'Avg' dataset
-    print(f"\nII-A. Reading the MMTF-14K Visual Features (Avg) from '{mmtfVisualAvgCSVFilePath}' ...")
-    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfVisualAvgCSVFilePath)
+    print(f"\nII-A. Reading the MMTF-14K AlexNet Visual Features (Avg) from '{mmtfAlexNetVisualAvgCSVFilePath}' ...")
+    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfAlexNetVisualAvgCSVFilePath, 'deep')
     if tmpVisualDataFrame is None:
         return
     # Merging the textual and visual data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpVisualDataFrame, on='itemId', how='inner')
-    print(f"- Merging Textual and Visual (Avg) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
+    print(f"- Merging Textual and AlexNet Visual (Avg) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
     # Save the fused dataset to a CSV file
     outputFile = os.path.join(outputDir, 'fused_llm_mmtf_avg.csv')
@@ -56,13 +58,13 @@ def fuseTextualWithMMTFVisual(cfgRecSys: dict, cfgDatasets: dict):
     print(f"- Saving the fused dataset to '{outputFile}' ...")
     fusedDataset.to_csv(outputFile, index=False)
     # Round#2: Load the 'Med' dataset
-    print(f"\nII-B. Reading the MMTF-14K Visual Features (Med) from '{mmtfVisualMedCSVFilePath}' ...")
-    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfVisualMedCSVFilePath)
+    print(f"\nII-B. Reading the MMTF-14K AlexNet Visual Features (Med) from '{mmtfAlexNetVisualMedCSVFilePath}' ...")
+    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfAlexNetVisualMedCSVFilePath, 'deep')
     if tmpVisualDataFrame is None:
         return
     # Merging the textual and visual data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpVisualDataFrame, on='itemId', how='inner')
-    print(f"- Merging Textual and Visual (Med) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
+    print(f"- Merging Textual and AlexNet Visual (Med) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
     # Save the fused dataset to a CSV file
     outputFile = os.path.join(outputDir, 'fused_llm_mmtf_med.csv')
@@ -70,13 +72,13 @@ def fuseTextualWithMMTFVisual(cfgRecSys: dict, cfgDatasets: dict):
     print(f"- Saving the fused dataset to '{outputFile}' ...")
     fusedDataset.to_csv(outputFile, index=False)
     # Round#3: Load the 'AvgVar' dataset
-    print(f"\nII-C. Reading the MMTF-14K Visual Features (AvgVar) from '{mmtfVisualAvgVarCSVFilePath}' ...")
-    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfVisualAvgVarCSVFilePath)
+    print(f"\nII-C. Reading the MMTF-14K AlexNet Visual Features (AvgVar) from '{mmtfAlexNetVisualAvgVarCSVFilePath}' ...")
+    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfAlexNetVisualAvgVarCSVFilePath, 'deep')
     if tmpVisualDataFrame is None:
         return
     # Merging the textual and visual data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpVisualDataFrame, on='itemId', how='inner')
-    print(f"- Merging Textual and Visual (AvgVar) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
+    print(f"- Merging Textual and AlexNet Visual (AvgVar) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
     # Save the fused dataset to a CSV file
     outputFile = os.path.join(outputDir, 'fused_llm_mmtf_avgvar.csv')
@@ -84,16 +86,44 @@ def fuseTextualWithMMTFVisual(cfgRecSys: dict, cfgDatasets: dict):
     print(f"- Saving the fused dataset to '{outputFile}' ...")
     fusedDataset.to_csv(outputFile, index=False)
     # Round#4: Load the 'MedMad' dataset
-    print(f"\nII-D. Reading the MMTF-14K Visual Features (MedMad) from '{mmtfVisualMedMadCSVFilePath}' ...")
-    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfVisualMedMadCSVFilePath)
+    print(f"\nII-D. Reading the MMTF-14K AlexNet Visual Features (MedMad) from '{mmtfAlexNetVisualMedMadCSVFilePath}' ...")
+    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfAlexNetVisualMedMadCSVFilePath, 'deep')
     if tmpVisualDataFrame is None:
         return
     # Merging the textual and visual data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpVisualDataFrame, on='itemId', how='inner')
-    print(f"- Merging Textual and Visual (MedMad) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
+    print(f"- Merging Textual and AlexNet Visual (MedMad) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
     # Save the fused dataset to a CSV file
     outputFile = os.path.join(outputDir, 'fused_llm_mmtf_medmad.csv')
+    outputFile = os.path.normpath(outputFile)
+    print(f"- Saving the fused dataset to '{outputFile}' ...")
+    fusedDataset.to_csv(outputFile, index=False)
+    # Round#5: Load the 'Avg' dataset
+    print(f"\nII-D. Reading the MMTF-14K Aesthetic Visual Features (Avg) from '{mmtfAVFVisualAvgCSVFilePath}' ...")
+    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfAVFVisualAvgCSVFilePath, 'avf')
+    if tmpVisualDataFrame is None:
+        return
+    # Merging the textual and visual data
+    fusedDataset = pd.merge(enrichedLLMDataset, tmpVisualDataFrame, on='itemId', how='inner')
+    print(f"- Merging Textual and Aesthetic Visual (Avg) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
+    print(fusedDataset.head(3))
+    # Save the fused dataset to a CSV file
+    outputFile = os.path.join(outputDir, 'fused_llm_mmtf_avf_avg.csv')
+    outputFile = os.path.normpath(outputFile)
+    print(f"- Saving the fused dataset to '{outputFile}' ...")
+    fusedDataset.to_csv(outputFile, index=False)
+    # Round#6: Load the 'Med' dataset
+    print(f"\nII-D. Reading the MMTF-14K Aesthetic Visual Features (Med) from '{mmtfAVFVisualMedCSVFilePath}' ...")
+    tmpVisualDataFrame = loadVisualFeaturesCSVIntoDataFrame(mmtfAVFVisualMedCSVFilePath, 'avf')
+    if tmpVisualDataFrame is None:
+        return
+    # Merging the textual and visual data
+    fusedDataset = pd.merge(enrichedLLMDataset, tmpVisualDataFrame, on='itemId', how='inner')
+    print(f"- Merging Textual and Aesthetic Visual (Med) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
+    print(fusedDataset.head(3))
+    # Save the fused dataset to a CSV file
+    outputFile = os.path.join(outputDir, 'fused_llm_mmtf_avf_med.csv')
     outputFile = os.path.normpath(outputFile)
     print(f"- Saving the fused dataset to '{outputFile}' ...")
     fusedDataset.to_csv(outputFile, index=False)
@@ -287,7 +317,7 @@ def fuseTextualWithSceneSense(cfgRecSys: dict, cfgDatasets: dict):
     fusedDataset.to_csv(outputFile, index=False)
     print("\nFusion completed successfully!")
 
-def loadVisualFeaturesCSVIntoDataFrame(givenCSVFilePath: str):
+def loadVisualFeaturesCSVIntoDataFrame(givenCSVFilePath: str, character: str):
     """
     Load the visual features CSV file into a pandas DataFrame
 
@@ -295,6 +325,8 @@ def loadVisualFeaturesCSVIntoDataFrame(givenCSVFilePath: str):
     ----------
     givenCSVFilePath :str
         The path to the visual features CSV file
+    character: str
+        The character to be used as the column names
     """
     # Normalize the path
     givenCSVFilePath = os.path.normpath(givenCSVFilePath)
@@ -305,7 +337,7 @@ def loadVisualFeaturesCSVIntoDataFrame(givenCSVFilePath: str):
     # Prepare the data frame
     MMTFDataset.rename(columns={'movieId': 'itemId'}, inplace=True)
     # Convert deep feature columns to a single embedding column
-    embeddingCols = [col for col in MMTFDataset.columns if col.startswith('deep')]
+    embeddingCols = [col for col in MMTFDataset.columns if col.startswith(character)]
     MMTFDataset['embedding'] = MMTFDataset[embeddingCols].apply(lambda row: ','.join(map(str, row)), axis=1)
     # Drop the original deep feature columns
     MMTFDataset = MMTFDataset[['itemId', 'embedding']]
