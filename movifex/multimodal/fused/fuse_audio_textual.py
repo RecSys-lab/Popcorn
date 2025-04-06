@@ -39,12 +39,13 @@ def fuseTextualWithMMTFAudio(cfgRecSys: dict, cfgDatasets: dict):
     mmtfAudioDeltaCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Audio', 'Block level features', 'Component6', 'BLF_DELTASPECTRALfeat.csv')
     mmtfAudioLogCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Audio', 'Block level features', 'Component6', 'BLF_LOGARITHMICFLUCTUATIONfeat.csv')
     mmtfAudioSpectralCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Audio', 'Block level features', 'Component6', 'BLF_SPECTRALfeat.csv')
+    mmtfAudioIVecRootPath = os.path.join(mmtfDatasetRootUrl, 'Audio', 'ivector features')
     # Round#1: Load the 'Correlation' dataset
     print(f"\nII-A. Reading the MMTF-14K Audio Features (Correlation) from '{mmtfAudioCorrCSVFilePath}' ...")
     tmpAudioDataFrame = loadAudioFeaturesCSVIntoDataFrame(mmtfAudioCorrCSVFilePath, 'CORRE')
     if tmpAudioDataFrame is None:
         return
-    # Merging the textual and visual data
+    # Merging the textual and audio data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpAudioDataFrame, on='itemId', how='inner')
     print(f"- Merging Textual and Audio (Correlation) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
@@ -58,7 +59,7 @@ def fuseTextualWithMMTFAudio(cfgRecSys: dict, cfgDatasets: dict):
     tmpAudioDataFrame = loadAudioFeaturesCSVIntoDataFrame(mmtfAudioDeltaCSVFilePath, 'DELTA')
     if tmpAudioDataFrame is None:
         return
-    # Merging the textual and visual data
+    # Merging the textual and audio data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpAudioDataFrame, on='itemId', how='inner')
     print(f"- Merging Textual and Audio (Delta) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
@@ -72,7 +73,7 @@ def fuseTextualWithMMTFAudio(cfgRecSys: dict, cfgDatasets: dict):
     tmpAudioDataFrame = loadAudioFeaturesCSVIntoDataFrame(mmtfAudioLogCSVFilePath, 'LOGAR')
     if tmpAudioDataFrame is None:
         return
-    # Merging the textual and visual data
+    # Merging the textual and audio data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpAudioDataFrame, on='itemId', how='inner')
     print(f"- Merging Textual and Audio (Log) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
@@ -86,7 +87,7 @@ def fuseTextualWithMMTFAudio(cfgRecSys: dict, cfgDatasets: dict):
     tmpAudioDataFrame = loadAudioFeaturesCSVIntoDataFrame(mmtfAudioSpectralCSVFilePath, 'SPECT')
     if tmpAudioDataFrame is None:
         return
-    # Merging the textual and visual data
+    # Merging the textual and audio data
     fusedDataset = pd.merge(enrichedLLMDataset, tmpAudioDataFrame, on='itemId', how='inner')
     print(f"- Merging Textual and Audio (Spectral) datasets based on the 'itemId' resulted in '{len(fusedDataset)}' items! Check the first 3 records:")
     print(fusedDataset.head(3))
@@ -95,6 +96,25 @@ def fuseTextualWithMMTFAudio(cfgRecSys: dict, cfgDatasets: dict):
     outputFile = os.path.normpath(outputFile)
     print(f"- Saving the fused dataset to '{outputFile}' ...")
     fusedDataset.to_csv(outputFile, index=False)
+    # Round#5: Load all 'i-vector' dataset
+    print(f"\nII-E. Reading the MMTF-14K Audio Features (i-vetors) from '{mmtfAudioIVecRootPath}' ...")
+    # Loop over all the i-vector CSV files in the directory
+    mmtfiVectorFiles = [f for f in os.listdir(mmtfAudioIVecRootPath) if f.endswith('.csv')]
+    for ivectorFile in mmtfiVectorFiles:
+        # Get the file path
+        ivectorFilePath = os.path.join(mmtfAudioIVecRootPath, ivectorFile)
+        # Load the i-vector CSV file into a DataFrame
+        tmpAudioDataFrame = loadAudioFeaturesCSVIntoDataFrame(ivectorFilePath, 'ivec')
+        if tmpAudioDataFrame is None:
+            continue
+        # Merging the textual and audio data
+        fusedDataset = pd.merge(enrichedLLMDataset, tmpAudioDataFrame, on='itemId', how='inner')
+        print(f"- Merging Textual and Audio (i-vector {ivectorFile}) based on the 'itemId' resulted in '{len(fusedDataset)}' items!")
+        # Save the fused dataset to a CSV file
+        outputFile = os.path.join(outputDir, f'fused_llm_mmtf_audio_{ivectorFile}')
+        outputFile = os.path.normpath(outputFile)
+        print(f"- Saving the fused dataset to '{outputFile}' ...")
+        fusedDataset.to_csv(outputFile, index=False)
     print("\nFusion completed successfully!")
 
 def loadAudioFeaturesCSVIntoDataFrame(givenCSVFilePath: str, character: str):

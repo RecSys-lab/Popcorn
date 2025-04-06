@@ -13,7 +13,7 @@ config:
     # Possible values: ["dl_trailers", "frame_extractor", "feat_extractor", "shot_from_frame", "shot_from_feat", "agg_features"]
     sub_mode_pipeline: "frame_extractor"
     # Sub-mode of the recommendation system mode - Possible values: ["overlap_checker", "visual_text_fusion", "audio_text_fusion"]
-    sub_mode_recsys: "visual_text_fusion"
+    sub_mode_recsys: "audio_text_fusion"
   # ------------------------- Datasets configurations ------------------------
   datasets:
     # Text dataset (MovieLenz 25M)
