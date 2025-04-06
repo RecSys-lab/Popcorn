@@ -72,9 +72,9 @@ def main():
             runVisualTextualDatasetsOverlapChecker(cfgRecSys, cfgDatasets)
         elif (subMode == 'visual_text_fusion'):
             # Fusion of the visual (MMTF) and textual features for recommendation
-            # fuseTextualWithMMTFVisual(cfgRecSys, cfgDatasets)
+            fuseTextualWithMMTFVisual(cfgRecSys, cfgDatasets)
             # Fusion of the visual (SceneSense) and textual features for recommendation
-            fuseTextualWithSceneSense(cfgRecSys, cfgDatasets)
+            # fuseTextualWithSceneSense(cfgRecSys, cfgDatasets)
         elif (subMode == 'audio_text_fusion'):
             # Fusion of the audio (MMTF) and textual features for recommendation
             fuseTextualWithMMTFAudio(cfgRecSys, cfgDatasets)
