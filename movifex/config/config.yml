@@ -57,6 +57,10 @@ config:
         url: https://drive.google.com/drive/folders/1sBD8drB2H0WHl_MSsSCH-FA-bonjStr_?usp=sharing
         # Path to the dataset root directory
         download_path: "H:/Datasets/MMTF-14k"
+        # Audio variant to use
+        audio_variant: "blf" # 'blf' | 'i_ivec'
+        # Visual variant to use
+        visual_variant: "cnn" # 'avf' | 'cnn'
   # ------------------------- Pipelines configurations ------------------------
   pipelines:
     # Movie trailers finder and downloader pipeline
@@ -145,3 +149,9 @@ config:
     fused:
       # Path to the output directory
       output_dir: "H:/Datasets/Fused-Embeddings"
+  # ------------------------- Experiments configurations ------------------------
+  experiment:
+    # Seed for reproducibility
+    seed: 42
+    # Verbose logging
+    verbose: true
