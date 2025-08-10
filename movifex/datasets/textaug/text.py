@@ -12,7 +12,7 @@ TXT_BASE_ORIG: str = (
 TXT_BASE_AUG: str = TXT_BASE_ORIG
 
 
-def loadText(config: Dict[str, Union[Dict, str, int, bool]]) -> pd.DataFrame:
+def loadText(config: Dict[str, Union[Dict, str, int, bool]], verbose: bool) -> pd.DataFrame:
     """
     Load and process text embeddings based on configuration settings.
 
@@ -28,6 +28,8 @@ def loadText(config: Dict[str, Union[Dict, str, int, bool]]) -> pd.DataFrame:
         - modality.llm_prefix: Prefix for text embeddings (e.g., 'llm')
         - modality.text_max_parts: Maximum number of parts to load
         - modality.text_augmented: Whether to use augmented text embeddings
+    verbose : bool
+        If True, prints detailed information about the loading process.
 
     Returns
     -------
@@ -47,10 +49,9 @@ def loadText(config: Dict[str, Union[Dict, str, int, bool]]) -> pd.DataFrame:
     # Extract configuration parameters
     dfs: List[pd.DataFrame] = []
     parse = parseSafe
-    verbose: bool = config["experiment"]["verbose"]
-    llm_prefix: str = config["modality"]["llm_prefix"]
-    max_parts: int = config["modality"]["text_max_parts"]
-    augmented: bool = config["modality"]["text_augmented"]
+    llm_prefix: str = config["llm_prefix"]
+    max_parts: int = config["text_max_parts"]
+    augmented: bool = config["text_augmented"]
     
     # Determine base URL and prefix based on configuration
     base: str = TXT_BASE_AUG if augmented else TXT_BASE_ORIG

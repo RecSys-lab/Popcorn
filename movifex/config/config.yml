@@ -27,6 +27,15 @@ config:
         url: https://files.grouplens.org/datasets/movielens/ml-25m.zip
         # Path to download the dataset (note: it will create a folder with the name 'ml-25m' in the specified path)
         download_path: "E:/Datasets/MovieLens-25M"
+      textaug:
+        # Dataset name
+        name: LLM-Enriched-Text
+        # LLM prefix for text processing
+        llm_prefix: "llama" # 'openai' | 'st' | 'llama'
+        # Use augmented textual path
+        text_augmented: true # True → use augmented textual path
+        # Maximum number of text parts
+        text_max_parts: 15
     # Visual dataset (MoViFex)
     multimodal_dataset:
       movifex:
@@ -156,3 +165,5 @@ config:
     seed: 42
     # Verbose logging
     verbose: true
+    # Model choice for the experiment
+    model_choice: "cf" # 'cf' | 'vbpr' | 'amr' | 'vmf'
