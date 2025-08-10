@@ -30,7 +30,7 @@ def runVisualTextualDatasetsOverlapChecker(cfgRecSys: dict, cfgDatasets: dict):
     print(f"- Filtered the dataset to contain only 'itemId' and 'title' columns! Check the first 3 records:")
     print(enrichedLLMDataset.head(3))
     # (2) Read the SceneSense dataset
-    scenesenseDatasetMetadataUrl = cfgDatasets['visual_dataset']['scenesense']['path_metadata']
+    scenesenseDatasetMetadataUrl = cfgDatasets['multimodal_dataset']['scenesense']['path_metadata']
     print(f"\nII. Fetching the SceneSense meta-data file from '{scenesenseDatasetMetadataUrl}' ...")
     jsonData = loadJsonFromUrl(scenesenseDatasetMetadataUrl)
     if jsonData is None:
@@ -48,7 +48,7 @@ def runVisualTextualDatasetsOverlapChecker(cfgRecSys: dict, cfgDatasets: dict):
     print(f"- Filtered the dataset to contain only 'itemId' and 'title' columns! Check the first 3 records:")
     print(sceneSenseMovies.head(3))
     # (3) Read the MMTF-14K dataset
-    mmtfDatasetRootUrl = cfgDatasets['visual_dataset']['mmtf']['download_path']
+    mmtfDatasetRootUrl = cfgDatasets['multimodal_dataset']['mmtf']['download_path']
     # Join the path
     mmtfCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Metadata', 'YearOfProd.csv')
     mmtfCSVFilePath = os.path.normpath(mmtfCSVFilePath)

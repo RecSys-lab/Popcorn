@@ -17,17 +17,18 @@ config:
   # ------------------------- Datasets configurations ------------------------
   datasets:
     # Text dataset (MovieLenz 25M)
-    text_dataset:
-      # Dataset name
-      name: Movielens-25m
-      # Flag to download the dataset or not (true to download, false to use the existing files)
-      need_download: false
-      # Path to the dataset
-      url: https://files.grouplens.org/datasets/movielens/ml-25m.zip
-      # Path to download the dataset (note: it will create a folder with the name 'ml-25m' in the specified path)
-      download_path: "E:/Datasets/MovieLens-25M"
+    unimodal_dataset:
+      movielens:
+        # Dataset name
+        name: Movielens-25m
+        # Flag to download the dataset or not (true to download, false to use the existing files)
+        need_download: false
+        # Path to the dataset
+        url: https://files.grouplens.org/datasets/movielens/ml-25m.zip
+        # Path to download the dataset (note: it will create a folder with the name 'ml-25m' in the specified path)
+        download_path: "E:/Datasets/MovieLens-25M"
     # Visual dataset (MoViFex)
-    visual_dataset:
+    multimodal_dataset:
       movifex:
         # Dataset name
         name: MoViFex-visual

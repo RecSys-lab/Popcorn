@@ -31,7 +31,7 @@ def main():
         subMode = cfgGeneral['sub_mode_pipeline']
         if (subMode == 'dl_trailers'):
             # Run the trailer downloader pipeline
-            runTrailerDownloader(cfgPipeline['movie_trailers'], cfgDatasets['visual_dataset']['movifex'])
+            runTrailerDownloader(cfgPipeline['movie_trailers'], cfgDatasets['multimodal_dataset']['movifex'])
         elif (subMode == 'frame_extractor'):
             # Download a sample video file (optional)
             # downloadPath = cfgPipeline['movie_frames']['movies_path']
@@ -57,11 +57,11 @@ def main():
         # Get the selected sub-mode
         subMode = cfgGeneral['sub_mode_ds']
         if (subMode == 'movifex_meta'):
-            testMoViFexMetadata(cfgDatasets['visual_dataset']['movifex'])
+            testMoViFexMetadata(cfgDatasets['multimodal_dataset']['movifex'])
         elif (subMode == 'movifex_visual'):
-            testMoViFexEmbeddings(cfgDatasets['visual_dataset']['movifex'])
+            testMoViFexEmbeddings(cfgDatasets['multimodal_dataset']['movifex'])
         elif (subMode == 'movielens_25m'):
-            testMovieLens25M(cfgDatasets['text_dataset'])
+            testMovieLens25M(cfgDatasets['unimodal_dataset']['movielens'])
         else:
             print(f"Unsupported sub-mode '{subMode}' selected! Exiting ...")
     elif (mode == 'recsys'):
