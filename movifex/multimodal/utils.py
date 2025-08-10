@@ -1,5 +1,12 @@
 import numpy as np
 
+# Multimodal fusion variants
+MULTI_VARIANTS = [
+    ("concat", None),
+    ("pca", 0.95),
+    ("cca", 40),
+]
+
 def parseEmbedding(givenEmbedding):
     """
     Parses the embedding string or list into a numpy array. It can work with textual of visual embeddings.
