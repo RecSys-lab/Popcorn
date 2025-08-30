@@ -1,16 +1,16 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="MoViFex",
+    name="Popcorn",
     version="1.0.0",
     maintainer='Ali Tourani',
     author="Ali Tourani, Yashar Deldjoo",
     author_email="a.tourani1991@gmail.com",
-    description="A multimodal video movie recommendation system",
-    long_description=open("README.md", encoding="utf-8").read(),
+    url="https://github.com/RecSys-lab/Popcorn",
     long_description_content_type="text/markdown",
-    url="https://github.com/RecSys-lab/MoVieFext",
-    packages=find_packages(include=["movifex", "movifex.*"], exclude=['docs', 'examples', 'rtd']),
+    long_description=open("README.md", encoding="utf-8").read(),
+    description="🍿 A multi-faceted movie recommendation framework",
+    packages=find_packages(include=["popcorn", "popcorn.*"], exclude=['docs', 'examples', 'rtd']),
     include_package_data=True,
     python_requires=">=3.10",
     entry_points={

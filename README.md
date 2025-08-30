@@ -1,47 +1,49 @@
-# MoViFex: A Multi-Faceted Movie Recommendation Framework
+# 🍿 Popcorn: A Multi-Faceted Movie Recommendation Framework
 
-This repository provides a multi-modal movie recommendation framework titled `MoViFex` that integrates **Computer Vision**, **Generative AI**, and **Recommender Systems** to provide enhanced suggestions.
+Welcome to **Popcorn**, a movie recommendation framework that blends the magic of cinema with the power of **Computer Vision**, **Generative AI**, and **Recommender Systems**.
+Whether you are a researcher, developer, or just a movie lover, **Popcorn** helps you explore smarter, more immersive ways to recommend films. 🎥
+
+## ✨ Why Popcorn?
+
+- 🎬 **Movie-focused**: Built specifically for movie recommendation tasks.
+- 👁️ **Visual-centric**: Pays much attention to the visual 
+Employs visual embeddings to capture the “look and feel” of films.
+- 🤖 **Generative AI Ready**: Integrate embeddings and representations from LLMs and generative models.  
+- 🧩 **Flexible Framework**: Includes tools for dataset downloading, preprocessing, feature extraction, and benchmarking.  
 
 ## 🛠️ Getting Started
 
-After cloning the repository, you need to install the required dependencies. The Python version used while developing the framework is `3.10.4`. It is highly recommended to create a Python virtual environment using `python -m venv .venv`, activate it using `source .venv/bin/activate` (Linux) or `.\.venv\Scripts\activate` (Windows). The next step is running the `setup.py` inside the root directory using the command below:
+1. Clone the repository using `git clone git@github.com:RecSys-lab/Popcorn.git`
+2. Set up your environment (recommended: Python `3.10.4`). We highly suggest to create a Python virtual environment (using `python -m venv .venv`) and activate it (`source .venv/bin/activate` (Linux) or `.\.venv\Scripts\activate` (Windows)) before installing dependencies.
+3. Install dependencies
 
-```
+```bash
+cd Popcorn
 pip install -e .
+
+# Or `pip install -r requirements.txt`
 ```
 
-You can also install the required dependencies in the `requirements.txt` using the below command:
+## 🚀 Launching the Framework
 
-```
-pip install -r requirements.txt
-```
+1. Modify the configurations based on what you target. You need to modify the [config.yml](/popcorn/config/config.yml) file based on the [documentations provided for it](/popcorn/config/config.yml).
+2. After activating the `.venv` (if set), run the [`main.py`](/main.py) file and enjoy working with the framework!
 
-## 📊 Data
+## 📊 Supported Datasets
 
 As the framework supports multi-modal processing and covers **text**, **visual**, and **fused data**, varios datasets can be fed for reproducibility, evaluation, and experiments purposes:
 
 - **Text Feed:** `MovieLenz-25M` ([link](https://grouplens.org/datasets/movielens/25m/)) is recommended to provide data about movies, user interactions, _etc._
-- **Visual Feed:** `MoViFex Dataset` ([link](https://huggingface.co/datasets/alitourani/MoViFex_Dataset)) is collected by the team and provides frame-level features for each movie using different Convolutional Neural Networks (CNNs).
+- **Visual Feed:** `Popcorn Dataset` ([link](https://huggingface.co/datasets/alitourani/Popcorn_Dataset)) is collected by the team and provides frame-level features for each movie using different Convolutional Neural Networks (CNNs).
 
 In order to use the datasets, some **helper functions** and **example colabs** are provided in the [`examples` path](/examples/).
-
-## 🚀 Launching the Framework
-
-To launch the framework, you need to take the below steps:
-
-### I. Set Configurations
-
-The first step is to modify the configurations, adapting the framework towards what you target. Accordingly, you need to modify the [config.yml](/config/config.yml) file based on the [documentations provided for it](/config/README.md).
-
-### II. Run the Code
-
-After activating the `.venv` (if set), run the [`main.py`](/main.py) file and enjoy working with the framework!
 
 ## 🗄️ Code Structure
 
 You can find below where to search for the codes in the framework inside the `movifex` folder:
 
 ```bash
+> [popcorn]
 > [config]                  ## framework configs & docs
     - config.yml
     - README.md
@@ -64,19 +66,27 @@ You can find below where to search for the codes in the framework inside the `mo
 - main.py                   ## main file
 ```
 
-## 👨🏻‍💻 Contribution
-
-In case you are willing to contribute to the project, please consider the following notes before opening your [pull requests](https://github.com/RecSys-lab/SceneSense/pulls):
-
-- Please keep the structure of the project and add new codes in proper locations in the `src` folder. The **Code Structure** section provides general information accordingly.
-- In case you add new dependencies, do not forget to add them to `requirements.txt` using `pip freeze > requirements.txt` (you may need to remove the current file to have an updated version!).
-
 ## 📝 Citation
 
-If you find **SceneSense** useful for your research or development, please cite the following [paper](#):
+If you find **Popcorn** useful for your research or development, please cite the following [paper](#):
 
 ```
 @article{tbd,
   title={TBD}
 }
 ```
+
+## 🤝 Contribution
+
+Contributions are always welcome! If you would like to add new features, fix bugs, or improve docs:
+
+1. Fork this repository
+2. Create a new branch (`git checkout -b branch-name`)
+3. Apply your changes and commit them
+4. Finally, open a *Pull Request*, and that's it! 🍿
+
+The **Code Structure** section provides general information about where to add your new changes. Also, if you add new dependencies, do not forget to include them in `requirements.txt` using `pip freeze > requirements.txt` (you may need to remove the current file to have an updated version!).
+
+## 📜 License
+
+**Popcorn** is released under GPL-3 License. Read more about the license [here](/LICENSE).
