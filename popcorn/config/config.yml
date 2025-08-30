@@ -1,184 +1,187 @@
-config:
-  # ------------------- General configurations -------------------
-  general:
-    # ------------------------- Framework mode -------------------------
-    # "ds": working with various datasets and processing them
-    # "pipeline": working with various pipelines and processing them
-    # "recsys": working with recommendation systems integrated with the framework
-    mode: "recsys" # Possible values: ["ds", "pipeline", "recsys"]
-    # ------------------------- Framework sub-mode -------------------------
-    # Sub-mode of the dataset mode - Possible values: ["movielens_25m", "movifex_meta", "movifex_visual", "mmtf_14k"]
-    sub_mode_ds: "movifex_visual"
-    # Sub-mode of the pipeline mode
-    # Possible values: ["dl_trailers", "frame_extractor", "feat_extractor", "shot_from_frame", "shot_from_feat", "agg_features"]
-    sub_mode_pipeline: "frame_extractor"
-    # Sub-mode of the recommendation system mode - Possible values: ["overlap_checker", "visual_text_fusion", "audio_text_fusion"]
-    sub_mode_recsys: "audio_text_fusion"
-    # Root path for the framework
-    root_path: "" # Empty for local, "MoViFex" for Google Colab
-  # ------------------------- Datasets configurations ------------------------
-  datasets:
-    # Text dataset (MovieLenz 25M)
-    unimodal_dataset:
-      movielens:
-        # Dataset name
-        name: Movielens-25m
-        # Flag to download the dataset or not (true to download, false to use the existing files)
-        need_download: false
-        # Path to the dataset
-        url: https://files.grouplens.org/datasets/movielens/ml-25m.zip
-        # Dataset version to use
-        ml_version: "1m" # '100k' | '1m' | '25m'
-        # Path to download the dataset (note: it will create a folder with the name 'ml-25m' in the specified path)
-        download_path: "E:/Datasets/MovieLens-25M"
-      textaug:
-        # Dataset name
-        name: LLM-Enriched-Text
-        # LLM prefix for text processing
-        llm_prefix: "llama" # 'openai' | 'st' | 'llama'
-        # Use augmented textual path
-        text_augmented: true # True → use augmented textual path
-        # Maximum number of text parts
-        text_max_parts: 15
-    # Visual dataset (MoViFex)
-    multimodal_dataset:
-      movifex:
-        # Dataset name
-        name: MoViFex-visual
-        # Path to the dataset
-        path_metadata: https://huggingface.co/datasets/alitourani/MoViFex_Dataset/resolve/main/stats.json
-        # Path to the features
-        path_raw: https://huggingface.co/datasets/alitourani/MoViFex_Dataset/raw/main/
-        # Feature sources to be used (in an array)
-        # Possible values: ["full_movies", "movie_shots", "movie_trailers"]
-        feature_sources: ["full_movies", "movie_shots", "movie_trailers"]
-        # Aggregated feature sources to be used (in an array)
-        # Possible values: ["full_movies_agg", "movie_shots_agg", "movie_trailers_agg"]
-        agg_feature_sources:
-          ["full_movies_agg", "movie_shots_agg", "movie_trailers_agg"]
-        # Feature extraction models to be used (in an array)
-        # Possible values: ["incp3", "vgg19"]
-        feature_models: ["incp3", "vgg19"]
-        # Aggregation models to be used (in an array)
-        # Possible values: ["Max", "Mean"]
-        aggregation_models: ["Max", "Mean"]
-      mmtf:
-        # Dataset name
-        name: MMTF-14K
-        # Flag to download the dataset or not (true to download, false to use the existing files)
-        need_download: false
-        # Path to the dataset
-        url: https://drive.google.com/drive/folders/1sBD8drB2H0WHl_MSsSCH-FA-bonjStr_?usp=sharing
-        # Path to the dataset root directory
-        download_path: "H:/Datasets/MMTF-14k"
-        # Audio variant to use
-        audio_variant: "blf" # 'blf' | 'i_ivec'
-        # Visual variant to use
-        visual_variant: "cnn" # 'avf' | 'cnn'
-  # ------------------------- Pipelines configurations ------------------------
-  pipelines:
-    # Movie trailers finder and downloader pipeline
-    movie_trailers:
-      # Pipeline name
-      name: Trailer-fetcher
-      # Path to the pipeline
-      download_path: "E:/Datasets/Movies/MovieTrailers"
-    # Movie frames extractor pipeline
-    movie_frames:
-      # Pipeline name
-      name: Frame-extractor
-      # Movies path
-      movies_path: "E:/Datasets/Movies/Videos"
-      # Frames path
-      frames_path: "E:/Datasets/Movies/MovieFrames"
-      # Supported video formats
-      video_formats: ["mp4", "avi", "mkv"]
-      # Frequency of frames extraction (picking 'n' frames every second)
-      frequency: 1
-      # Output file format
-      output_format: "jpg"
-      # Feature extraction model input size (width)
-      model_input_size: 420
-    # Movie frames visual feature extractor pipeline
-    movie_frames_visual_features:
-      # Pipeline name
-      name: Visual-feature-extractor
-      # Path the root directory containing the frames in folders
-      # [Note] it is equal to the frames_path in the movie_frames pipeline
-      frames_path: "E:/Datasets/Movies/MovieFrames"
-      # Features path
-      features_path: "E:/Datasets/Movies/MovieFeatures"
-      # Supported image (saved frames) formats
-      image_formats: ["png", "jpg", "jpeg"]
+# ------------------- General configurations -------------------
+general:
+  # Framework name
+  name: "Popcorn"
+  # Root path for the framework
+  root_path: "" # Empty for local, "Popcorn" for using in Google Colab
+# ------------------------- Datasets configurations ------------------------
+datasets:
+  # Text dataset (MovieLenz 25M)
+  unimodal_dataset:
+    movielens:
+      # Dataset name
+      name: Movielens-25m
+      # Flag to download the dataset or not (true to download, false to use the existing files)
+      need_download: false
+      # Path to the dataset
+      url: https://files.grouplens.org/datasets/movielens/ml-25m.zip
+      # Dataset version to use
+      ml_version: "1m" # '100k' | '1m' | '25m'
+      # Path to download the dataset (note: it will create a folder with the name 'ml-25m' in the specified path)
+      download_path: "E:/Datasets/MovieLens-25M"
+    textaug:
+      # Dataset name
+      name: LLM-Enriched-Text
+      # LLM prefix for text processing
+      llm_prefix: "llama" # 'openai' | 'st' | 'llama'
+      # Use augmented textual path
+      text_augmented: true # True → use augmented textual path
+      # Maximum number of text parts
+      text_max_parts: 15
+  # Visual dataset (MoViFex)
+  multimodal_dataset:
+    movifex:
+      # Dataset name
+      name: MoViFex-visual
+      # Path to the dataset
+      path_metadata: https://huggingface.co/datasets/alitourani/MoViFex_Dataset/resolve/main/stats.json
+      # Path to the features
+      path_raw: https://huggingface.co/datasets/alitourani/MoViFex_Dataset/raw/main/
+      # Feature sources to be used (in an array)
+      # Possible values: ["full_movies", "movie_shots", "movie_trailers"]
+      feature_sources: ["full_movies", "movie_shots", "movie_trailers"]
+      # Aggregated feature sources to be used (in an array)
+      # Possible values: ["full_movies_agg", "movie_shots_agg", "movie_trailers_agg"]
+      agg_feature_sources:
+        ["full_movies_agg", "movie_shots_agg", "movie_trailers_agg"]
       # Feature extraction models to be used (in an array)
       # Possible values: ["incp3", "vgg19"]
-      feature_extractor_model: "incp3"
-      # Packets size (number of frames in each packet)
-      packet_size: 25
-    # Movie frames and extracted features shot detection pipeline
-    movie_shots:
-      # Pipeline name
-      name: Shot-detector
-      # Variants of shot detection
-      variants:
-        # Shot detection from frames
-        from_frames:
-          # Input frames path
-          frames_path: "E:/Datasets/Movies/MovieFrames"
-          # Output shot frames path
-          shot_frames_path: "E:/Datasets/Movies/MovieShotsFrames"
-          # Supported input image (saved frames) formats
-          image_formats: ["png", "jpg", "jpeg"]
-          # Output file format
-          output_format: "jpg"
-          # Shot boundaries detection threshold
-          threshold: 0.65
-        # Shot detection from features
-        from_features:
-          # Input features path
-          features_path: "E:/Datasets/Movies/MovieFeatures"
-          # Output shot features path
-          shot_features_path: "E:/Datasets/Movies/MovieShotsFeatures"
-          # Shot boundaries detection threshold
-          threshold: 0.7
-          # Packets size (number of frames in each packet)
-          # [Note] it is recommended to set it equal to the packet_size in the movie_frames_visual_features pipeline
-          packet_size: 25
-    # Visual feature aggregation pipeline
-    feature_aggregation:
-      # Pipeline name
-      name: Feature-aggregator
-      # Features path (downloaded features)
-      features_path: "E:/Datasets/Movies/MovieFeatures"
-      # Aggregated features path
-      agg_features_path: "E:/Datasets/Movies/MovieAggFeatures"
+      feature_models: ["incp3", "vgg19"]
       # Aggregation models to be used (in an array)
       # Possible values: ["Max", "Mean"]
       aggregation_models: ["Max", "Mean"]
-  # Multi-Modal Recommendation Systems
-  multimodal:
-    textual:
-      # Path to the enriched dataset file
-      llm_enriched_file_path: "E:/Datasets/LLM-Enriched/Enriched.csv"
-    fused:
-      # Path to the output directory
-      output_dir: "H:/Datasets/Fused-Embeddings"
-  # ------------------------- Experiments configurations ------------------------
-  experiment:
-    # Seed for reproducibility
-    seed: 42
-    # Verbose logging
-    verbose: true
-    # Model choice for the experiment
-    model_choice: "cf" # 'cf' | 'vbpr' | 'amr' | 'vmf'
-    # Dataset split configuration
-    split:
-      # Mode of dataset splitting
-      mode: "random" # 'random' | 'temporal' | 'per_user'
-      # Ratio of test data
-      test_ratio: 0.2
-    # Number of cores for k-core filtering
-    k_core: 10
-  recommender:
-    topN_k: 10
-    cold_threshold: 5 # LE 5 ratings is cold
+    mmtf:
+      # Dataset name
+      name: MMTF-14K
+      # Flag to download the dataset or not (true to download, false to use the existing files)
+      need_download: false
+      # Path to the dataset
+      url: https://drive.google.com/drive/folders/1sBD8drB2H0WHl_MSsSCH-FA-bonjStr_?usp=sharing
+      # Path to the dataset root directory
+      download_path: "H:/Datasets/MMTF-14k"
+      # Audio variant to use
+      audio_variant: "blf" # 'blf' | 'i_ivec'
+      # Visual variant to use
+      visual_variant: "cnn" # 'avf' | 'cnn'
+# ------------------------- Pipelines configurations ------------------------
+pipelines:
+  # Movie trailers finder and downloader pipeline
+  movie_trailers:
+    # Pipeline name
+    name: Trailer-fetcher
+    # Path to the pipeline
+    download_path: "E:/Datasets/Movies/MovieTrailers"
+  # Movie frames extractor pipeline
+  movie_frames:
+    # Pipeline name
+    name: Frame-extractor
+    # Movies path
+    movies_path: "E:/Datasets/Movies/Videos"
+    # Frames path
+    frames_path: "E:/Datasets/Movies/MovieFrames"
+    # Supported video formats
+    video_formats: ["mp4", "avi", "mkv"]
+    # Frequency of frames extraction (picking 'n' frames every second)
+    frequency: 1
+    # Output file format
+    output_format: "jpg"
+    # Feature extraction model input size (width)
+    model_input_size: 420
+  # Movie frames visual feature extractor pipeline
+  movie_frames_visual_features:
+    # Pipeline name
+    name: Visual-feature-extractor
+    # Path the root directory containing the frames in folders
+    # [Note] it is equal to the frames_path in the movie_frames pipeline
+    frames_path: "E:/Datasets/Movies/MovieFrames"
+    # Features path
+    features_path: "E:/Datasets/Movies/MovieFeatures"
+    # Supported image (saved frames) formats
+    image_formats: ["png", "jpg", "jpeg"]
+    # Feature extraction models to be used (in an array)
+    # Possible values: ["incp3", "vgg19"]
+    feature_extractor_model: "incp3"
+    # Packets size (number of frames in each packet)
+    packet_size: 25
+  # Movie frames and extracted features shot detection pipeline
+  movie_shots:
+    # Pipeline name
+    name: Shot-detector
+    # Variants of shot detection
+    variants:
+      # Shot detection from frames
+      from_frames:
+        # Input frames path
+        frames_path: "E:/Datasets/Movies/MovieFrames"
+        # Output shot frames path
+        shot_frames_path: "E:/Datasets/Movies/MovieShotsFrames"
+        # Supported input image (saved frames) formats
+        image_formats: ["png", "jpg", "jpeg"]
+        # Output file format
+        output_format: "jpg"
+        # Shot boundaries detection threshold
+        threshold: 0.65
+      # Shot detection from features
+      from_features:
+        # Input features path
+        features_path: "E:/Datasets/Movies/MovieFeatures"
+        # Output shot features path
+        shot_features_path: "E:/Datasets/Movies/MovieShotsFeatures"
+        # Shot boundaries detection threshold
+        threshold: 0.7
+        # Packets size (number of frames in each packet)
+        # [Note] it is recommended to set it equal to the packet_size in the movie_frames_visual_features pipeline
+        packet_size: 25
+  # Visual feature aggregation pipeline
+  feature_aggregation:
+    # Pipeline name
+    name: Feature-aggregator
+    # Features path (downloaded features)
+    features_path: "E:/Datasets/Movies/MovieFeatures"
+    # Aggregated features path
+    agg_features_path: "E:/Datasets/Movies/MovieAggFeatures"
+    # Aggregation models to be used (in an array)
+    # Possible values: ["Max", "Mean"]
+    aggregation_models: ["Max", "Mean"]
+# Multi-Modal Recommendation Systems
+multimodal:
+  textual:
+    # Path to the enriched dataset file
+    llm_enriched_file_path: "E:/Datasets/LLM-Enriched/Enriched.csv"
+  fused:
+    # Path to the output directory
+    output_dir: "H:/Datasets/Fused-Embeddings"
+# ------------------------- Experiments configurations ------------------------
+experiment:
+  # Seed for reproducibility
+  seed: 42
+  # Verbose logging
+  verbose: true
+  # Model choice for the experiment
+  model_choice: "cf" # 'cf' | 'vbpr' | 'amr' | 'vmf'
+  # Dataset split configuration
+  split:
+    # Mode of dataset splitting
+    mode: "random" # 'random' | 'temporal' | 'per_user'
+    # Ratio of test data
+    test_ratio: 0.2
+  # Number of cores for k-core filtering
+  k_core: 10
+recommender:
+  topN_k: 10
+  cold_threshold: 5 # LE 5 ratings is cold
+
+
+  # ------------------------- Framework mode -------------------------
+  # "ds": working with various datasets and processing them
+  # "pipeline": working with various pipelines and processing them
+  # "recsys": working with recommendation systems integrated with the framework
+  # mode: "recsys" # Possible values: ["ds", "pipeline", "recsys"]
+  # # ------------------------- Framework sub-mode -------------------------
+  # # Sub-mode of the dataset mode - Possible values: ["movielens_25m", "movifex_meta", "movifex_visual", "mmtf_14k"]
+  # sub_mode_ds: "movifex_visual"
+  # # Sub-mode of the pipeline mode
+  # # Possible values: ["dl_trailers", "frame_extractor", "feat_extractor", "shot_from_frame", "shot_from_feat", "agg_features"]
+  # sub_mode_pipeline: "frame_extractor"
+  # # Sub-mode of the recommendation system mode - Possible values: ["overlap_checker", "visual_text_fusion", "audio_text_fusion"]
+  # sub_mode_recsys: "audio_text_fusion"

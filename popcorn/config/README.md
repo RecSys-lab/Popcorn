@@ -1,22 +1,18 @@
-# MoViFex - Configurations
+# 🍿 Popcorn - Configurations
 
-The first recommended step to use the framework is setting the configuration parameters. You can find below the configurations modifiable in [`config.yml`](/movifex/config/config.yml):
+The first step to get started with Popcorn is setting up your configuration.
+All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/config/config.yml) file. Tweak them to match your experiment needs 🎛️!
 
-## I. General
-
-It covers the general configurations of the system, including the followings:
-
-- **mode**: what is the expected functionality of the framework? It can be `ds` to run dataset-related modules, `pipeline` to run an available pipeline, or `recsys` to run the recommender system.
-- **sub_mode_ds**: if `ds` is selected as the `mode`, which dataset-related functionality is expected? Choose from `movifex_meta` to process based on **MoViFex**'s metadata, or `movifex_visual` to process its visual features.
-- **sub_mode_pipeline**: if `pipeline` is selected as the `mode`, which pipeline functionality is desired? Choose from `dl_trailers` to download trailers for a list of given movies from YouTube, `frame_extractor` to extract frames of a video, `feat_extractor` to extract features of a frame, `shot_from_frame` to extract shots from a set of frames, or `shot_from_feat` to extract shots from features.
-- **sub_mode_recsys**: if `recsys` is selected as the `mode`, which recommender system is expected?
+| Category | Sub-Category | Inner-level Option | Description                                                              |
+| -------- | ------------ | ------------------ | ------------------------------------------------------------------------ |
+| General  | `root_path`  | -                  | the root location of the framework (`Popcorn` for using in Google Colab) |
 
 ## II. Datasets
 
 It covers the datasets usable in the framework, including the followings:
 
-| Sub-Category     | Options           | Description                                                                       |
-| ---------------- | ----------------- | --------------------------------------------------------------------------------- |
+| Sub-Category         | Options           | Description                                                                       |
+| -------------------- | ----------------- | --------------------------------------------------------------------------------- |
 | `unimodal_dataset`   | `name`            | the name of the text dataset (e.g., `movielens-25m`)                              |
 | `unimodal_dataset`   | `need_download`   | the flag to check whether to download the text dataset or read from file          |
 | `unimodal_dataset`   | `url`             | the url of the text dataset                                                       |

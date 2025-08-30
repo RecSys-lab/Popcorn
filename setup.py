@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="Popcorn",
-    version="1.0.0",
+    version="1.5.0",
     maintainer='Ali Tourani',
     author="Ali Tourani, Yashar Deldjoo",
     author_email="a.tourani1991@gmail.com",
@@ -17,16 +17,16 @@ setup(
         'console_scripts': ['blenderproc=blenderproc.command_line:cli'],
     },
     install_requires=[
-        "pandas>=2.0",
-        "numpy>=1.26",
-        "opencv-python>=4.9",
-        "matplotlib>=3.9",
-        "pytube>=15.0",
-        "scipy>=1.14.1",
-        "requests>=2.32",
-        "PyYAML>=6.0.1",
-        "openai>=0.27.0",
-        "scikit-learn>=1.6.1",
-        "tensorflow>=2.17.0"
+        # "pandas>=2.0",
+        # "numpy>=1.26",
+        # "opencv-python>=4.9",
+        # "matplotlib>=3.9",
+        # "pytube>=15.0",
+        # "scipy>=1.14.1",
+        # "requests>=2.32",
+        # "PyYAML>=6.0.1",
+        # "openai>=0.27.0",
+        # "scikit-learn>=1.6.1",
+        # "tensorflow>=2.17.0"
     ]
 )
