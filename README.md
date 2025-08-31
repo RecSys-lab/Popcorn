@@ -22,7 +22,7 @@ pip install -e .
 
 ## 🚀 Launching the Framework
 
-1. Modify the configurations based on what you target. You need to modify the [config.yml](/popcorn/config/config.yml) file based on the [documentations provided for it](/popcorn/config/config.yml).
+1. Modify the configurations based on what you target. You need to modify the [config.yml](/popcorn/config/config.yml) file based on the [documentations provided for it](/popcorn/config/README.md).
 2. After activating the `.venv` (if set), run the framework using `python main.py` and enjoy working with the framework!
 
 ### 💡 Examples?

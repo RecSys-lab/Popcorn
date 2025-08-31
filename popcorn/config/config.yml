@@ -143,7 +143,7 @@ pipelines:
     # Aggregation models to be used (in an array)
     # Possible values: ["Max", "Mean"]
     aggregation_models: ["Max", "Mean"]
-# Multi-Modal Recommendation Systems
+# ------------------------- Multimodal configurations ------------------------
 multimodal:
   textual:
     # Path to the enriched dataset file
