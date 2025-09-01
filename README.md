@@ -6,7 +6,7 @@ Whether you are a researcher, developer, or just a movie lover, **Popcorn** help
 ## ✨ Why Popcorn?
 
 - 🎬 **Movie-focused**: Built specifically for movie recommendation tasks.
-- 👁️ **Visual-centric**: Supports integrating *visual* features as well as *audio* and *textual* to capture the “look and feel” of films.
+- 👁️ **Visual-centric**: Supports integrating _visual_ features as well as _audio_ and _textual_ to capture the “look and feel” of films.
 - 🧩 **Flexiblity and Reproducibility**: Includes a wide range of tools for dataset downloading, preprocessing, feature extraction, and benchmarking.
 
 ## 🛠️ Getting Started
@@ -42,10 +42,9 @@ You can find below where to search for the codes in the framework inside the `mo
 
 ```bash
 > [popcorn]
-> [config]                  ## framework configs & docs
-    - config.yml
-    - README.md
-> [src]                     ## framework codes
+    > [config]              ## framework configs & docs
+        - config.yml
+        - README.md
     > [datasets]            ## dataset functions
         > [movielens]
         > [movifex]
@@ -81,7 +80,7 @@ Popcorn is made with ❤️ and popcorn for movie lovers everywhere! Contributio
 1. Fork this repository
 2. Create a new branch (`git checkout -b branch-name`)
 3. Apply your changes and commit them
-4. Finally, open a *Pull Request*, and that's it! 🍿
+4. Finally, open a _Pull Request_, and that's it! 🍿
 
 The **Code Structure** section provides general information about where to add your new changes. Also, if you add new dependencies, do not forget to include them in `requirements.txt` using `pip freeze > requirements.txt` (you may need to remove the current file to have an updated version!).
 
