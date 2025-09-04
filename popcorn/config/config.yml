@@ -9,15 +9,13 @@ general:
 # ------------------------- Datasets configurations ------------------------
 datasets:
   # Textual
-  unimodal_dataset:
+  unimodal:
     movielens:
       # Dataset name
       name: MovieLens
       # Version to be used
       version: "1m" # '100k' | '1m' | '25m'
-      # Flag to download the dataset or not (true to download, false to use the existing files)
-      need_download: false
-      # Path to download the dataset (note: it will create a folder with the name 'ml-25m' in the specified path)
+      # Root path to download the dataset (if exists, it will not be downloaded again)
       download_path: "E:/Datasets/MovieLens"
     textaug:
       # Dataset name
@@ -29,7 +27,7 @@ datasets:
       # Maximum number of text parts
       text_max_parts: 15
   # Visual dataset (MoViFex)
-  multimodal_dataset:
+  multimodal:
     movifex:
       # Dataset name
       name: MoViFex-visual

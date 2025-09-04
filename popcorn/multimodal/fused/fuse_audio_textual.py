@@ -33,7 +33,7 @@ def fuseTextualWithMMTFAudio(cfgRecSys: dict, cfgDatasets: dict):
     print(f"- Filtered the dataset to contain only 'itemId' and 'title' columns! Check the first 3 records:")
     print(enrichedLLMDataset.head(3))
     # (2) Read the MMTF-14K dataset
-    mmtfDatasetRootUrl = cfgDatasets['multimodal_dataset']['mmtf']['download_path']
+    mmtfDatasetRootUrl = cfgDatasets['multimodal']['mmtf']['download_path']
     # Join the paths
     mmtfAudioCorrCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Audio', 'Block level features', 'Component6', 'BLF_CORRELATIONfeat.csv')
     mmtfAudioDeltaCSVFilePath = os.path.join(mmtfDatasetRootUrl, 'Audio', 'Block level features', 'Component6', 'BLF_DELTASPECTRALfeat.csv')

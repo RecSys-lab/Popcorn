@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from popcorn.utils import readConfigs
-from popcorn.datasets.movielens.downloader import downloadMovieLens
+from popcorn.datasets.movielens.loader import loadMovieLens
 
 
 def main():
@@ -14,15 +14,15 @@ def main():
     if not configs:
         print("Error reading the configuration file!")
         return
-    # Get common configurations
-    cfgMovieLens = configs["datasets"]["unimodal"]["movielens"]
-    downloadPath = cfgMovieLens["download_path"]
     # Download MovieLens dataset - 100k version
-    downloadMovieLens("100k", downloadPath)
+    configs['datasets']['unimodal']['movielens']["version"] = "100k"
+    loadMovieLens(configs)
     # Download MovieLens dataset - 1m version
-    downloadMovieLens("1m", downloadPath)
+    configs['datasets']['unimodal']['movielens']["version"] = "1m"
+    loadMovieLens(configs)
     # Download MovieLens dataset - 25m version
-    downloadMovieLens("25m", downloadPath)
+    configs['datasets']['unimodal']['movielens']["version"] = "25m"
+    loadMovieLens(configs)
     print("\nStopping 'Popcorn'!")
 
 

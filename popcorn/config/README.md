@@ -13,16 +13,15 @@ It covers the datasets usable in the framework, including the followings:
 
 | Sub-Category         | Options           | Description                                                                       |
 | -------------------- | ----------------- | --------------------------------------------------------------------------------- |
-| `unimodal_dataset`   | `name`            | the name of the text dataset (e.g., `movielens-25m`)                              |
-| `unimodal_dataset`   | `need_download`   | the flag to check whether to download the text dataset or read from file          |
-| `unimodal_dataset`   | `url`             | the url of the text dataset                                                       |
-| `unimodal_dataset`   | `download_path`   | the path to download the text dataset                                             |
-| `multimodal_dataset` | `name`            | the name of the visual dataset (e.g., `MoViFex`)                                  |
-| `multimodal_dataset` | `url`             | the url of the visual dataset                                                     |
-| `multimodal_dataset` | `path_metadata`   | the path to the metadata json file of SceneNet dataset                            |
-| `multimodal_dataset` | `path_raw`        | the path to the raw packets of the dataset, containing visual features            |
-| `multimodal_dataset` | `feature_sources` | features extracted from which **sources** should be used? (e.g., [`full_movies`]) |
-| `multimodal_dataset` | `feature_models`  | features extracted from which **models** should be used? (e.g., [`vgg19`])        |
+| `unimodal`   | `name`            | the name of the text dataset (e.g., `movielens-25m`)                              |
+| `unimodal`   | `url`             | the url of the text dataset                                                       |
+| `unimodal`   | `download_path`   | the path to download the text dataset                                             |
+| `multimodal` | `name`            | the name of the visual dataset (e.g., `MoViFex`)                                  |
+| `multimodal` | `url`             | the url of the visual dataset                                                     |
+| `multimodal` | `path_metadata`   | the path to the metadata json file of SceneNet dataset                            |
+| `multimodal` | `path_raw`        | the path to the raw packets of the dataset, containing visual features            |
+| `multimodal` | `feature_sources` | features extracted from which **sources** should be used? (e.g., [`full_movies`]) |
+| `multimodal` | `feature_models`  | features extracted from which **models** should be used? (e.g., [`vgg19`])        |
 
 ## III. Pipelines
 
