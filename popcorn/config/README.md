@@ -3,19 +3,20 @@
 The first step to get started with Popcorn is setting up your configuration.
 All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/config/config.yml) file. Tweak them to match your experiment needs 🎛️!
 
-| Category | Sub-Category | Inner-level Option | Description                                                              |
-| -------- | ------------ | ------------------ | ------------------------------------------------------------------------ |
-| General  | `root_path`  | -                  | the root location of the framework (`Popcorn` for using in Google Colab) |
+| Category           | Sub-Category | Inner-level Option | Description                                                              |
+| ------------------ | ------------ | ------------------ | ------------------------------------------------------------------------ |
+| General            | `root_path`  | -                  | the root location of the framework (`Popcorn` for using in Google Colab) |
+| General            | `verbose`    | -                  | the detailed logs flag                                                   |
+| Dataset (Unimodal) | `movielens`  | `name`             | the standard name of the dataset (mainly for logging)                    |
+| Dataset (Unimodal) | `movielens`  | `version`          | the demanded version (supported: `100k`, `1m`, `25m`)                    |
+| Dataset (Unimodal) | `movielens`  | `download_path`    | the root path to download the dataset (if exists, will be skipped)       |
 
 ## II. Datasets
 
 It covers the datasets usable in the framework, including the followings:
 
-| Sub-Category         | Options           | Description                                                                       |
-| -------------------- | ----------------- | --------------------------------------------------------------------------------- |
-| `unimodal`   | `name`            | the name of the text dataset (e.g., `movielens-25m`)                              |
-| `unimodal`   | `url`             | the url of the text dataset                                                       |
-| `unimodal`   | `download_path`   | the path to download the text dataset                                             |
+| Sub-Category | Options           | Description                                                                       |
+| ------------ | ----------------- | --------------------------------------------------------------------------------- |
 | `multimodal` | `name`            | the name of the visual dataset (e.g., `MoViFex`)                                  |
 | `multimodal` | `url`             | the url of the visual dataset                                                     |
 | `multimodal` | `path_metadata`   | the path to the metadata json file of SceneNet dataset                            |
