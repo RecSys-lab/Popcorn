@@ -15,12 +15,15 @@ def main():
         print("Error reading the configuration file!")
         return
     # Download MovieLens dataset - 100k version
+    print("\n----------- MovieLens 100k -----------")
     configs['datasets']['unimodal']['movielens']["version"] = "100k"
     loadMovieLens(configs)
     # Download MovieLens dataset - 1m version
+    print("\n----------- MovieLens 1m -----------")
     configs['datasets']['unimodal']['movielens']["version"] = "1m"
     loadMovieLens(configs)
     # Download MovieLens dataset - 25m version
+    print("\n----------- MovieLens 25m -----------")
     configs['datasets']['unimodal']['movielens']["version"] = "25m"
     loadMovieLens(configs)
     print("\nStopping 'Popcorn'!")

@@ -16,9 +16,20 @@ def loadMovieLens(config: dict):
 
     Returns
     -------
+    itemsDF: pd.DataFrame
+        The DataFrame containing item (movie) data.
+    usersDF: pd.DataFrame
+        The DataFrame containing user data.
+    ratingsDF: pd.DataFrame
+        The DataFrame containing user-item interaction (ratings) data.
+    genresDF: pd.DataFrame
+        The DataFrame containing item genres data.    
     """
     # Variables
-    SEED = config["experiment"]["seed"]
+    itemsDF = pd.DataFrame()
+    usersDF = pd.DataFrame()
+    genresDF = pd.DataFrame()
+    ratingsDF = pd.DataFrame()
     ROOT_PATH = config["general"]["root_path"]
     VERSION = config["datasets"]["unimodal"]["movielens"]["version"]
     DOWNLOAD_PATH = config["datasets"]["unimodal"]["movielens"]["download_path"]
@@ -36,77 +47,64 @@ def loadMovieLens(config: dict):
         filePathUser = os.path.join(datasetRoot, "u.user")
         filePathItem = os.path.join(datasetRoot, "u.item")
         filePathRating = os.path.join(datasetRoot, "u.data")
-        delim, eng = "\t", None
+        delimI, delimU, delimR, eng = "|", "|", "\t", None
     elif VERSION == "1m":
         filePathUser = os.path.join(datasetRoot, "users.dat")
         filePathItem = os.path.join(datasetRoot, "movies.dat")
         filePathRating = os.path.join(datasetRoot, "ratings.dat")
-        delim, eng = "::", "python"
+        delimI, eng = "::", "python"
+        delimU = delimR = delimI
     elif VERSION == "25m":
         filePathUser = os.path.join(datasetRoot, "tags.csv")
         filePathItem = os.path.join(datasetRoot, "movies.csv")
         filePathRating = os.path.join(datasetRoot, "ratings.csv")
-        delim, eng = ",", None
-    # Read ratings file
-    ratingsDF = pd.read_csv(
-        filePathRating,
-        sep=delim,
-        names=["user_id", "item_id", "rating", "timestamp"],
-        engine=eng,
-        header=None,
-        low_memory=False if eng != "python" else True,
-    )
-    print(
-        f"- Ratings have been loaded. Number of rows: {len(ratingsDF):,}"
-    )
+        delimI, eng = ",", None
+        delimU = delimR = delimI
+    try:
+        # Read items file
+        itemsDF = pd.read_csv(
+            filePathItem,
+            sep=delimI,
+            names=["item_id", "title", "genres"],
+            engine=eng,
+            header=None,
+            encoding="latin-1",
+            low_memory=False if eng != "python" else True,
+        )
+        print(
+            f"- Items (movies) have been loaded. Number of rows: {len(itemsDF):,}"
+        )
+        # Read users file
+        usersDF = pd.read_csv(
+            filePathUser,
+            sep=delimU,
+            names=["item_id", "title", "genres"],
+            engine=eng,
+            header=None,
+            encoding="latin-1",
+            low_memory=False if eng != "python" else True,
+        )
+        print(
+            f"- Users have been loaded. Number of rows: {len(usersDF):,}"
+        )
+        # Read ratings file
+        ratingsDF = pd.read_csv(
+            filePathRating,
+            sep=delimR,
+            names=["user_id", "item_id", "rating", "timestamp"],
+            engine=eng,
+            header=None,
+            low_memory=False if eng != "python" else True,
+        )
+        print(
+            f"- Ratings have been loaded. Number of rows: {len(ratingsDF):,}"
+        )
+    except Exception as e:
+        print(f"- [Error] An error occurred while loading the dataset files: {e}")
+        return
+    # Return
+    return itemsDF, usersDF, ratingsDF, genresDF
 
-
-# def prepareMovieLens(config: dict):
-#     # Variables
-#     SEED = config["experiment"]["seed"]
-#     K_CORE = config["experiment"]["k_core"]
-#     VERBOSE = config["experiment"]["verbose"]
-#     ROOT_PATH = config["general"]["root_path"]
-#     SPLIT_MODE = config["experiment"]["split"]["mode"]
-#     TEST_RATIO = config["experiment"]["split"]["test_ratio"]
-#     DATASET = config["datasets"]['unimodal']['movielens']["ml_version"]
-#     download_path_prefix = os.path.join(ROOT_PATH, "movifex", "data", "downloaded")
-#     # Download the dataset
-#     print(f"\nPreparing 'MovieLens {DATASET}' data ...")
-#     if DATASET == "100k":
-#         # Variables
-#         dest_data = os.path.join(download_path_prefix, "u.data")
-#         dest_item = os.path.join(download_path_prefix, "u.item")
-#         # Download
-#         downloadMovieLens(ML100K_URL, dest_data, VERBOSE)
-#         downloadMovieLens(ML100K_ITEM, dest_item, VERBOSE)
-#         # Separate ratings and items
-#         ratings_file, delim, eng = dest_data, "\t", None
-#     else:
-#         # Variables
-#         dest = os.path.join(download_path_prefix, "ml-1m.zip")
-#         dest_folder = os.path.join(download_path_prefix, "ml-1m")
-#         # Download
-#         downloadMovieLens(ML1M_URL, dest, VERBOSE)
-#         if not os.path.exists(dest_folder):
-#             print(f"⏬ Extracting '{dest}' to '{dest_folder}' ...")
-#             zipfile.ZipFile(dest).extractall(dest_folder)
-#         ratings_file = (
-#             f"{dest_folder}/ml-1m/ratings.dat"
-#             if os.path.exists(f"{dest_folder}/ml-1m/ratings.dat")
-#             else f"{dest_folder}/ratings.dat"
-#         )
-#         delim, eng = "::", "python"
-#     # Read ratings file
-#     ratings = pd.read_csv(
-#         ratings_file,
-#         sep=delim,
-#         names=["user_id", "item_id", "rating", "timestamp"],
-#         engine=eng,
-#         header=None,
-#     )
-#     if VERBOSE:
-#         print(f"✔ Ratings rows = {len(ratings):,}")
 #     # Load genres
 #     genres_df = loadGenres(download_path_prefix, DATASET)
 #     genre_dict = dict(zip(genres_df.item_id, genres_df.genres))
