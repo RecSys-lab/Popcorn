@@ -14,9 +14,9 @@ def main():
     if not configs:
         print("Error reading the configuration file!")
         return
-    # Download MovieLens dataset - 100k version
+    # Load MovieLens dataset - 100k version
     print("\n----------- MovieLens 100k -----------")
-    configs['datasets']['unimodal']['movielens']["version"] = "100k"
+    configs["datasets"]["unimodal"]["movielens"]["version"] = "100k"
     itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
     if itemsDF is not None:
         print(f"\n- ItemsDF (shape: {itemsDF.shape}): \n{itemsDF.head()}")
@@ -24,9 +24,9 @@ def main():
         print(f"\n- UsersDF (shape: {usersDF.shape}): \n{usersDF.head()}")
     if ratingsDF is not None:
         print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}")
-    # Download MovieLens dataset - 1m version
+    # Load MovieLens dataset - 1m version
     print("\n----------- MovieLens 1m -----------")
-    configs['datasets']['unimodal']['movielens']["version"] = "1m"
+    configs["datasets"]["unimodal"]["movielens"]["version"] = "1m"
     itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
     if itemsDF is not None:
         print(f"\n- ItemsDF (shape: {itemsDF.shape}): \n{itemsDF.head()}")
@@ -34,9 +34,9 @@ def main():
         print(f"\n- UsersDF (shape: {usersDF.shape}): \n{usersDF.head()}")
     if ratingsDF is not None:
         print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}")
-    # Download MovieLens dataset - 25m version
+    # Load MovieLens dataset - 25m version
     print("\n----------- MovieLens 25m -----------")
-    configs['datasets']['unimodal']['movielens']["version"] = "25m"
+    configs["datasets"]["unimodal"]["movielens"]["version"] = "25m"
     itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
     if itemsDF is not None:
         print(f"\n- ItemsDF (shape: {itemsDF.shape}): \n{itemsDF.head()}")

@@ -149,10 +149,12 @@ multimodal:
   fused:
     # Path to the output directory
     output_dir: "H:/Datasets/Fused-Embeddings"
-# ------------------------- Experiments configurations ------------------------
-experiment:
+# ------------------------- Experimental configurations ------------------------
+setup:
   # Seed for reproducibility
   seed: 42
+  # Number of cores for k-core filtering
+  k_core: 10
   # Model choice for the experiment
   model_choice: "cf" # 'cf' | 'vbpr' | 'amr' | 'vmf'
   # Dataset split configuration
@@ -161,8 +163,6 @@ experiment:
     mode: "random" # 'random' | 'temporal' | 'per_user'
     # Ratio of test data
     test_ratio: 0.2
-  # Number of cores for k-core filtering
-  k_core: 10
 recommender:
   topN_k: 10
   cold_threshold: 5 # LE 5 ratings is cold

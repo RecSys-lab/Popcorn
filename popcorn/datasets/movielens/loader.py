@@ -1,9 +1,13 @@
 import os
-import numpy as np
 import pandas as pd
-from popcorn.datasets.utils import applyKcore
 from popcorn.datasets.movielens.downloader import downloadMovieLens
-from popcorn.datasets.movielens.helpers import allGenres, itemCols_100k, itemCols, userCols, ratingCols
+from popcorn.datasets.movielens.helpers import (
+    allGenres,
+    itemCols_100k,
+    itemCols,
+    userCols,
+    ratingCols,
+)
 
 
 def loadMovieLens(config: dict):
@@ -83,7 +87,9 @@ def loadMovieLens(config: dict):
         print(f"- Items (movies) have been loaded. Number of rows: {len(itemsDF):,}")
         # Read users file
         if VERSION == "25m":
-            print("- [Note] MovieLens-25M does not provide user metadata! Skipping user data loading ...")
+            print(
+                "- [Note] MovieLens-25M does not provide user metadata! Skipping user data loading ..."
+            )
         else:
             usersDF = pd.read_csv(
                 filePathUser,
@@ -113,41 +119,3 @@ def loadMovieLens(config: dict):
         return None, None, None
     # Return
     return itemsDF, usersDF, ratingsDF
-
-
-#     genres_df = loadGenres(download_path_prefix, DATASET)
-#     genre_dict = dict(zip(genres_df.item_id, genres_df.genres))
-#     if VERBOSE:
-#         print(f"✔ genres loaded items = {len(genres_df):,}")
-#     # Apply k-core filtering (if specified)
-#     if K_CORE > 0:
-#         ratings = applyKcore(ratings, K_CORE)
-#         if VERBOSE:
-#             print(f"✔ After {K_CORE}-core rows = {len(ratings):,}")
-#     # Split the dataset into train and test sets
-#     np.random.seed(SEED)
-#     if SPLIT_MODE == "random":
-#         ratings = ratings.sample(frac=1, random_state=SEED).reset_index(drop=True)
-#         sz = int(len(ratings) * TEST_RATIO)
-#         train_df, test_df = ratings.iloc[:-sz].copy(), ratings.iloc[-sz:].copy()
-#     elif SPLIT_MODE == "temporal":
-#         ratings = ratings.sort_values("timestamp")
-#         sz = int(len(ratings) * TEST_RATIO)
-#         train_df, test_df = ratings.iloc[:-sz].copy(), ratings.iloc[-sz:].copy()
-#     else:
-#         trs, tes = [], []
-#         for uid, grp in ratings.groupby("user_id"):
-#             grp = grp.sort_values("timestamp")
-#             tes.append(grp.iloc[-1])
-#             trs.extend(grp.iloc[:-1].to_dict("records"))
-#         train_df, test_df = pd.DataFrame(trs), pd.DataFrame(tes)
-#     # Make the train set
-#     if VERBOSE:
-#         print(f"✔ Split train = {len(train_df):,}  test = {len(test_df):,}")
-#     # train_set = Dataset.from_uir(train_df[['user_id','item_id','rating']].values.tolist())
-#     # Save the genres DataFrame to a CSV file
-#     genres_df_save_path = os.path.join(ROOT_PATH, "outputs", "item_metadata_genres.csv")
-#     genres_df.to_csv(genres_df_save_path, index=False)
-#     print(f"✔ {genres_df_save_path} saved!")
-#     # Return
-#     return train_df, test_df, genre_dict
