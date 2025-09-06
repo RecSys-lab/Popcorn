@@ -2,8 +2,6 @@
 
 import pandas as pd
 
-mainGenres = ['Action', 'Comedy', 'Drama', 'Horror']
-
 def fetchAllUniqueGenres(dataFrame: pd.DataFrame):
     """
     Counts the number of movies in the given data.
@@ -129,27 +127,6 @@ def loadGenres(download_path_prefix: str, DATASET: str) -> pd.DataFrame:
     """
     if DATASET == "100k":
         # Variables
-        genre_cols = [
-            "unknown",
-            "Action",
-            "Adventure",
-            "Animation",
-            "Children's",
-            "Comedy",
-            "Crime",
-            "Documentary",
-            "Drama",
-            "Fantasy",
-            "Film-Noir",
-            "Horror",
-            "Musical",
-            "Mystery",
-            "Romance",
-            "Sci-Fi",
-            "Thriller",
-            "War",
-            "Western",
-        ]
         cols = [
             "item_id",
             "title",

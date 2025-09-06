@@ -1,10 +1,7 @@
 import os
 import zipfile
 import requests
-
-ML1M_URL = "https://files.grouplens.org/datasets/movielens/ml-1m.zip"
-ML25M_URL = "https://files.grouplens.org/datasets/movielens/ml-25m.zip"
-ML100K_URL = "https://files.grouplens.org/datasets/movielens/ml-100k.zip"
+from popcorn.datasets.movielens.helpers import ML1M_URL, ML25M_URL, ML100K_URL
 
 def getMovieLensURL(version: str) -> str:
     """

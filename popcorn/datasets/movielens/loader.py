@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from popcorn.datasets.utils import applyKcore
 from popcorn.datasets.movielens.downloader import downloadMovieLens
+from popcorn.datasets.movielens.helpers import allGenres, itemCols_100k, itemCols, userCols, ratingCols
 
 
 def loadMovieLens(config: dict):
@@ -22,13 +23,10 @@ def loadMovieLens(config: dict):
         The DataFrame containing user data.
     ratingsDF: pd.DataFrame
         The DataFrame containing user-item interaction (ratings) data.
-    genresDF: pd.DataFrame
-        The DataFrame containing item genres data.    
     """
     # Variables
     itemsDF = pd.DataFrame()
     usersDF = pd.DataFrame()
-    genresDF = pd.DataFrame()
     ratingsDF = pd.DataFrame()
     ROOT_PATH = config["general"]["root_path"]
     VERSION = config["datasets"]["unimodal"]["movielens"]["version"]
@@ -38,7 +36,7 @@ def loadMovieLens(config: dict):
     isDownloadSuccessful = downloadMovieLens(VERSION, downloadPath)
     if not isDownloadSuccessful:
         print(f"- Error in loading the 'MovieLens-{VERSION}' dataset! Exiting ...")
-        return
+        return None, None, None
     # Load the dataset
     datasetRoot = os.path.join(downloadPath, f"ml-{VERSION}", f"ml-{VERSION}")
     datasetRoot = os.path.normpath(datasetRoot)
@@ -55,7 +53,6 @@ def loadMovieLens(config: dict):
         delimI, eng = "::", "python"
         delimU = delimR = delimI
     elif VERSION == "25m":
-        filePathUser = os.path.join(datasetRoot, "tags.csv")
         filePathItem = os.path.join(datasetRoot, "movies.csv")
         filePathRating = os.path.join(datasetRoot, "ratings.csv")
         delimI, eng = ",", None
@@ -65,47 +62,59 @@ def loadMovieLens(config: dict):
         itemsDF = pd.read_csv(
             filePathItem,
             sep=delimI,
-            names=["item_id", "title", "genres"],
             engine=eng,
             header=None,
             encoding="latin-1",
+            skiprows=1 if VERSION == "25m" else 0,
             low_memory=False if eng != "python" else True,
+            names=itemCols_100k if VERSION == "100k" else itemCols,
         )
-        print(
-            f"- Items (movies) have been loaded. Number of rows: {len(itemsDF):,}"
-        )
+        if VERSION == "100k":
+            # Since in MovieLens 100k, genres are in separate columns, we need to combine them into a list
+            itemsDF["genres"] = itemsDF[allGenres].apply(
+                lambda row: [g for g in allGenres if row[g] == 1], axis=1
+            )
+            # Now, keep only the relevant columns
+            itemsDF = itemsDF[["item_id", "title", "genres"]]
+        else:
+            itemsDF["genres"] = itemsDF["genres"].map(
+                lambda s: s.split("|") if isinstance(s, str) else []
+            )
+        print(f"- Items (movies) have been loaded. Number of rows: {len(itemsDF):,}")
         # Read users file
-        usersDF = pd.read_csv(
-            filePathUser,
-            sep=delimU,
-            names=["item_id", "title", "genres"],
-            engine=eng,
-            header=None,
-            encoding="latin-1",
-            low_memory=False if eng != "python" else True,
-        )
-        print(
-            f"- Users have been loaded. Number of rows: {len(usersDF):,}"
-        )
+        if VERSION == "25m":
+            print("- [Note] MovieLens-25M does not provide user metadata! Skipping user data loading ...")
+        else:
+            usersDF = pd.read_csv(
+                filePathUser,
+                sep=delimU,
+                engine=eng,
+                header=None,
+                names=userCols,
+                encoding="latin-1",
+                low_memory=False if eng != "python" else True,
+            )
+            print(f"- Users have been loaded. Number of rows: {len(usersDF):,}")
         # Read ratings file
         ratingsDF = pd.read_csv(
             filePathRating,
             sep=delimR,
-            names=["user_id", "item_id", "rating", "timestamp"],
             engine=eng,
             header=None,
+            names=ratingCols,
+            skiprows=1 if VERSION == "25m" else 0,
             low_memory=False if eng != "python" else True,
         )
-        print(
-            f"- Ratings have been loaded. Number of rows: {len(ratingsDF):,}"
-        )
+        print(f"- Ratings have been loaded. Number of rows: {len(ratingsDF):,}")
+        # Preparations
+        itemsDF["item_id"] = itemsDF["item_id"].astype(str)
     except Exception as e:
         print(f"- [Error] An error occurred while loading the dataset files: {e}")
-        return
+        return None, None, None
     # Return
-    return itemsDF, usersDF, ratingsDF, genresDF
+    return itemsDF, usersDF, ratingsDF
 
-#     # Load genres
+
 #     genres_df = loadGenres(download_path_prefix, DATASET)
 #     genre_dict = dict(zip(genres_df.item_id, genres_df.genres))
 #     if VERBOSE:
