@@ -2,6 +2,7 @@
 
 from popcorn.utils import readConfigs
 from popcorn.datasets.movielens.loader import loadMovieLens
+from popcorn.datasets.utils import printTextualDatasetStats
 
 
 def main():
@@ -23,7 +24,8 @@ def main():
     if usersDF is not None:
         print(f"\n- UsersDF (shape: {usersDF.shape}): \n{usersDF.head()}")
     if ratingsDF is not None:
-        print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}")
+        print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}\n")
+        printTextualDatasetStats(ratingsDF)
     # Load MovieLens dataset - 1m version
     print("\n----------- MovieLens 1m -----------")
     configs["datasets"]["unimodal"]["movielens"]["version"] = "1m"
@@ -33,7 +35,8 @@ def main():
     if usersDF is not None:
         print(f"\n- UsersDF (shape: {usersDF.shape}): \n{usersDF.head()}")
     if ratingsDF is not None:
-        print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}")
+        print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}\n")
+        printTextualDatasetStats(ratingsDF)
     # Load MovieLens dataset - 25m version
     print("\n----------- MovieLens 25m -----------")
     configs["datasets"]["unimodal"]["movielens"]["version"] = "25m"
@@ -43,7 +46,8 @@ def main():
     if usersDF is not None:
         print(f"\n- UsersDF (shape: {usersDF.shape}): \n{usersDF.head()}")
     if ratingsDF is not None:
-        print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}")
+        print(f"\n- RatingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}\n")
+        printTextualDatasetStats(ratingsDF)
     # Stop
     print("\nStopping 'Popcorn'!")
 

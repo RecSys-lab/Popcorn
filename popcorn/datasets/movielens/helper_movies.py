@@ -62,37 +62,66 @@ def filterMoviesWithMainGenres(itemsDF: pd.DataFrame):
         )
         return itemsDF
     # Filter the DataFrame by the main genres
-    print(f"- Filtering {len(itemsDF)} movies containing the main genres '{mainGenres}' ...")
+    print(
+        f"- Filtering {len(itemsDF)} movies containing the main genres '{mainGenres}' ..."
+    )
     # Filtration
-    itemsDF_filtered = itemsDF[itemsDF["genres"].apply(
-        lambda gList: any(genre in gList for genre in mainGenres)
-        if isinstance(gList, list) else False
-    )]
+    itemsDF_filtered = itemsDF[
+        itemsDF["genres"].apply(
+            lambda gList: (
+                any(genre in gList for genre in mainGenres)
+                if isinstance(gList, list)
+                else False
+            )
+        )
+    ]
+    print(f"- Kept {len(itemsDF_filtered)} movies containing the main genres.")
     # Return the filtered DataFrame
     return itemsDF_filtered
 
 
-def augmentMoviesDFWithBinarizedGenres(
-    moviesDataFrame: pd.DataFrame, binarizedGenresDataFrame: pd.DataFrame
+def augmentMoviesWithBinarizedGenres(
+    itemsDF: pd.DataFrame, itemsDF_binGenre: pd.DataFrame
 ):
     """
     Augments the movies DataFrame with binarized genres.
 
     Parameters:
     ----------
-    moviesDataFrame: pd.DataFrame
+    itemsDF: pd.DataFrame
         The DataFrame containing the movie data.
-    binarizedGenresDataFrame: pd.DataFrame
+    itemsDF_binGenre: pd.DataFrame
         The DataFrame containing the binarized genres.
 
     Returns:
     -------
-    augmentedMoviesDataFrame: pd.DataFrame
+    itemsDF_augmented: pd.DataFrame
         The augmented DataFrame containing the movie data with binarized genres.
     """
+    # Check if input arguments are valid
+    if (
+        itemsDF is None
+        or itemsDF.empty
+        or itemsDF_binGenre is None
+        or itemsDF_binGenre.empty
+    ):
+        print(
+            "- [Error] The input movies DataFrame is empty or None. Returning the original DataFrame ..."
+        )
+        return itemsDF
+    if itemsDF_binGenre.columns.tolist() != [
+        "item_id",
+        "isAction",
+        "isComedy",
+        "isDrama",
+        "isHorror",
+    ]:
+        print(
+            "- [Error] The binarized genres DataFrame must contain the columns "
+            "['item_id', 'isAction', 'isComedy', 'isDrama', 'isHorror']. Returning the original DataFrame ..."
+        )
+        return itemsDF
     # Merge the movies DataFrame with the binarized genres DataFrame
-    augmentedMoviesDataFrame = pd.merge(
-        moviesDataFrame, binarizedGenresDataFrame, on="movieId"
-    )
+    itemsDF_augmented = pd.merge(itemsDF, itemsDF_binGenre, on="item_id")
     # Return the augmented DataFrame
-    return augmentedMoviesDataFrame
+    return itemsDF_augmented

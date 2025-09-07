@@ -3,6 +3,7 @@
 from popcorn.utils import readConfigs
 from popcorn.datasets.movielens.loader import loadMovieLens
 from popcorn.datasets.movielens.helper_movies import filterMoviesByGenre
+from popcorn.datasets.movielens.helper_movies import filterMoviesWithMainGenres
 
 
 def main():
@@ -29,6 +30,12 @@ def main():
     itemsDF_filtered = filterMoviesByGenre(itemsDF, genre="Drama")
     print(f"- Filtered ItemsDF: \n{itemsDF_filtered.head(3)}\n")
     itemsDF_filtered = filterMoviesByGenre(itemsDF, genre="TestGenre")
+    # [Util-2] Filter movies containing the main genres
+    print("\n[Util-2] Filtering movies containing the main genres ...")
+    itemsDF_mainGenres = filterMoviesWithMainGenres(itemsDF)
+    print(
+        f"- Main Genres ItemsDF (shape: {itemsDF_mainGenres.shape}): \n{itemsDF_mainGenres.head(3)}"
+    )
     # Stop
     print("\nStopping 'Popcorn'!")
 

@@ -3,7 +3,7 @@ import pandas as pd
 
 def applyKcore(dataFrame: pd.DataFrame, k: int = 0) -> pd.DataFrame:
     """
-    Apply k-core filtering to the given data. This function filters the 
+    Apply k-core filtering to the given data. This function filters the
     DataFrame to retain only users and items that have at least k interactions.
 
     Parameters
@@ -43,26 +43,32 @@ def applyKcore(dataFrame: pd.DataFrame, k: int = 0) -> pd.DataFrame:
 def printTextualDatasetStats(data: pd.DataFrame):
     """
     Print dataset statistics including total interactions, unique users, items, and interaction ratios.
-    Hint: The input DataFrame should have 'userId' and 'itemId' columns.
+    Hint: The input DataFrame should have 'user_id' and 'item_id' columns.
 
     Parameters
     ----------
     data: pd.DataFrame
         Given dataset in the form of a DataFrame.
     """
+    # Check if required columns exist
+    if "user_id" not in data.columns or "item_id" not in data.columns:
+        print(
+            "- [Error] The DataFrame must contain 'user_id' and 'item_id' columns. Exiting ..."
+        )
+        return
     # Variables
     totalInteractions = data.shape[0]
-    uniqueUsers = data["userId"].nunique()
-    uniqueItems = data["itemId"].nunique()
+    uniqueUsers = data["user_id"].nunique()
+    uniqueItems = data["item_id"].nunique()
     # Print
     print("--------------------------")
     print("- The Dataset Overview:")
     print(f"-- Total Interactions: {totalInteractions}")
     print(f"-- |U|: {uniqueUsers}")
     print(f"-- |I|: {uniqueItems}")
-    print(f"-- |R|/|U|: {totalInteractions / uniqueUsers:.2f}")
-    print(f"-- |R|/|I|: {totalInteractions / uniqueItems:.2f}")
-    print(f"-- |R|/(|U|*|I|): {totalInteractions / (uniqueUsers * uniqueItems):.10f}")
+    print(f"-- |R|/|U|: {totalInteractions / uniqueUsers:.4f}")
+    print(f"-- |R|/|I|: {totalInteractions / uniqueItems:.4f}")
+    print(f"-- |R|/(|U|*|I|): {totalInteractions / (uniqueUsers * uniqueItems):.4f}")
     print("--------------------------")
 
 

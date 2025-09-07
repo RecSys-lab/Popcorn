@@ -2,5 +2,5 @@
 
 | Folder                               | Description                               |
 | ------------------------------------ | ----------------------------------------- |
-| [colab](/examples/colab/README.md)   | Contains Google Colab implementations     |
-| [python](/examples/python/README.md) | Contains locally-implemented Python files |
+| [colab](/examples/colab/)   | Contains Google Colab implementations     |
+| [python](/examples/python/) | Contains locally-implemented Python files |

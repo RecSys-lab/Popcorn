@@ -2,6 +2,7 @@
 
 from popcorn.utils import readConfigs
 from popcorn.datasets.movielens.loader import loadMovieLens
+from popcorn.datasets.movielens.helper_movies import augmentMoviesWithBinarizedGenres
 from popcorn.datasets.movielens.helper_genres import (
     binarizeGenres,
     getGenreDict,
@@ -39,6 +40,10 @@ def main():
     print("\n[Util-3] Binarizing genres as a new ItemsDF ...")
     itemsDF_binGenre = binarizeGenres(itemsDF)
     print(f"- ItemsDF with binarized genres: \n{itemsDF_binGenre.head(3)}")
+    # [Util-4] Augment original ItemsDF with binarized genres
+    print("\n[Util-4] Augmenting original ItemsDF with binarized genres ...")
+    itemsDF_augmented = augmentMoviesWithBinarizedGenres(itemsDF, itemsDF_binGenre)
+    print(f"- Augmented ItemsDF: \n{itemsDF_augmented.head(3)}")
     # Stop
     print("\nStopping 'Popcorn'!")
 
