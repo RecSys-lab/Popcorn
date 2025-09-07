@@ -4,6 +4,8 @@ general:
   name: "Popcorn"
   # Root path for the framework
   root_path: "" # Empty for local, "Popcorn" for using in Google Colab
+  # Path to save the outputs of the framework (if empty, it will be saved in the root_path/outputs)
+  output_path: ""
   # Verbose logging (prints detailed logs)
   verbose: true
 # ------------------------- Datasets configurations ------------------------
