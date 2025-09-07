@@ -8,3 +8,4 @@
 | [load_movielens_genres](/examples/python/load_movielens_genres.py)     | Data   | Saving MovieLens genres and loading them as a dictionary |
 | [experiment_kcore_ml-1m](/examples/python/experiment_kcore_ml-1m.py)   | Setup  | Applying K-Core on MovieLens 1M                          |
 | [experiment_kcore_ml-25m](/examples/python/experiment_kcore_ml-25m.py) | Setup  | Applying K-Core on MovieLens 25M                         |
+| [experiment_split](/examples/python/experiment_split.py)               | Setup  | Applying K-Core and train/test splitting on MovieLens    |

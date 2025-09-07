@@ -1,12 +1,12 @@
 import os
 import pandas as pd
 from popcorn.datasets.movielens.downloader import downloadMovieLens
-from popcorn.datasets.movielens.helpers import (
+from popcorn.datasets.movielens.utils import (
     allGenres,
-    itemCols_100k,
     itemCols,
     userCols,
     ratingCols,
+    itemCols_100k,
 )
 
 
@@ -39,7 +39,9 @@ def loadMovieLens(config: dict):
     downloadPath = os.path.join(ROOT_PATH, DOWNLOAD_PATH)
     isDownloadSuccessful = downloadMovieLens(VERSION, downloadPath)
     if not isDownloadSuccessful:
-        print(f"- Error in loading the 'MovieLens-{VERSION}' dataset! Exiting ...")
+        print(
+            f"- [Error] Error in loading the 'MovieLens-{VERSION}' dataset! Exiting ..."
+        )
         return None, None, None
     # Load the dataset
     datasetRoot = os.path.join(downloadPath, f"ml-{VERSION}", f"ml-{VERSION}")
