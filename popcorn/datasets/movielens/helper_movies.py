@@ -1,5 +1,5 @@
 import pandas as pd
-from popcorn.datasets.movielens.utils import allGenres
+from popcorn.datasets.movielens.utils import allGenres, mainGenres
 
 
 def filterMoviesByGenre(itemsDF: pd.DataFrame, genre: str):
@@ -41,13 +41,13 @@ def filterMoviesByGenre(itemsDF: pd.DataFrame, genre: str):
     return itemsDF_filtered
 
 
-def filterMoviesWithMainGenres(dataFrame: pd.DataFrame):
+def filterMoviesWithMainGenres(itemsDF: pd.DataFrame):
     """
-    Filters movies by the main genres.
+    Filters movies to keep only those belonging to the main genres.
 
     Parameters:
     ----------
-    dataFrame: pd.DataFrame
+    itemsDF: pd.DataFrame
         The DataFrame containing the movie data.
 
     Returns:
@@ -55,10 +55,21 @@ def filterMoviesWithMainGenres(dataFrame: pd.DataFrame):
     mainGenresMovies: pd.DataFrame
         The DataFrame containing the movies of the main genres.
     """
+    # Check if input argument is valid
+    if itemsDF is None or itemsDF.empty:
+        print(
+            "- [Error] The input DataFrame is empty or None. Returning the original DataFrame ..."
+        )
+        return itemsDF
     # Filter the DataFrame by the main genres
-    mainGenresMovies = dataFrame[dataFrame["genres"].str.contains("|".join(mainGenres))]
+    print(f"- Filtering {len(itemsDF)} movies containing the main genres '{mainGenres}' ...")
+    # Filtration
+    itemsDF_filtered = itemsDF[itemsDF["genres"].apply(
+        lambda gList: any(genre in gList for genre in mainGenres)
+        if isinstance(gList, list) else False
+    )]
     # Return the filtered DataFrame
-    return mainGenresMovies
+    return itemsDF_filtered
 
 
 def augmentMoviesDFWithBinarizedGenres(
