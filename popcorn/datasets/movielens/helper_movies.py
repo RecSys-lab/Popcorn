@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import pandas as pd
 
 def fetchAllUniqueGenres(dataFrame: pd.DataFrame):
@@ -63,30 +61,7 @@ def filterMoviesWithMainGenres(dataFrame: pd.DataFrame):
     # Return the filtered DataFrame
     return mainGenresMovies
 
-def binarizeMovieGenres(dataFrame: pd.DataFrame):
-    """
-    Binarizes the genres column based on the presence of main genres.
 
-    Parameters:
-    ----------
-    dataFrame: pd.DataFrame
-        The DataFrame containing the movie data.
-    
-    Returns:
-    -------
-    moviesDFBinarizedGenres: pd.DataFrame
-        A DataFrame with movieId and separate columns for each main genre, indicating presence (1) or absence (0).
-    """
-    # Variables
-    moviesDFBinarizedGenres = pd.DataFrame(columns=['movieId', 'isAction', 'isComedy', 'isDrama', 'isHorror'])
-    # Iterate over the main genres
-    for genre in mainGenres:
-        # Create a new column for each genre
-        moviesDFBinarizedGenres[f'is{genre}'] = dataFrame['genres'].str.contains(genre).astype(int)
-    # Add the movieId column
-    moviesDFBinarizedGenres['movieId'] = dataFrame['movieId']
-    # Return the binarized DataFrame
-    return moviesDFBinarizedGenres
 
 def augmentMoviesDFWithBinarizedGenres(moviesDataFrame: pd.DataFrame, binarizedGenresDataFrame: pd.DataFrame):
     """

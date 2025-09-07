@@ -1,6 +1,7 @@
 import os
 import json
 import pandas as pd
+from popcorn.datasets.movielens.utils import mainGenres
 
 
 def normalizeGenres(value):
@@ -82,6 +83,38 @@ def getGenreDict(itemsDF: pd.DataFrame, config: dict, saveOutput: bool = True) -
         except Exception as e:
             print(f"- Error in saving the genres DataFrame: {e}")
     else:
-        print(f"\n- Skipping saving the genres DataFrame ...")
+        print(f"- Skipping saving the genres DataFrame ...")
     # Return the genres dictionary
     return genresDict
+
+
+def binarizeGenres(itemsDF: pd.DataFrame):
+    """
+    Receives the movies DataFrame and returns a DataFrame with separate columns
+    for each main genre, indicating presence (1) or absence (0).
+    [Note]: the main genres are ["Action", "Comedy", "Drama", "Horror"]
+
+    Parameters:
+    ----------
+    itemsDF: pd.DataFrame
+        The DataFrame containing the movie data.
+
+    Returns:
+    -------
+    itemsDF_binGenre: pd.DataFrame
+        The DataFrame containing the binarized genres.
+    """
+    # Variables
+    itemsDF_binGenre = pd.DataFrame(
+        columns=["item_id", "isAction", "isComedy", "isDrama", "isHorror"]
+    )
+    # Add the item_id column
+    itemsDF_binGenre["item_id"] = itemsDF["item_id"]
+    # Iterate over the main genres
+    for genre in mainGenres:
+        # Create a new column for each genre
+        itemsDF_binGenre[f"is{genre}"] = itemsDF["genres"].apply(
+            lambda gList: int(genre in gList) if isinstance(gList, list) else 0
+        )
+    # Return the binarized DataFrame
+    return itemsDF_binGenre

@@ -2,7 +2,7 @@
 
 from popcorn.utils import readConfigs
 from popcorn.datasets.movielens.loader import loadMovieLens
-from popcorn.datasets.movielens.helper_genres import getGenreDict
+from popcorn.datasets.movielens.helper_genres import binarizeGenres, getGenreDict
 
 
 def main():
@@ -21,10 +21,15 @@ def main():
     if itemsDF is None:
         print("Error in loading the MovieLens dataset! Exiting ...")
         return
-    # Get genre dictionary and save genres DataFrame
     print(f"\n- ItemsDF (shape: {itemsDF.shape}): \n{itemsDF.head()}")
+    # [Util-1] Get genre dictionary and save genres DataFrame
+    print("\n[Util-1] Getting genre dictionary and saving genres DataFrame ...")
     genreDict = getGenreDict(itemsDF, configs, saveOutput=True)
-    print(f"\n- Genre Dictionary (sample): \n{dict(list(genreDict.items())[:3])}")
+    print(f"- Genre Dictionary (sample): \n{dict(list(genreDict.items())[:3])}")
+    # [Util-2] Binarize genres as a new ItemsDF
+    print("\n[Util-2] Binarizing genres as a new ItemsDF ...")
+    itemsDF_binGenre = binarizeGenres(itemsDF)
+    print(f"- ItemsDF with binarized genres: \n{itemsDF_binGenre.head(3)}")
     # Stop
     print("\nStopping 'Popcorn'!")
 
