@@ -1,7 +1,7 @@
 import os
 import json
 import pandas as pd
-from popcorn.datasets.movielens.utils import mainGenres
+from popcorn.datasets.movielens.utils import mainGenres, allGenres
 
 
 def normalizeGenres(value):
@@ -118,3 +118,25 @@ def binarizeGenres(itemsDF: pd.DataFrame):
         )
     # Return the binarized DataFrame
     return itemsDF_binGenre
+
+def getMainGenres():
+    """
+    Returns the list of main genres.
+
+    Returns:
+    -------
+    mainGenres: list
+        A list of main genres.
+    """
+    return mainGenres
+
+def getAllGenres():
+    """
+    Returns the list of all genres.
+
+    Returns:
+    -------
+    allGenres: list
+        A list of all genres.
+    """
+    return allGenres
