@@ -19,15 +19,15 @@ datasets:
       version: "1m" # '100k' | '1m' | '25m'
       # Root path to download the dataset (if exists, it will not be downloaded again)
       download_path: "E:/Datasets/MovieLens"
-    textaug:
+    poison_rag_plus:
       # Dataset name
-      name: LLM-Enriched-Text
+      name: Poison-RAG-Plus
       # LLM prefix for text processing
-      llm_prefix: "llama" # 'openai' | 'st' | 'llama'
+      llm: "llama" # 'openai' | 'st' | 'llama'
       # Use augmented textual path
-      text_augmented: true # True → use augmented textual path
+      augmented: true # True to use augmented textual path
       # Maximum number of text parts
-      text_max_parts: 15
+      max_parts: 15
   # Visual dataset (MoViFex)
   multimodal:
     movifex:

@@ -8,6 +8,7 @@
 | [load_movielens_movies](/examples/python/load_movielens_movies.py)     | Data   | Working around with MovieLens movies                 |
 | [load_movielens_genres](/examples/python/load_movielens_genres.py)     | Data   | Working around with MovieLens genres                 |
 | [load_movielens_users](/examples/python/load_movielens_users.py)       | Data   | Working around with MovieLens users and interactions |
+| [load_poison_rag_plus](/examples/python/load_poison_rag_plus.py)       | Data   | Loading Poison-RAG-Plus data into Pandas DataFrame   |
 | [experiment_kcore_ml-1m](/examples/python/experiment_kcore_ml-1m.py)   | Setup  | Applying K-Core on MovieLens 1M                      |
 | [experiment_kcore_ml-25m](/examples/python/experiment_kcore_ml-25m.py) | Setup  | Applying K-Core on MovieLens 25M                     |
 | [experiment_split](/examples/python/experiment_split.py)               | Setup  | Applying K-Core and train/test split on MovieLens    |

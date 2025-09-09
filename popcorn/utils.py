@@ -2,7 +2,7 @@
 import yaml
 # import json
 # import requests
-# import numpy as np
+import numpy as np
 # import pandas as pd
 
 def readConfigs(configPath: str = "popcorn/config/config.yml"):
@@ -31,6 +31,27 @@ def readConfigs(configPath: str = "popcorn/config/config.yml"):
             return configs
         except yaml.YAMLError as err:
             print(f"[Error] Error while reading the configurations: {err}")
+
+
+def parseSafe(s: str) -> np.ndarray:
+    """
+    Converts a string representation of a vector into a NumPy array.
+
+    Parameters
+    ----------
+    s: str
+        The string representation of the vector, where elements are separated by commas or spaces.
+
+    Returns
+    -------
+    np.ndarray
+        A NumPy array containing the elements of the vector, with non-finite values replaced by 0.0.
+    """
+    vec = np.fromstring(str(s).replace(",", " "), sep=" ", dtype=np.float32)
+    if not np.all(np.isfinite(vec)):
+        vec = np.nan_to_num(vec, nan=0.0, posinf=0.0, neginf=0.0)
+    return vec
+
 
 # def loadDataFromCSV(csvPath: str):
 #     """
@@ -76,7 +97,7 @@ def readConfigs(configPath: str = "popcorn/config/config.yml"):
 #     except json.JSONDecodeError as e:
 #         print(f"- Error parsing JSON data: {e}")
 #         return None
-    
+
 # def loadJsonFromFilePath(jsonPath: str):
 #     """
 #     Load `json` data from a given file path and return it.
@@ -98,22 +119,3 @@ def readConfigs(configPath: str = "popcorn/config/config.yml"):
 #     except Exception as e:
 #         print(f"- An error occurred while loading the JSON data: {e}")
 #         return None
-
-# def parseSafe(s: str) -> np.ndarray:
-#     """
-#     Converts a string representation of a vector into a NumPy array.
-
-#     Parameters
-#     ----------
-#     s: str
-#         The string representation of the vector, where elements are separated by commas or spaces.
-
-#     Returns
-#     -------
-#     np.ndarray
-#         A NumPy array containing the elements of the vector, with non-finite values replaced by 0.0.
-#     """
-#     vec = np.fromstring(str(s).replace(",", " "), sep=" ", dtype=np.float32)
-#     if not np.all(np.isfinite(vec)):
-#         vec = np.nan_to_num(vec, nan=0.0, posinf=0.0, neginf=0.0)
-#     return vec
