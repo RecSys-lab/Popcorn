@@ -3,18 +3,22 @@
 The first step to get started with Popcorn is setting up your configuration.
 All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/config/config.yml) file. Tweak them to match your experiment needs 🎛️!
 
-| Category           | Sub-Category  | Inner-level Option | Description                                                                 |
-| ------------------ | ------------- | ------------------ | --------------------------------------------------------------------------- |
-| General            | `root_path`   | -                  | the root location of the framework (`Popcorn` for using in Google Colab)    |
-| General            | `output_path` | -                  | the output location of the framework for saving output data                 |
-| General            | `verbose`     | -                  | the detailed logs flag                                                      |
-| Dataset (Unimodal) | `movielens`   | `name`             | the standard name of the dataset (mainly for logging)                       |
-| Dataset (Unimodal) | `movielens`   | `version`          | the demanded version (supported: `100k`, `1m`, `25m`)                       |
-| Dataset (Unimodal) | `movielens`   | `download_path`    | the root path to download the dataset (if exists, will be skipped)          |
-| Setup              | `seed`        | -                  | the seed for reproducibility purposes                                       |
-| Setup              | `k_core`      | -                  | the number of cores for k-core filtering                                    |
-| Setup              | `split`       | `mode`             | the train/test splitting mode (supported: `random`, `temporal`, `per_user`) |
-| Setup              | `split`       | `test_ratio`       | the test ratio (between 0.1 to 1.0, otherwise is set to 0.2)                |
+| Category           | Sub-Category      | Inner-level Option | Description                                                                 |
+| ------------------ | ----------------- | ------------------ | --------------------------------------------------------------------------- |
+| General            | `root_path`       | -                  | the root location of the framework (`Popcorn` for using in Google Colab)    |
+| General            | `output_path`     | -                  | the output location of the framework for saving output data                 |
+| General            | `verbose`         | -                  | the detailed logs flag                                                      |
+| Dataset (Unimodal) | `movielens`       | `name`             | the standard name of the dataset (mainly for logging)                       |
+| Dataset (Unimodal) | `movielens`       | `version`          | the demanded version (supported: `100k`, `1m`, `25m`)                       |
+| Dataset (Unimodal) | `movielens`       | `download_path`    | the root path to download the dataset (if exists, will be skipped)          |
+| Dataset (Unimodal) | `poison_rag_plus` | `name`             | the standard name of the dataset (mainly for logging)                       |
+| Dataset (Unimodal) | `poison_rag_plus` | `llm`              | the demanded llm backbone (supported: `openai`, `llama`, `st`)              |
+| Dataset (Unimodal) | `poison_rag_plus` | `augmented`        | the boolean to choose original or augmented (enriched) variants             |
+| Dataset (Unimodal) | `poison_rag_plus` | `max_parts`        | the maximum number of textual embedding files parts                         |
+| Setup              | `seed`            | -                  | the seed for reproducibility purposes                                       |
+| Setup              | `k_core`          | -                  | the number of cores for k-core filtering                                    |
+| Setup              | `split`           | `mode`             | the train/test splitting mode (supported: `random`, `temporal`, `per_user`) |
+| Setup              | `split`           | `test_ratio`       | the test ratio (between 0.1 to 1.0, otherwise is set to 0.2)                |
 
 ## II. Datasets
 
