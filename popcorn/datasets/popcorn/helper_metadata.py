@@ -1,43 +1,54 @@
-#!/usr/bin/env python3
-
 import random
 from collections import Counter
 
 
-def countNumberOfMovies(data):
+def countMovies(data: dict) -> int:
     """
-    Counts the number of movies in the given data.
+    Counts the number of movies in the given metadata JSON file.
 
-    Parameters:
-        data (dict): The JSON data containing the movies.
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
 
-    Returns:
-        int: The number of movies in the dataset.
+    Returns
+    -------
+    moviesCount: int
+        The number of movies in the dataset.
     """
+    # Variables
+    moviesCount = -1
+    # Count the number of movies
     if data:
         moviesCount = len(data)
-        # print(f"The dataset contains {moviesCount} movies!")
-        return moviesCount
     else:
-        print("Data is empty or not loaded.")
-        return -1
+        print("- [Warn] Metadata is empty or not loaded.")
+    # Return the count of movies
+    return moviesCount
 
-def fetchAllMovieIds(data):
+def fetchAllMovieIds(data: dict) -> list:
     """
-    Fetches all the movie IDs from the given data.
+    Fetches all the movie IDs from the given metadata JSON file.
 
-    Parameters:
-        data (dict): The JSON data containing the movies.
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
 
-    Returns:
-        list: A list of all movie IDs in the dataset.
+    Returns
+    -------
+    movieIds: list
+        A list of all movie IDs in the dataset.
     """
+    # Variables
+    movieIds = []
+    # Fetch all movie IDs
     if data:
         movieIds = [movie['id'] for movie in data]
-        return movieIds
     else:
-        print("Data is empty or not loaded.")
-        return []
+        print("- [Warn] Metadata is empty or not loaded.")
+    # Return the list of movie IDs
+    return movieIds
 
 def fetchRandomMovie(data):
     """

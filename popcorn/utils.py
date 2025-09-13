@@ -1,11 +1,11 @@
 # import os
 import yaml
-# import json
-# import requests
+import json
+import requests
 import numpy as np
 # import pandas as pd
 
-def readConfigs(configPath: str = "popcorn/config/config.yml"):
+def readConfigs(configPath: str = "popcorn/config/config.yml") -> dict:
     """
     Read the configuration file and store the values in a dictionary
 
@@ -44,7 +44,7 @@ def parseSafe(s: str) -> np.ndarray:
 
     Returns
     -------
-    np.ndarray
+    vec: np.ndarray
         A NumPy array containing the elements of the vector, with non-finite values replaced by 0.0.
     """
     vec = np.fromstring(str(s).replace(",", " "), sep=" ", dtype=np.float32)
@@ -52,6 +52,35 @@ def parseSafe(s: str) -> np.ndarray:
         vec = np.nan_to_num(vec, nan=0.0, posinf=0.0, neginf=0.0)
     return vec
 
+def loadJsonFromUrl(jsonUrl: str) -> dict:
+    """
+    Load `json` data from a given URL and return it.
+
+    Parameters
+    ----------
+    jsonUrl : str
+        The root address to load JSON data from.
+
+    Returns
+    -------
+    data: dict
+        The JSON data loaded from the URL.
+    """
+    data = {}
+    print(f"- Loading JSON data from the given URL '{jsonUrl}' ...")
+    try:
+        # Load JSON data from the URL
+        response = requests.get(jsonUrl)
+        response.raise_for_status()  # Raise an error for bad status codes
+        data = response.json()  # Parse JSON data
+        print("- JSON data loaded successfully!")
+        return data
+    except requests.exceptions.RequestException as e:
+        print(f"- Error fetching data from {jsonUrl}: {e}")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"- Error parsing JSON data: {e}")
+        return None
 
 # def loadDataFromCSV(csvPath: str):
 #     """
@@ -72,30 +101,6 @@ def parseSafe(s: str) -> np.ndarray:
 #         return csvData
 #     except Exception as e:
 #         print(f"- An error occurred while loading the CSV data: {e}")
-#         return None
-
-# def loadJsonFromUrl(jsonUrl: str):
-#     """
-#     Load `json` data from a given URL and return it.
-
-#     Parameters:
-#         jsonUrl (str): The root address to load JSON data from.
-
-#     Returns:
-#         dict: The JSON data loaded from the URL.
-#     """
-#     try:
-#         # Load JSON data from the URL
-#         response = requests.get(jsonUrl)
-#         response.raise_for_status()  # Raise an error for bad status codes
-#         data = response.json()  # Parse JSON data'
-#         # print("- JSON data loaded successfully!\n")
-#         return data
-#     except requests.exceptions.RequestException as e:
-#         print(f"- Error fetching data from {jsonUrl}: {e}\n")
-#         return None
-#     except json.JSONDecodeError as e:
-#         print(f"- Error parsing JSON data: {e}")
 #         return None
 
 # def loadJsonFromFilePath(jsonPath: str):

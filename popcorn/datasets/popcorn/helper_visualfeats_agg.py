@@ -2,7 +2,7 @@
 
 import pandas as pd
 from popcorn.utils import loadJsonFromUrl
-from popcorn.datasets.movifex.helper_metadata import fetchAllMovieIds
+from popcorn.datasets.popcorn.helper_metadata import fetchAllMovieIds
 
 def aggFeatureAddressGenerator(datasetUrl: str, gFeature: str, gModel: str, gMovieId):
   """

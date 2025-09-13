@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 from popcorn.utils import loadDataFromCSV, loadJsonFromUrl
-from popcorn.datasets.movifex.visualizer_metadata import visualizeGenresDictionary
-from popcorn.datasets.movifex.helper_visualfeats import packetAddressGenerator, fetchAllPackets
-from popcorn.datasets.movifex.helper_metadata import countNumberOfMovies, fetchRandomMovie, fetchMovieById
+from popcorn.datasets.popcorn.visualizer_metadata import visualizeGenresDictionary
+from popcorn.datasets.popcorn.helper_visualfeats import packetAddressGenerator, fetchAllPackets
+from popcorn.datasets.popcorn.helper_metadata import countNumberOfMovies, fetchRandomMovie, fetchMovieById
 from popcorn.datasets.movielens.helper_movies import fetchAllUniqueGenres, fetchMoviesByGenre as fetchMoviesByGenreMovielens
-from popcorn.datasets.movifex.helper_metadata import classifyYearsByCount, fetchMoviesByGenre, classifyMoviesByGenre, calculateAverageGenrePerMovie
-from popcorn.datasets.movifex.helper_visualfeats_agg import fetchAggregatedFeatures, generatedAggFeatureAddresses, loadAggregatedFeaturesIntoDataFrame
+from popcorn.datasets.popcorn.helper_metadata import classifyYearsByCount, fetchMoviesByGenre, classifyMoviesByGenre, calculateAverageGenrePerMovie
+from popcorn.datasets.popcorn.helper_visualfeats_agg import fetchAggregatedFeatures, generatedAggFeatureAddresses, loadAggregatedFeaturesIntoDataFrame
 
 def testMoViFexMetadata(configs: dict):
     """
