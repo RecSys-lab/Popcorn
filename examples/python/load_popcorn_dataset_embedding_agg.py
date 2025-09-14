@@ -2,8 +2,9 @@
 
 from popcorn.utils import readConfigs
 from popcorn.datasets.popcorn.utils import RAW_DATA_URL
-from popcorn.datasets.popcorn.helper_embedding import (
-    countMovies
+from popcorn.datasets.popcorn.helper_embedding_agg import (
+    generateAggEmbeddingUrl,
+    fetchAggregatedFeatures,
 )
 
 
@@ -18,10 +19,19 @@ def main():
         print("Error reading the configuration file!")
         return
     # Load Popcorn Dataset metadata
+    cnns = configs["datasets"]["multimodal"]["popcorn"]["cnns"]
     datasetName = configs["datasets"]["multimodal"]["popcorn"]["name"]
-    datasetMetadataUrl = configs["datasets"]["multimodal"]["popcorn"]["path_metadata"]
+    aggEmbeddings = configs["datasets"]["multimodal"]["popcorn"]["agg_embedding_sources"]
     print(
-        f"- Loading the '{datasetName}' dataset metadata from '{datasetMetadataUrl}' ..."
+        f"- Preparing to fetch the aggregated files of '{datasetName}' dataset from '{RAW_DATA_URL}' ..."
+    )
+    # [Util-1] Test generating sample address to aggregated features
+    print(f"\n[Util-1] Generating a sample address to aggregated features ...")
+    givenMovieId = 6
+    givenCnn, givenEmbedding = cnns[0], aggEmbeddings[0]
+    aggEmbeddingUrl = generateAggEmbeddingUrl(givenEmbedding, givenCnn, givenMovieId)
+    print(
+        f"- URL for aggregated features of movie '#{givenMovieId}' extracted by CNN '{givenCnn}' from source '{givenEmbedding}': {aggEmbeddingUrl}"
     )
     # Stop
     print("\nStopping 'Popcorn'!")

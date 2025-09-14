@@ -79,6 +79,10 @@ def fetchAllPackets(embedding: str, cnn: str, movieId: int) -> list:
         counter += 1
         # Generate packet URL
         packetUrl = generatePacketUrl(embedding, cnn, movieId, counter)
+        # Stop if no URL generated
+        if packetUrl == "":
+            print(f"- [Error] No valid URL generated! Stopping ...")
+            break
         # Fetch JSON data
         jsonData = loadJsonFromUrl(packetUrl)
         if jsonData:
