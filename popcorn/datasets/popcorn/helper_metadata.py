@@ -22,9 +22,12 @@ def countMovies(data: dict) -> int:
     if data:
         moviesCount = len(data)
     else:
-        print("- [Warn] Metadata is empty or not loaded.")
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning -1 as movie count ..."
+        )
     # Return the count of movies
     return moviesCount
+
 
 def fetchAllMovieIds(data: dict) -> list:
     """
@@ -44,123 +47,208 @@ def fetchAllMovieIds(data: dict) -> list:
     movieIds = []
     # Fetch all movie IDs
     if data:
-        movieIds = [movie['id'] for movie in data]
+        movieIds = [movie["id"] for movie in data]
     else:
-        print("- [Warn] Metadata is empty or not loaded.")
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning an empty list of movie IDs ..."
+        )
     # Return the list of movie IDs
     return movieIds
 
-def fetchRandomMovie(data):
-    """
-    Fetches a random movie from the given data.
 
-    Parameters:
-        data (dict): The JSON data containing the movies.
-
-    Returns:
-        dict: A random movie from the dataset.
+def fetchRandomMovie(data: dict) -> dict:
     """
+    Fetches a random movie from the given metadata JSON file.
+
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
+
+    Returns
+    -------
+    randomMovie: dict
+        A dictionary containing the metadata of a random movie.
+    """
+    # Variables
+    randomMovie = {}
+    # Fetch a random movie
     if data:
         randomMovie = random.choice(data)
-        # print("Randomly fetched movie:")
-        # print(json.dumps(randomMovie, indent=4))
-        return randomMovie
     else:
-        print("Data is empty or not loaded.")
-        return {}
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning an empty dictionary as random movie ..."
+        )
+    # Return the random movie
+    return randomMovie
 
-def fetchMovieById(data, movieId):
-    """
-    Fetches a movie by its ID from the given data.
 
-    Parameters:
-        data (dict): The JSON data containing the movies.
-        movieId (int): The ID of the movie to fetch.
+def fetchMovieById(data: dict, movieId: int) -> dict:
     """
+    Fetches a movie by its ID from the given metadata JSON file.
+
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
+    movieId: int
+        The ID of the movie to fetch.
+
+    Returns
+    -------
+    movie: dict
+        A dictionary containing the metadata of the movie with the given ID.
+    """
+    # Variables
+    movie = {}
+    # Fetch the movie by ID
     if data:
         # Standardize movieId to 10 digits
         standardizedId = f"{int(movieId):010d}"
         # Find the movie with the given ID
-        for movie in data:
-            if movie.get('id') == standardizedId:
-                # print("Fetched movie by ID:")
-                # print(json.dumps(movie, indent=4))
-                return movie
+        for movieData in data:
+            if movieData.get("id") == standardizedId:
+                movie = movieData
+                break
         # If no movie is found with the given ID
-        print(f"No movie found with ID: {standardizedId}")
+        if not movie:
+            print(
+                f"- [Warn] No movie found with the given ID '{standardizedId}'. Returning an empty dictionary as movie ..."
+            )
     else:
-        print("Data is empty or not loaded.")
-        return {}
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning an empty dictionary as movie ..."
+        )
+    # Return the movie (empty if not found)
+    return movie
 
-def fetchMoviesByGenre(data, genre):
+
+def fetchMoviesByGenre(data: dict, genre: str) -> dict:
     """
     Fetch movies by a single genre from the given data.
 
-    Parameters:
-        data (dict): The JSON data containing the movies.
-        genre (str): The genre to filter the movies by.
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
+    genre: str
+        The genre to filter the movies by.
 
-    Returns:
-        dict: A dictionary containing the matched movies.
+    Returns
+    -------
+    matchedMovies: dict
+        A dictionary containing the movies that match the given genre.
     """
+    # Variables
     matchedMovies = {}
+    # Fetch movies by genre
     if data:
-        matchedMovies = {movie['id']: movie for movie in data if genre in movie.get('genres', [])}
+        # Find movies that match the given genre
+        matchedMovies = {
+            movie["id"]: movie for movie in data if genre in movie.get("genres", [])
+        }
+    else:
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning an empty dictionary as matched movies ..."
+        )
+    # Return the matched movies
     return matchedMovies
 
-def classifyYearsByCount(data):
+
+def fetchYearsOccurrences(data: dict) -> dict:
     """
     Classify all the years in the dataset by count.
 
-    Parameters:
-        data (dict): The JSON data containing the movies.
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
 
-    Returns:
-        dict: A dictionary containing the years as keys and their counts as values.
+    Returns
+    -------
+    yearsFreq: dict
+        A dictionary containing the years as keys and their counts as values.
     """
+    # Variables
+    yearsFreq = {}
+    # Classify years by count
     if data:
-        years = [movie['year'] for movie in data if 'year' in movie]
+        # Extract years
+        years = [movie["year"] for movie in data if "year" in movie]
+        # Use Counter to count occurrences of each year
         yearsCount = Counter(years)
-        return dict(yearsCount)
+        # Convert Counter object to a regular dictionary
+        yearsFreq = dict(yearsCount)
     else:
-        print("Data is empty or not loaded.")
-        return {}
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning an empty dictionary as classified years ..."
+        )
+    # Return the classified years
+    return yearsFreq
 
-def calculateAverageGenrePerMovie(genresDict, moviesCount):
-    """
-    Calculate the average number of genres per movie.
 
-    Parameters:
-        genresDict (dict): A dictionary containing genres as keys and their counts as values.
-        moviesCount (int): The total number of movies in the dataset.
-        
-    Returns:
-        float: The average number of genres per movie.
-    """
-    # Check if the genres dictionary is not empty
-    if genresDict:
-        # Calculate the total number of genres
-        totalGenres = sum(genresDict.values())
-        # Calculate the average number of genres per movie
-        averageGenrePerMovie = round(totalGenres / moviesCount, 3)
-        # Return the result
-        return averageGenrePerMovie
-    else:
-        print("Genres dictionary is empty!")
-
-def classifyMoviesByGenre(data):
+def fetchGenresOccurrences(data: dict) -> dict:
     """
     Classify all the movies in the dataset by genre.
 
-    Parameters:
-        data (dict): The JSON data containing the movies.
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
 
-    Returns:
-        dict: A dictionary containing the genres as keys and their counts as values.
+    Returns
+    -------
+    genresFreq: dict
+        A dictionary containing the genres as keys and their counts as values.
     """
-    genreCounts = Counter()
+    # Variables
+    genresFreq = {}
+    genresCount = Counter()
+    # Classify movies by genre
     if data:
         for movie in data:
-            genres = movie.get('genres', [])
-            genreCounts.update(genres)
-    return dict(genreCounts)
+            # Extract genres from each movie
+            genres = movie.get("genres", [])
+            # Update the Counter with the genres
+            genresCount.update(genres)
+    else:
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning an empty dictionary as classified genres ..."
+        )
+    # Return the classified genres
+    genresFreq = dict(genresCount)
+    return genresFreq
+
+
+def getAvgGenrePerMovie(data: dict) -> float:
+    """
+    Calculate the average number of genres per movie.
+
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
+    
+    Returns
+    -------
+    avgGenres: float
+        The average number of genres per movie.
+    """
+    # Variables
+    avgGenres = 0.0
+    # Check if the genres dictionary is not empty
+    if data:
+        # Classify movies by genre
+        moviesByGenre = fetchGenresOccurrences(data)
+        # Count the number of movies
+        moviesCount = countMovies(data)
+        # Calculate the total number of genres
+        totalGenres = sum(moviesByGenre.values())
+        # Calculate the average number of genres per movie
+        avgGenres = round(totalGenres / moviesCount, 3)
+    else:
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning 0.0 as average genres per movie ..."
+        )
+    # Return the average genres (0.0 if not calculated)
+    return avgGenres
