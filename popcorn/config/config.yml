@@ -33,18 +33,14 @@ datasets:
     popcorn:
       # Dataset name
       name: Popcorn-visual
-      # Path to the dataset metadata (JSON file)
-      path_metadata: https://huggingface.co/datasets/alitourani/Popcorn_Dataset/resolve/main/stats.json
-      # Path to the features (atomic or aggregated)
-      path_raw: https://huggingface.co/datasets/alitourani/Popcorn_Dataset/raw/main/
-      # Feature sources to be used (in an array)
-      feature_sources: ["full_movies", "movie_shots", "movie_trailers"] # 'full_movies' | 'movie_shots' | 'movie_trailers'
-      # Aggregated feature sources to be used (in an array)
-      agg_feature_sources: ["full_movies_agg", "movie_shots_agg", "movie_trailers_agg"] # 'full_movies_agg' | 'movie_shots_agg' | 'movie_trailers_agg'
-      # Feature extraction models to be used (in an array)
-      feature_models: ["incp3", "vgg19"] # 'incp3' | 'vgg19'
+      # Embedding sources to be used (in an array)
+      embedding_sources: ["full_movies"] # 'full_movies' | 'movie_shots' | 'movie_trailers'
+      # Aggregated embedding sources to be used (in an array)
+      agg_embedding_sources: ["full_movies_agg"] # 'full_movies_agg' | 'movie_shots_agg' | 'movie_trailers_agg'
+      # Feature extraction methods to be used (in an array)
+      cnns: ["incp3"] # 'incp3' | 'vgg19'
       # Aggregation models to be used (in an array)
-      aggregation_models: ["Max", "Mean"] # 'Max' | 'Mean'
+      aggregation_models: ["Max"] # 'Max' | 'Mean'
     mmtf:
       # Dataset name
       name: MMTF-14K
@@ -164,17 +160,3 @@ recommender:
   topN_k: 10
   cold_threshold: 5 # LE 5 ratings is cold
 
-
-  # ------------------------- Framework mode -------------------------
-  # "ds": working with various datasets and processing them
-  # "pipeline": working with various pipelines and processing them
-  # "recsys": working with recommendation systems integrated with the framework
-  # mode: "recsys" # Possible values: ["ds", "pipeline", "recsys"]
-  # # ------------------------- Framework sub-mode -------------------------
-  # # Sub-mode of the dataset mode - Possible values: ["movielens_25m", "movifex_meta", "movifex_visual", "mmtf_14k"]
-  # sub_mode_ds: "movifex_visual"
-  # # Sub-mode of the pipeline mode
-  # # Possible values: ["dl_trailers", "frame_extractor", "feat_extractor", "shot_from_frame", "shot_from_feat", "agg_features"]
-  # sub_mode_pipeline: "frame_extractor"
-  # # Sub-mode of the recommendation system mode - Possible values: ["overlap_checker", "visual_text_fusion", "audio_text_fusion"]
-  # sub_mode_recsys: "audio_text_fusion"

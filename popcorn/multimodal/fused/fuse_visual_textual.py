@@ -4,7 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 from popcorn.utils import loadDataFromCSV
-from popcorn.datasets.popcorn.helper_visualfeats_agg import generatedAggFeatureAddresses, loadAggregatedFeaturesIntoDataFrame
+from popcorn.datasets.popcorn.helper_embedding_agg import generatedAggFeatureAddresses, loadAggregatedFeaturesIntoDataFrame
 
 def fuseTextualWithMMTFVisual(cfgRecSys: dict, cfgDatasets: dict):
     """

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from popcorn.utils import readConfigs, loadJsonFromUrl
+from popcorn.datasets.popcorn.utils import METADATA_URL
 from popcorn.datasets.popcorn.helper_metadata import (
     countMovies,
     fetchMovieById,
@@ -25,11 +26,10 @@ def main():
         return
     # Load Popcorn Dataset metadata
     datasetName = configs["datasets"]["multimodal"]["popcorn"]["name"]
-    datasetMetadataUrl = configs["datasets"]["multimodal"]["popcorn"]["path_metadata"]
     print(
-        f"- Loading the '{datasetName}' dataset metadata from '{datasetMetadataUrl}' ..."
+        f"- Loading the '{datasetName}' dataset metadata from '{METADATA_URL}' ..."
     )
-    jsonData = loadJsonFromUrl(datasetMetadataUrl)
+    jsonData = loadJsonFromUrl(METADATA_URL)
     if jsonData is None:
         print("- Error in loading the Popcorn dataset metadata! Exiting ...")
         return
