@@ -44,10 +44,6 @@ datasets:
     mmtf:
       # Dataset name
       name: MMTF-14K
-      # Flag to download the dataset or not (true to download, false to use the existing files)
-      need_download: false
-      # Path to the dataset
-      url: https://drive.google.com/drive/folders/1sBD8drB2H0WHl_MSsSCH-FA-bonjStr_?usp=sharing
       # Path to the dataset root directory
       download_path: "H:/Datasets/MMTF-14k"
       # Audio variant to use
