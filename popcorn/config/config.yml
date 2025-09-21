@@ -48,6 +48,8 @@ datasets:
       download_path: "E:/Datasets/MMTF-14k"
       # Audio variant to use
       audio_variant: "blf" # 'blf' | 'i_ivec'
+      # Audio BLF PCA variance to combine various features (between 0 and 1, e.g., 0.95 for 95%)
+      audio_blf_pca: 0.95
       # Visual variant to use
       visual_variant: "cnn" # 'avf' | 'cnn'
 # ------------------------- Pipelines configurations ------------------------

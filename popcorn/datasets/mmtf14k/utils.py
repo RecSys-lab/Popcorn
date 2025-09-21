@@ -17,10 +17,10 @@ VIS_FUSED_BASE = (
 
 # Mapping of MMTF-14K audio feature variants to their corresponding file names
 AUD_FUSED_FILE_MAP = {
-    "log": "fused_llm_mmtf_audio_log.csv",
-    "delta": "fused_llm_mmtf_audio_delta.csv",
-    "spect": "fused_llm_mmtf_audio_spectral.csv",
-    "corr": "fused_llm_mmtf_audio_correlation.csv",
+    "mmtf_log": "fused_llm_mmtf_audio_log.csv",
+    "mmtf_delta": "fused_llm_mmtf_audio_delta.csv",
+    "mmtf_spect": "fused_llm_mmtf_audio_spectral.csv",
+    "mmtf_corr": "fused_llm_mmtf_audio_correlation.csv",
     "i_ivec": "i-vector/fused_llm_mmtf_audio_IVec_splitItem_fold_1_gmm_128_tvDim_20.csv",
 }
 
@@ -29,6 +29,13 @@ VIS_FUSED_FILE_MAP = {
     "cnn": "fused_llm_mmtf_avg.csv",
     "avf": "fused_llm_mmtf_avf_avg.csv",
 }
+
+# Supported audio feature variants
+SUPPORTED_AUD_VARIANTS = ["i_ivec", "blf"]
+AUD_BLF_VARIANTS = ["mmtf_corr", "mmtf_delta", "mmtf_log", "mmtf_spect"]
+
+# Data Frames column names for MMTF fused features
+fusedAudCols = ["itemId", "title", "genres", "embedding"]
 
 
 def normalizeMMTF14kDataFrame(dataFrame: pd.DataFrame):
