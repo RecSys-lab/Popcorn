@@ -5,22 +5,6 @@ from typing import Dict, Union, List
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-# Base URL for audio embeddings data
-AUD_BASE: str = (
-    "https://raw.githubusercontent.com/RecSys-lab/"
-    "reproducibility_data/refs/heads/main/fused_textual_audio/"
-)
-
-# Mapping of audio feature types to their respective file paths
-AUD_FILE_MAP: Dict[str, str] = {
-    "mmtf_corr": "fused_llm_mmtf_audio_correlation.csv",
-    "mmtf_delta": "fused_llm_mmtf_audio_delta.csv",
-    "mmtf_log": "fused_llm_mmtf_audio_log.csv",
-    "mmtf_spect": "fused_llm_mmtf_audio_spectral.csv",
-    "i_ivec": "i-vector/fused_llm_mmtf_audio_IVec_splitItem_fold_1_gmm_128_tvDim_20.csv",
-}
-
-
 def readAudioCsv(url: str) -> pd.DataFrame:
     """
     Read and parse audio embeddings from a CSV file.

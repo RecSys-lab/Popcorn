@@ -2,19 +2,6 @@ import pandas as pd
 from typing import Dict, Union
 from popcorn.utils import parseSafe
 
-# Base URL for visual embeddings data
-VIS_BASE: str = (
-    "https://raw.githubusercontent.com/RecSys-lab/"
-    "reproducibility_data/refs/heads/main/fused_textual_visual/"
-)
-
-# Mapping of visual feature variants to their respective file paths
-VIS_MAP: Dict[str, str] = {
-    "cnn": "fused_llm_mmtf_avg.csv",
-    "avf": "fused_llm_mmtf_avf_avg.csv",
-}
-
-
 def loadVisual(config: Dict[str, Union[Dict, str, bool]], variant: str) -> pd.DataFrame:
     """
     Load and process visual embeddings based on the specified variant.
