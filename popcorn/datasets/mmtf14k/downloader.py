@@ -1,15 +1,14 @@
 import os
 import zipfile
 import requests
+from popcorn.datasets.mmtf14k.utils import BASE_URL
 
-def downloadMMTF14k(url: str, downlpadPath: str):
+def downloadMMTF14k(downlpadPath: str):
     """
     Downloads the MMTF14k dataset from the given URL and saves it to the given path
 
     Parameters
     ----------
-    url: str
-        The URL of the dataset
     downlpadPath: str
         The download path
     
@@ -18,23 +17,31 @@ def downloadMMTF14k(url: str, downlpadPath: str):
     status: bool
         The status of the download
     """
-    # Download the dataset
-    print(f"- Downloading the dataset from '{url}' ...")
+    print(f"- Downloading the MMTF-14K dataset from '{BASE_URL}' ...")
     # Create the download path if it does not exist
+    downlpadPath = os.path.normpath(downlpadPath)
     if not os.path.exists(downlpadPath):
+        print(f"- Creating the download path '{downlpadPath}' ...")
         os.makedirs(downlpadPath)
+    else:
+        print(
+            f"- The download path '{downlpadPath}' already exists! Skipping the download ..."
+        )
+        return True
     # Fetch the dataset
     try:
-        response = requests.get(url)
-        response.raise_for_status()  # Raise an error for bad status codes
+        # Download the dataset
+        print(f"- Fetching data from '{BASE_URL}' ...")
+        response = requests.get(BASE_URL)
+        response.raise_for_status()
         # Save the downloaded file
-        datasetZip = os.path.join(downlpadPath, 'ml-25m.zip')
+        datasetZip = os.path.join(downlpadPath, 'mmtf14k.zip')
         with open(datasetZip, 'wb') as file:
             file.write(response.content)
         # Inform the user
         print("- Download completed and the dataset is saved as a 'zip' file!")
         # Extract the dataset
-        print(f"- Now, extracting the dataset files inside {downlpadPath} ...")
+        print(f"- Extracting the dataset files inside '{downlpadPath}' ...")
         with zipfile.ZipFile(datasetZip, 'r') as zipRef:
             zipRef.extractall(downlpadPath)
         print(f"- Dataset extracted to '{downlpadPath}' successfully!")
@@ -44,5 +51,5 @@ def downloadMMTF14k(url: str, downlpadPath: str):
         print("- Zip file removed successfully!")
         return True
     except requests.exceptions.RequestException as e:
-        print(f"- Error fetching data from {url}: {e}\n")
+        print(f"- [Error] Error fetching data from {BASE_URL}: {e}\n")
         return False

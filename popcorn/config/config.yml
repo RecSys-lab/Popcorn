@@ -45,7 +45,7 @@ datasets:
       # Dataset name
       name: MMTF-14K
       # Path to the dataset root directory
-      download_path: "H:/Datasets/MMTF-14k"
+      download_path: "E:/Datasets/MMTF-14k"
       # Audio variant to use
       audio_variant: "blf" # 'blf' | 'i_ivec'
       # Visual variant to use
