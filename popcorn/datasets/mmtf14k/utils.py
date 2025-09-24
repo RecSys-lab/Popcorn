@@ -30,7 +30,8 @@ VIS_FUSED_FILE_MAP = {
     "avf": "fused_llm_mmtf_avf_avg.csv",
 }
 
-# Supported audio feature variants
+# Supported feature variants
+SUPPORTED_VIS_VARIANTS = ["cnn", "avf"]
 SUPPORTED_AUD_VARIANTS = ["ivec", "blf"]
 AUD_BLF_VARIANTS = ["corr", "delta", "log", "spect"]
 

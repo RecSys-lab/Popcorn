@@ -1,63 +1,59 @@
 import pandas as pd
-from typing import Dict, Union
 from popcorn.utils import parseSafe
+from popcorn.datasets.mmtf14k.utils import (
+    VIS_FUSED_BASE,
+    VIS_FUSED_FILE_MAP,
+    SUPPORTED_VIS_VARIANTS,
+)
 
-def loadVisual(config: Dict[str, Union[Dict, str, bool]], variant: str) -> pd.DataFrame:
+
+def loadVisualFusedDF(config: dict) -> pd.DataFrame:
     """
-    Load and process visual embeddings based on the specified variant.
-
-    This function loads pre-computed visual embeddings from the MMTF-14K dataset.
-    It supports different variants of visual features (CNN or AVF) and handles
-    the parsing of embeddings from string to numpy arrays.
+    Load and process visual embeddings (fused) from the MMTF-14K dataset based on the specified variant.
+    This function supports two types of visual embeddings:
+        1. CNN features: Extracted from a pre-trained Convolutional Neural Network (AlexNet).
+        2. AVF features: Extracted from Aesthetic Visual Features (AVF) model.
 
     Parameters
     ----------
-    config : Dict[str, Union[Dict, str, bool]]
-        Configuration dictionary containing:
-        - modality.visual_variant: Type of visual embeddings to use ('cnn' or 'avf')
-        - experiment.verbose: Whether to print progress information
-    variant: str
-        The visual variant to load. Supported values are 'cnn' for CNN features
-        and 'avf' for AVF features.
+    config: dict
+        Configuration dictionary containing various settings.
 
     Returns
     -------
-    pd.DataFrame
-        A DataFrame with columns:
-        - itemId: Unique identifier for each item
-        - visual: Visual embeddings as numpy arrays
-
-    Raises
-    ------
-    KeyError
-        If an unsupported visual variant is specified
-    ValueError
-        If the embeddings file cannot be loaded or parsed
+    dfVisual: pd.DataFrame
+        A DataFrame with loaded visual embeddings (columns: item_id, visual).
     """
+    # Variables
+    dfVisual = pd.DataFrame()
+    # Check inputs
+    if config is None or config == {}:
+        print(
+            f"- [Error] No valid configuration provided! Returning an empty DataFrame ..."
+        )
+        return dfVisual
     # Extract configuration parameters
     parse = parseSafe
-    verbose = config["experiment"]["verbose"]
-
-    # Validate visual variant
-    if variant not in VIS_MAP:
-        raise KeyError(f"Unsupported visual variant: {variant}. "
-                      f"Choose from: {list(VIS_MAP.keys())}")
-
-    print(f"\nPreparing 'Visual - {variant}' data ...")
-
+    variant = config["datasets"]["multimodal"]["mmtf"]["visual_variant"]
+    # Check variant
+    if variant not in SUPPORTED_VIS_VARIANTS:
+        print(
+            f"- [Error] Unsupported visual variant '{variant}'! Supported variants are: {SUPPORTED_VIS_VARIANTS}. Returning an empty DataFrame ..."
+        )
+        return dfVisual
+    # Load the visual DataFrame
+    print(f"- Fetching MMTF-14K visual data for variant '{variant}' ...")
+    # Handle visual variants
     try:
         # Read the CSV file
-        df = pd.read_csv(VIS_BASE + VIS_MAP[variant])
-        
+        dfVisual = pd.read_csv(VIS_FUSED_BASE + VIS_FUSED_FILE_MAP[variant])
+        # Rename 'itemId' column to ensure consistency
+        dfVisual.rename(columns={"itemId": "item_id"}, inplace=True)
         # Parse embeddings from string to numpy arrays
-        df["visual"] = df.embedding.map(parse)
-        
-        if verbose:
-            print(f"[Visual] Loaded items = {len(df):,}")
-        
-        return df[["itemId", "visual"]]
-    
-    except pd.errors.EmptyDataError:
-        raise ValueError(f"Empty data file found for visual variant: {variant}")
+        dfVisual["visual"] = dfVisual.embedding.map(parse)
+        print(f"- Fetched {len(dfVisual):,} visual items using 'fused' features.")
+        # Return the processed DataFrame
+        return dfVisual[["item_id", "visual"]]
     except Exception as e:
-        raise ValueError(f"Failed to load visual embeddings for variant {variant}: {str(e)}")
+        print(f"- [Error] Failed to load visual features: {e}")
+        return pd.DataFrame()
