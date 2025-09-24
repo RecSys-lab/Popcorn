@@ -17,11 +17,11 @@ VIS_FUSED_BASE = (
 
 # Mapping of MMTF-14K audio feature variants to their corresponding file names
 AUD_FUSED_FILE_MAP = {
-    "mmtf_log": "fused_llm_mmtf_audio_log.csv",
-    "mmtf_delta": "fused_llm_mmtf_audio_delta.csv",
-    "mmtf_spect": "fused_llm_mmtf_audio_spectral.csv",
-    "mmtf_corr": "fused_llm_mmtf_audio_correlation.csv",
-    "i_ivec": "i-vector/fused_llm_mmtf_audio_IVec_splitItem_fold_1_gmm_128_tvDim_20.csv",
+    "log": "fused_llm_mmtf_audio_log.csv",
+    "delta": "fused_llm_mmtf_audio_delta.csv",
+    "spect": "fused_llm_mmtf_audio_spectral.csv",
+    "corr": "fused_llm_mmtf_audio_correlation.csv",
+    "ivec": "i-vector/fused_llm_mmtf_audio_IVec_splitItem_fold_1_gmm_128_tvDim_20.csv",
 }
 
 # Mapping of MMTF-14K visual feature variants to their corresponding file names
@@ -31,8 +31,8 @@ VIS_FUSED_FILE_MAP = {
 }
 
 # Supported audio feature variants
-SUPPORTED_AUD_VARIANTS = ["i_ivec", "blf"]
-AUD_BLF_VARIANTS = ["mmtf_corr", "mmtf_delta", "mmtf_log", "mmtf_spect"]
+SUPPORTED_AUD_VARIANTS = ["ivec", "blf"]
+AUD_BLF_VARIANTS = ["corr", "delta", "log", "spect"]
 
 # Data Frames column names for MMTF fused features
 fusedAudCols = ["itemId", "title", "genres", "embedding"]

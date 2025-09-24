@@ -66,7 +66,7 @@ def loadAudioFusedDF(config: dict) -> pd.DataFrame:
     config: dict
         Configuration dictionary containing various settings.
     variant: str
-        The audio variant to load. Supported values are: 'i_ivec' for i-vector features
+        The audio variant to load. Supported values are: 'ivec' for i-vector features
         and 'blf' for Block-level Features.
 
     Returns
@@ -95,12 +95,12 @@ def loadAudioFusedDF(config: dict) -> pd.DataFrame:
     # Load the audio DataFrame
     print(f"- Fetching MMTF-14K audio data for variant '{variant}' ...")
     # Handle audio variants
-    if variant == "i_ivec":
+    if variant == "ivec":
         try:
             # Load i-vector features directly
-            dfAudio = loadAudioFusedCsv(AUD_FUSED_URL + AUD_FUSED_FILE_MAP["i_ivec"])
+            dfAudio = loadAudioFusedCsv(AUD_FUSED_URL + AUD_FUSED_FILE_MAP["ivec"])
             # Rename columns for consistency
-            dfAudio.rename(columns={"embeddings": "audio"}, inplace=True)
+            dfAudio.rename(columns={"embedding": "audio_ivec"}, inplace=True)
             print(f"- Fetched {len(dfAudio):,} audio items using 'i-vector' features.")
             # Return the processed DataFrame
             return dfAudio
@@ -115,24 +115,27 @@ def loadAudioFusedDF(config: dict) -> pd.DataFrame:
         try:
             # Loop through each feature variant
             for key in AUD_BLF_VARIANTS:
+                print(f"-- Loading feature 'audio_{key}' ...")
                 # Load the feature CSV
                 dfBlf = loadAudioFusedCsv(AUD_FUSED_URL + AUD_FUSED_FILE_MAP[key])
                 # Rename embedding column to include the feature key
-                dfBlf = dfBlf.rename(columns={"embeddings": f"{key}_emb"})
+                dfBlf = dfBlf.rename(columns={"embedding": f"audio_{key}"})
                 # Append to the list
                 blfDataFrameList.append(dfBlf)
-            # Merge all features
+            # Merge all embeddings
+            print("- Merging all block-level audio embeddings ...")
             mergedDF = blfDataFrameList[0]
             for d in blfDataFrameList[1:]:
                 mergedDF = mergedDF.merge(d, on="item_id", how="inner")
             # Concatenate all embeddings
+            print("- Concatenating all block-level audio embeddings ...")
             mergedDF["concat"] = mergedDF.apply(
                 lambda r: np.concatenate(
                     [
-                        r["mmtf_corr_emb"],
-                        r["mmtf_delta_emb"],
-                        r["mmtf_log_emb"],
-                        r["mmtf_spect_emb"],
+                        r["audio_log"],
+                        r["audio_corr"],
+                        r["audio_delta"],
+                        r["audio_spect"],
                     ]
                 ),
                 axis=1,
@@ -143,7 +146,7 @@ def loadAudioFusedDF(config: dict) -> pd.DataFrame:
             pca = PCA(n_components=pcaRatio, svd_solver="full", random_state=seed)
             X_pca = pca.fit_transform(X_scaled).astype(np.float32)
             # Create final DataFrame
-            dfAudio = pd.DataFrame({"itemId": mergedDF["itemId"], "audio": list(X_pca)})
+            dfAudio = pd.DataFrame({"item_id": mergedDF["item_id"], "audio_blf": list(X_pca)})
             # Log information
             print(
                 f"- Fetched {len(dfAudio):,} audio items using 'blf' features (PCA {pcaRatio*100}% dims = {X_pca.shape[1]})."

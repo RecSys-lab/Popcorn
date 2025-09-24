@@ -16,7 +16,7 @@ def main():
         return
     # Load MMTF-14K dataset (audio fused - i-vector)
     print("\n----------- MMTF-14K Audio (i-vector) -----------")
-    configs["datasets"]["multimodal"]["mmtf"]["audio_variant"] = "i_ivec"
+    configs["datasets"]["multimodal"]["mmtf"]["audio_variant"] = "ivec"
     dfAudio = loadAudioFusedDF(configs)
     print(f"- Loaded audio fused DataFrame {dfAudio.shape} head:\n{dfAudio.head()}")
     # Load MMTF-14K dataset (audio fused - blf)
