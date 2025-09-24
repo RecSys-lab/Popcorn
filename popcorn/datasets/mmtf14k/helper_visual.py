@@ -51,7 +51,7 @@ def loadVisualFusedDF(config: dict) -> pd.DataFrame:
         dfVisual.rename(columns={"itemId": "item_id"}, inplace=True)
         # Parse embeddings from string to numpy arrays
         dfVisual["visual"] = dfVisual.embedding.map(parse)
-        print(f"- Fetched {len(dfVisual):,} visual items using 'fused' features.")
+        print(f"- Fetched {len(dfVisual):,} visual items using '{variant}' features.")
         # Return the processed DataFrame
         return dfVisual[["item_id", "visual"]]
     except Exception as e:
