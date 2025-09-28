@@ -55,9 +55,9 @@ datasets:
 # ------------------------- Pipelines configurations ------------------------
 pipelines:
   # Movie trailers finder and downloader pipeline
-  movie_trailers:
+  trailer_fetch:
     # Pipeline name
-    name: Trailer-fetcher
+    name: Trailer-Fetcher
     # Path to the pipeline
     download_path: "E:/Datasets/Movies/MovieTrailers"
   # Movie frames extractor pipeline

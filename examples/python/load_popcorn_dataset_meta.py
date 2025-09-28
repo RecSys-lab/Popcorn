@@ -7,10 +7,11 @@ from popcorn.datasets.popcorn.helper_metadata import (
     fetchMovieById,
     fetchAllMovieIds,
     fetchRandomMovie,
+    fetchRandomMovies,
     fetchMoviesByGenre,
     getAvgGenrePerMovie,
     fetchYearsOccurrences,
-    fetchGenresOccurrences
+    fetchGenresOccurrences,
 )
 
 
@@ -26,9 +27,7 @@ def main():
         return
     # Load Popcorn Dataset metadata
     datasetName = configs["datasets"]["multimodal"]["popcorn"]["name"]
-    print(
-        f"- Loading the '{datasetName}' dataset metadata from '{METADATA_URL}' ..."
-    )
+    print(f"- Loading the '{datasetName}' dataset metadata from '{METADATA_URL}' ...")
     jsonData = loadJsonFromUrl(METADATA_URL)
     if jsonData is None:
         print("- Error in loading the Popcorn dataset metadata! Exiting ...")
@@ -49,13 +48,21 @@ def main():
         print(
             f"- {len(movieIds)} movie IDs have been fetched successfully. Sample IDs: {movieIds[:5]}"
         )
-    # [Util-3] Fetch a random movie from the dataset
-    print("\n[Util-3] Fetching a random movie from the dataset ...")
+    # [Util-3] Fetch a/some random movie(s) from the dataset
+    print("\n[Util-3a] Fetching a random movie from the dataset ...")
     randomMovie = fetchRandomMovie(jsonData)
     if not randomMovie:
         print("- Error in fetching a random movie!")
     else:
         print(f"- Random movie fetched successfully: {randomMovie}")
+    # Fetch multiple random movies
+    randomMovieCount = 6
+    print(f"\n[Util-3b] Fetching {randomMovieCount} random movies from the dataset ...")
+    randomMovies = fetchRandomMovies(jsonData, randomMovieCount)
+    if not randomMovies:
+        print("- Error in fetching random movies!")
+    else:
+        print(f"- Random movies fetched successfully: {randomMovies}")
     # [Util-4] Fetch a movie by a given ID
     print("\n[Util-4] Fetching a movie by a given ID ...")
     givenMovieId = 6
@@ -70,7 +77,9 @@ def main():
     if not movieById:
         print(f"- Error in fetching movie by ID '{unsuccessfulMovieId}'!")
     else:
-        print(f"- Movie fetched successfully by ID '{unsuccessfulMovieId}': {movieById}")
+        print(
+            f"- Movie fetched successfully by ID '{unsuccessfulMovieId}': {movieById}"
+        )
     # [Util-5] Fetch movies by a given genre
     print("\n[Util-5] Fetching movies by a given genre ...")
     givenGenre = "Romance"
@@ -78,7 +87,9 @@ def main():
     if not moviesByGenre:
         print(f"- Error in fetching movies by genre '{givenGenre}'!")
     else:
-        print(f"- Sample movies fetched successfully by genre '{givenGenre}': {list(moviesByGenre.values())[:5]}")
+        print(
+            f"- Sample movies fetched successfully by genre '{givenGenre}': {list(moviesByGenre.values())[:5]}"
+        )
     # [Util-6] Classify years by count
     print("\n[Util-6] Classifying years by count ...")
     yearsFreq = fetchYearsOccurrences(jsonData)

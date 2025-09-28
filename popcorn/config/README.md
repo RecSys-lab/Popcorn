@@ -22,6 +22,7 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Dataset (Multimodal) | `popcorn`         | `feature_models`      | features extracted from which **models** should be used?                    |
 | Dataset (Multimodal) | `popcorn`         | `agg_feature_sources` | aggregated features extracted from which **sources** should be used?        |
 | Dataset (Multimodal) | `popcorn`         | `aggregation_models`  | which **aggregation** models should be used?                                |
+| Pipeline             | `trailers`        | `mode`                | the path where found and downloaded trailers will be saved                  |
 | Setup                | `seed`            | -                     | the seed for reproducibility purposes                                       |
 | Setup                | `k_core`          | -                     | the number of cores for k-core filtering                                    |
 | Setup                | `split`           | `mode`                | the train/test splitting mode (supported: `random`, `temporal`, `per_user`) |
@@ -33,8 +34,6 @@ It covers the pipelines designed for the framework, including the followings:
 
 | Sub-Category                     | Options                   | Description                                                          |
 | -------------------------------- | ------------------------- | -------------------------------------------------------------------- |
-| `movie_trailers`                 | `name`                    | the name of the pipeline to download trailers                        |
-| `movie_trailers`                 | `download_path`           | the path in which downloaded files will be saved                     |
 | `movie_frames`                   | `name`                    | the name of the pipeline to extract frames from videos               |
 | `movie_frames`                   | `movies_path`             | the path of the videos to read from                                  |
 | `movie_frames`                   | `frames_path`             | the path of the frames to be saved                                   |

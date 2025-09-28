@@ -82,6 +82,40 @@ def fetchRandomMovie(data: dict) -> dict:
     # Return the random movie
     return randomMovie
 
+def fetchRandomMovies(data: dict, count: int = 5) -> list:
+    """
+    Fetches a list of random movies from the given metadata JSON file.
+
+    Parameters
+    ----------
+    data: dict
+        The JSON data containing the metadata of the movies.
+    count: int
+        The number of random movies to fetch.
+
+    Returns
+    -------
+    randomMovies: list
+        A list of dictionaries, each containing the metadata of a random movie.
+    """
+    # Variables
+    randomMovies = []
+    # Check validity of count
+    if count <= 0:
+        print("- [Warn] Count must be a positive integer. Returning an empty list of random movies ...")
+        return randomMovies
+    if count > len(data):
+        print(f"- [Warn] Count '{count}' exceeds the number of available movies '{len(data)}'. Reducing count to '5'.")
+        count = 5
+    # Fetch random movies
+    if data:
+        randomMovies = random.sample(data, count)
+    else:
+        print(
+            "- [Warn] Metadata is empty or not loaded. Returning an empty list of random movies ..."
+        )
+    return randomMovies
+
 
 def fetchMovieById(data: dict, movieId: int) -> dict:
     """

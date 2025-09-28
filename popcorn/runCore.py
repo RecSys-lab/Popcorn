@@ -2,13 +2,13 @@
 
 from popcorn.utils import loadJsonFromUrl
 from popcorn.pipelines.frames.utils import initMovieVideos
-from popcorn.pipelines.downloaders.utils import filterMovieList
+from popcorn.pipelines.trailer_fetch.utils import filterMovieList
 from popcorn.pipelines.frames.frameExtractor import extractMovieFrames
 from popcorn.pipelines.visual_features.utils import initMovieFramesFolders
 from popcorn.pipelines.shots.utils import initFramesFoldersForShotDetection
 from popcorn.pipelines.shots.utils import initFeaturesFoldersForShotDetection
 from popcorn.pipelines.visual_features.featureExtractor import extractMovieFeatures
-from popcorn.pipelines.downloaders.movieTrailerDownloader import downloadMovieTrailers
+from popcorn.pipelines.trailer_fetch.movieTrailerDownloader import downloadMovieTrailers
 from popcorn.pipelines.visual_features.featureAggregator import aggregateMovieFeatures
 from popcorn.pipelines.shots.shotDetection import extractShotsFromMovieFrames, extractShotsFromMovieFeatures
 
