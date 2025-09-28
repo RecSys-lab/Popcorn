@@ -2,39 +2,14 @@
 
 from popcorn.utils import loadJsonFromUrl
 from popcorn.pipelines.frames.utils import initMovieVideos
-from popcorn.pipelines.trailer_fetch.utils import filterMovieList
 from popcorn.pipelines.frames.frameExtractor import extractMovieFrames
 from popcorn.pipelines.visual_features.utils import initMovieFramesFolders
 from popcorn.pipelines.shots.utils import initFramesFoldersForShotDetection
 from popcorn.pipelines.shots.utils import initFeaturesFoldersForShotDetection
 from popcorn.pipelines.visual_features.featureExtractor import extractMovieFeatures
-from popcorn.pipelines.trailer_fetch.movieTrailerDownloader import downloadMovieTrailers
 from popcorn.pipelines.visual_features.featureAggregator import aggregateMovieFeatures
 from popcorn.pipelines.shots.shotDetection import extractShotsFromMovieFrames, extractShotsFromMovieFeatures
 
-def runTrailerDownloader(configs: dict, datasetInfo: dict):
-    """
-    Runs the trailer downloader pipeline to fetch movie trailers from a given movie list
-
-    Parameters
-    ----------
-    configs :dict
-        The configurations dictionary
-    datasetInfo :dict
-        The dataset information dictionary
-    """
-    # Variables
-    datasetName = datasetInfo['name']
-    jsonFilePath = datasetInfo['path_metadata']
-    print("Running the trailer downloader pipeline ...")
-    # Fetch JSON data from the URL
-    print(f"- Fetching the list of movies from '{datasetName}' dataset ...")
-    jsonData = loadJsonFromUrl(jsonFilePath)
-    # Filter the movie list
-    print(f"- Preparing data to make proper queries for movie finding ...")
-    filteredMovies = filterMovieList(jsonData)
-    # Fetch and download the movie trailers of the given list
-    downloadMovieTrailers(configs, filteredMovies)
 
 def runMoviesFrameExtractor(configs: dict):
     """

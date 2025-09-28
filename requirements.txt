@@ -4,4 +4,5 @@ requests==2.32.5
 pandas==2.3.0
 numpy==2.3.2
 scikit-learn==1.7.2
-pytube==15.0.0
+yt-dlp==2025.9.26
+ffmpeg==1.4

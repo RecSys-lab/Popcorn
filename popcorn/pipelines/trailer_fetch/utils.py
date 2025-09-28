@@ -1,58 +1,67 @@
 import os
 import requests
 
-def filterMovieList(jsonData: list):
-    """
-    Filters the movie list from the given JSON data to have only the `id`, `title`, and `year` fields
-    
-    Parameters
-    ----------
-    jsonData: list
-        The JSON data containing the movies
-    """
-    # Check json file
-    if jsonData is None:
-        return None
-    # Initialize an empty list
-    filteredMovies = []
-    # Iterate through the JSON data
-    for item in jsonData:
-        filteredMovies.append({'id': item['id'],
-                                'title': item['title'],
-                                'year': item['year']
-                                })
-    # Prepare a log message
-    print(f"- Prepared {len(filteredMovies)} movies data from the JSON data to query YouTube ...\n")
-    # Return
-    return filteredMovies
+# Supported video formats
+videoFormats = ["mp4", "avi", "mov", "mkv"]
 
-def videoFileDownloader(url: str, downloadPath: str, fileName: str):
+
+def downloadVideoFile(url: str, downloadPath: str, fileName: str, format: str = "mp4"):
     """
-    Downloads a video file from the given URL
+    Downloads a video file from a given URL.
 
     Parameters
     ----------
     url: str
-        The URL of the video file
+        The URL of the video file to download.
     downloadPath: str
-        The path to save the downloaded video file
+        The path to download the video file to.
     fileName: str
-        The name of the downloaded video file
+        The name of the video file to save as.
+    format: str
+        The format of the video file (default is 'mp4').
+
+    Returns
+    -------
+    success: bool
+        True if the video file was downloaded successfully, False otherwise.
     """
+    # Variables
+    success = False
+    # Check the format
+    if format not in videoFormats:
+        print(
+            f"- [Warn] Unsupported video format '{format}'. Supported formats are: {videoFormats}. Using 'mp4' instead..."
+        )
+        format = "mp4"
     # Check the URL
     if url is None:
-        return
+        print("- [Warn] URL is None. Cannot download the video file! Exiting ...")
+        return success
+    # Check the download path
+    if not os.path.exists(downloadPath):
+        print(
+            f"- [Warn] Download path '{downloadPath}' does not exist. Creating it ..."
+        )
+        os.makedirs(downloadPath)
     # Download the video file
     print(f"- Downloading the video file from '{url}' ...")
+    fileName = f"{fileName}.{format}"
     # Download the video file
     try:
         response = requests.get(url)
-        response.raise_for_status()  # Raise an error for bad status codes
+        response.raise_for_status()
         # Create download address
         downloadPath = os.path.join(downloadPath, fileName)
         # Save the downloaded file
-        with open(downloadPath, 'wb') as file:
+        with open(downloadPath, "wb") as file:
             file.write(response.content)
+        success = True
     except Exception as e:
-        print(f"Error downloading the video file from '{url}'! {e}")
-    print(f"- Video file downloaded successfully to '{downloadPath}'!")
+        print(f"- Error downloading the video file from '{url}'! {e}")
+        success = False
+    # Return the success status
+    if success:
+        print(f"- Video file downloaded successfully to '{downloadPath}'!")
+    else:
+        print(f"- Video file download failed!")
+    return success
