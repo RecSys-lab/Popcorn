@@ -48,7 +48,7 @@ def extractMovieFrames(configs: dict):
         return
     print("- Extracting frames from the given set of movie videos ...")
     # Iterate on all video files in the given directory
-    for videoFilePath in fetchedVideos[:3]:
+    for videoFilePath in fetchedVideos:
         # Preparing the output frames directory
         framesDir = initFramesPath(videoFilePath, framesRootPath)
         if framesDir == "":

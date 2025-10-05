@@ -1,8 +1,6 @@
 import os
 import requests
-
-# Supported video formats
-videoFormats = ["mp4", "avi", "mov", "mkv"]
+from popcorn.pipelines.utils import videoFormats
 
 
 def downloadVideoFile(url: str, downloadPath: str, fileName: str, format: str = "mp4"):

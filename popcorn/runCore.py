@@ -1,29 +1,10 @@
 #!/usr/bin/env python3
 
-from popcorn.pipelines.visual_features.utils import initMovieFramesFolders
 from popcorn.pipelines.shots.utils import initFramesFoldersForShotDetection
 from popcorn.pipelines.shots.utils import initFeaturesFoldersForShotDetection
-from popcorn.pipelines.visual_features.featureExtractor import extractMovieFeatures
-from popcorn.pipelines.visual_features.featureAggregator import aggregateMovieFeatures
+from popcorn.pipelines.visual_embedding.aggregation import aggregateMovieFeatures
 from popcorn.pipelines.shots.shotDetection import extractShotsFromMovieFrames, extractShotsFromMovieFeatures
 
-
-def runMoviesFramesFeatureExtractor(configs: dict):
-    """
-    Runs the feature extractor pipeline from the movie frames
-
-    Parameters
-    ----------
-    configs :dict
-        The configurations dictionary
-    """
-    print("Running the movies frames visual feature extractor pipeline ...")
-    # Pre-check the input directory
-    fetchedMovieFramesPaths = initMovieFramesFolders(configs)
-    if not fetchedMovieFramesPaths:
-        return
-    # Extract visual features from the fetched frames
-    extractMovieFeatures(configs, fetchedMovieFramesPaths)
 
 def runShotDetectionFromFrames(configs: dict):
     """

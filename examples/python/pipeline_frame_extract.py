@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from popcorn.utils import readConfigs, loadJsonFromUrl
+from popcorn.utils import readConfigs
 from popcorn.pipelines.frame_fetch.core import extractMovieFrames
 
 

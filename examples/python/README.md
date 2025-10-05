@@ -20,3 +20,4 @@
 | [experiment_split](/examples/python/experiment_split.py)                                     | Setup    | Applying K-Core and train/test split on MovieLens    |
 | [pipeline_trailer_fetch](/examples/python/pipeline_trailer_fetch.py)                         | Pipeline | Fetching and downloading trailers for given movies   |
 | [pipeline_frame_extract](/examples/python/pipeline_frame_extract.py)                         | Pipeline | Extracting frames from movie trailers                |
+| [pipeline_embedding_extract](/examples/python/pipeline_embedding_extract.py)                 | Pipeline | Extracting visual embeddings from movie frames       |

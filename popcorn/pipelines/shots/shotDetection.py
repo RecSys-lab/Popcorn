@@ -2,7 +2,7 @@ import os
 import time
 import cv2 as cv
 import pandas as pd
-from popcorn.pipelines.visual_features.utils import packetManager
+from popcorn.pipelines.visual_embedding.utils import packetManager
 from popcorn.pipelines.shots.utils import calculateCosineSimilarity, calculateShotBoundaries, initShotsFolder, mergePacketsIntoDataFrame
 
 def extractShotsFromMovieFrames(configs: dict, movieFramesPaths: list):

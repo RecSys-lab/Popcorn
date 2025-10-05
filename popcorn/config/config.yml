@@ -74,19 +74,17 @@ pipelines:
     frequency: 1    
     # Frame width (with automatic aspect ratio, should match the CNN model input size, between 1 and 1920)
     frame_width: 420
-  # Movie frames visual feature extractor pipeline
-  movie_frames_visual_features:
+  # Movie frames visual embedding extractor pipeline
+  visual_embedding_extractor:
     # Pipeline name
-    name: Visual-feature-extractor
-    # Path the root directory containing the frames in folders
-    # [Note] it is equal to the frames_path in the movie_frames pipeline
+    name: Visual-Embedding-Extractor
+    # A root directory containing the extracted movie frames
     frames_path: "E:/Datasets/Movies/MovieFrames"
-    # Features path
+    # A root directory to save the extracted visual embeddings
     features_path: "E:/Datasets/Movies/MovieFeatures"
-    # Feature extraction models to be used (in an array)
-    # Possible values: ["incp3", "vgg19"]
-    feature_extractor_model: "incp3"
-    # Packets size (number of frames in each packet)
+    # CNN model to be used for feature extraction
+    cnn: "incp3" # 'incp3' | 'vgg19'
+    # Packets size (number of frames in each packet, between 1 and 50)
     packet_size: 25
   # Movie frames and extracted features shot detection pipeline
   movie_shots:
