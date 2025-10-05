@@ -1,9 +1,9 @@
 import os
 import time
 import cv2 as cv
+from popcorn.pipelines.utils import frameImageFormats
 from popcorn.pipelines.frame_fetch.utils import (
     fetchMovieVideoFiles,
-    frameImageFormats,
     initFramesPath,
     resizeFrame
 )

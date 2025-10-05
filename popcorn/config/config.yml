@@ -83,8 +83,6 @@ pipelines:
     frames_path: "E:/Datasets/Movies/MovieFrames"
     # Features path
     features_path: "E:/Datasets/Movies/MovieFeatures"
-    # Supported image (saved frames) formats
-    image_formats: ["png", "jpg", "jpeg"]
     # Feature extraction models to be used (in an array)
     # Possible values: ["incp3", "vgg19"]
     feature_extractor_model: "incp3"

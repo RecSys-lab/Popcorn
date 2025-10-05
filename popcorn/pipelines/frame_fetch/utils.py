@@ -3,13 +3,7 @@ import string
 import cv2 as cv
 import numpy as np
 from glob import glob
-
-# Supported video formats
-videoFormats = ["mp4", "avi", "mkv"]
-
-# Supported image formats
-frameImageFormats = ["jpg", "jpeg", "png"]
-
+from popcorn.pipelines.utils import videoFormats
 
 def fetchMovieVideoFiles(configs: dict):
     """
