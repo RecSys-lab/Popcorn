@@ -6,4 +6,5 @@ numpy==2.3.2
 scikit-learn==1.7.2
 yt-dlp==2025.9.26
 opencv-python==4.11.0.86
-tensorflow==2.19.1
+keras==3.11.3
+torch==2.8.0

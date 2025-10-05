@@ -1,3 +1,5 @@
+import os
+
 def initModelInception3():
     """
     Initializes the Inception-v3 (GoogleNet) model for feature extraction
@@ -12,10 +14,11 @@ def initModelInception3():
     print("- Initializing the Inception-v3 model for feature extraction ...")
     # Variables
     model = None
+    os.environ["KERAS_BACKEND"] = "torch"
     try:
         # Load Inception-v3 model
-        from tensorflow.keras import Model
-        from tensorflow.keras.applications.inception_v3 import (
+        from keras import Model
+        from keras.applications.inception_v3 import (
             InceptionV3,
             preprocess_input,
         )
@@ -46,7 +49,7 @@ def getModelVariables():
         The preprocess function for the VGG-19 model
     """
     # Load proper imports
-    from tensorflow.keras.applications.inception_v3 import preprocess_input
+    from keras.applications.inception_v3 import preprocess_input
 
     # Load Inception-v3 model variables
     modelInputSize = 299  # Default input size for Inception-v3 model

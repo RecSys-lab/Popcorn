@@ -1,3 +1,5 @@
+import os
+
 def initModelVgg19():
     """
     Initializes the VGG-19 model for feature extraction
@@ -12,10 +14,11 @@ def initModelVgg19():
     print("- Initializing the VGG-19 model for feature extraction ...")
     # Variables
     model = None
+    os.environ["KERAS_BACKEND"] = "torch"
     try:
         # Load Inception-v3 model
-        from tensorflow.keras import Model
-        from tensorflow.keras.applications.vgg19 import VGG19
+        from keras import Model
+        from keras.applications.vgg19 import VGG19
 
         # Create a model
         model = VGG19()
@@ -43,7 +46,7 @@ def getModelVariables():
         The preprocess function for the VGG-19 model
     """
     # Load proper imports
-    from tensorflow.keras.applications.vgg19 import preprocess_input
+    from keras.applications.vgg19 import preprocess_input
 
     # Load VGG-19 model variables
     modelInputSize = 224  # Default input size for Inception-v3 model
