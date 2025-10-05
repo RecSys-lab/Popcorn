@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-from popcorn.utils import loadJsonFromUrl
-from popcorn.pipelines.frames.utils import initMovieVideos
-from popcorn.pipelines.frames.frameExtractor import extractMovieFrames
 from popcorn.pipelines.visual_features.utils import initMovieFramesFolders
 from popcorn.pipelines.shots.utils import initFramesFoldersForShotDetection
 from popcorn.pipelines.shots.utils import initFeaturesFoldersForShotDetection
@@ -10,23 +7,6 @@ from popcorn.pipelines.visual_features.featureExtractor import extractMovieFeatu
 from popcorn.pipelines.visual_features.featureAggregator import aggregateMovieFeatures
 from popcorn.pipelines.shots.shotDetection import extractShotsFromMovieFrames, extractShotsFromMovieFeatures
 
-
-def runMoviesFrameExtractor(configs: dict):
-    """
-    Runs the movies frame extractor pipeline
-
-    Parameters
-    ----------
-    configs :dict
-        The configurations dictionary
-    """
-    print("Running the movies frame extractor pipeline ...")
-    # Pre-check the input directory
-    fetchedMoviesPaths = initMovieVideos(configs)
-    if not fetchedMoviesPaths:
-        return
-    # Extract frames from the fetched movies
-    extractMovieFrames(configs, fetchedMoviesPaths)
 
 def runMoviesFramesFeatureExtractor(configs: dict):
     """

@@ -61,21 +61,19 @@ pipelines:
     # Path to the pipeline
     download_path: "E:/Datasets/Movies/MovieTrailers"
   # Movie frames extractor pipeline
-  movie_frames:
+  frame_extractor:
     # Pipeline name
-    name: Frame-extractor
-    # Movies path
+    name: Frame-Extractor
+    # A root directory containing the movie video files
     movies_path: "E:/Datasets/Movies/Videos"
-    # Frames path
+    # A root directory to save the extracted frames
     frames_path: "E:/Datasets/Movies/MovieFrames"
-    # Supported video formats
-    video_formats: ["mp4", "avi", "mkv"]
-    # Frequency of frames extraction (picking 'n' frames every second)
-    frequency: 1
     # Output file format
-    output_format: "jpg"
-    # Feature extraction model input size (width)
-    model_input_size: 420
+    frame_format: "jpg"
+    # Frequency of frames extraction (picking 'n' frames every second, between 1 and 25)
+    frequency: 1    
+    # Frame width (with automatic aspect ratio, should match the CNN model input size, between 1 and 1920)
+    frame_width: 420
   # Movie frames visual feature extractor pipeline
   movie_frames_visual_features:
     # Pipeline name
