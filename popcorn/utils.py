@@ -3,7 +3,7 @@ import yaml
 import json
 import requests
 import numpy as np
-# import pandas as pd
+
 
 def readConfigs(configPath: str = "popcorn/config/config.yml") -> dict:
     """
@@ -52,6 +52,7 @@ def parseSafe(s: str) -> np.ndarray:
         vec = np.nan_to_num(vec, nan=0.0, posinf=0.0, neginf=0.0)
     return vec
 
+
 def loadJsonFromUrl(jsonUrl: str) -> dict:
     """
     Load `json` data from a given URL and return it.
@@ -81,7 +82,8 @@ def loadJsonFromUrl(jsonUrl: str) -> dict:
     except json.JSONDecodeError as e:
         print(f"- [Error] Error parsing JSON data: {e}")
         return None
-    
+
+
 def loadJsonFromFilePath(jsonPath: str):
     """
     Load `json` data from a given file path and return it.
@@ -95,14 +97,17 @@ def loadJsonFromFilePath(jsonPath: str):
     try:
         # Check if the file exists
         if not os.path.exists(jsonPath):
-            raise FileNotFoundError(f"- [Error] File '{jsonPath}' not found! Exiting ...")
+            raise FileNotFoundError(
+                f"- [Error] File '{jsonPath}' not found! Exiting ..."
+            )
         # Load the JSON data
-        with open(jsonPath, 'r') as jsonFile:
+        with open(jsonPath, "r") as jsonFile:
             jsonData = json.load(jsonFile)
         return jsonData
     except Exception as e:
         print(f"- [Error] An error occurred while loading the JSON data: {e}")
         return None
+
 
 # def loadDataFromCSV(csvPath: str):
 #     """
