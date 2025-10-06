@@ -214,8 +214,10 @@ def modelRunner(model, framesFolder: str, outputDir: str, cnn: str, packetSize: 
         The frames folder address to extract visual features from
     outputDir: str
         The visual features directory to save the extracted features
-    configs: dict
-        The configurations dictionary
+    cnn: str
+        The CNN model to use for feature extraction
+    packetSize: int
+        The packet size to save the extracted features
 
     Returns
     -------

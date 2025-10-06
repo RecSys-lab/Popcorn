@@ -15,10 +15,8 @@ def extractVisualEmbeddings(configs: dict):
 
     Parameters
     ----------
-    configs :dict
+    configs: dict
         The configurations dictionary
-    movieFramesPaths :list
-        The list of movie frames paths
     """
     # Variables
     model = None
