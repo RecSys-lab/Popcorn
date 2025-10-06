@@ -2,7 +2,11 @@ import os
 from popcorn.pipelines.utils import cnnModels
 from popcorn.pipelines.visual_embedding.models.vgg19 import initModelVgg19
 from popcorn.pipelines.visual_embedding.models.inception3 import initModelInception3
-from popcorn.pipelines.visual_embedding.utils import fetchMovieFramesFolders, initFeaturesPath, modelRunner
+from popcorn.pipelines.visual_embedding.utils import (
+    fetchMovieFramesFolders,
+    initFeaturesPath,
+    modelRunner,
+)
 
 
 def extractVisualEmbeddings(configs: dict):
@@ -21,7 +25,9 @@ def extractVisualEmbeddings(configs: dict):
     cnn = configs["pipelines"]["visual_embedding_extractor"]["cnn"]
     pipelineName = configs["pipelines"]["visual_embedding_extractor"]["name"]
     packetSize = configs["pipelines"]["visual_embedding_extractor"]["packet_size"]
-    featuresRootPath = configs["pipelines"]["visual_embedding_extractor"]["features_path"]
+    featuresRootPath = configs["pipelines"]["visual_embedding_extractor"][
+        "features_path"
+    ]
     print(f"- Starting the '{pipelineName}' pipeline ...")
     # Check the validity of arguments and configurations
     if cnn not in cnnModels:
@@ -54,13 +60,13 @@ def extractVisualEmbeddings(configs: dict):
         )
         return
     # Iterate on all frame folders in the given root directory
-    for framesFolder in fetchedFrames:
+    for framesDir in fetchedFrames:
         # Preparing the output frames directory
-        framesFolder = os.path.normpath(framesFolder)
-        print(f"- Extracting visual embeddings from the frames in '{framesFolder}' ...")
-        outputDir = initFeaturesPath(framesFolder, featuresRootPath)
+        framesDir = os.path.normpath(framesDir)
+        print(f"- Extracting visual embeddings from the frames in '{framesDir}' ...")
+        embeddingsDir = initFeaturesPath(framesDir, featuresRootPath)
         # Skip if the output directory already exists
-        if not outputDir:
+        if not embeddingsDir:
             continue
         # Extracting features from the frames
-        # modelRunner(model, framesFolder, outputDir, configs)
+        modelRunner(model, framesDir, embeddingsDir, cnn, packetSize)

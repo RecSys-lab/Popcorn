@@ -122,7 +122,9 @@ def featureExtractor(imageFile, model, preProcess, inputSize: int):
         A list of fetched video files
     """
     # Imports
-    from tensorflow.keras.preprocessing.image import load_img, img_to_array
+    # if os.environ["KERAS_BACKEND"] != "torch":
+    #     os.environ["KERAS_BACKEND"] = "torch"
+    from keras.preprocessing.image import load_img, img_to_array
 
     # Variables
     features = None
@@ -200,7 +202,7 @@ def packetManager(
         )
 
 
-def modelRunner(model, framesFolder, outputDir, configs: dict):
+def modelRunner(model, framesFolder: str, outputDir: str, cnn: str, packetSize: int):
     """
     Pre-checks the given directory for movie frames and prepares it for further processing
 
@@ -226,24 +228,21 @@ def modelRunner(model, framesFolder, outputDir, configs: dict):
     modelInputSize = 0
     modelPreprocess = None
     startTime = time.time()
-    packetSize = configs["packet_size"]
-    imageTypes = configs["image_formats"]
     totalFrames = len(os.listdir(framesFolder))
-    modelName = configs["feature_extractor_model"]
     remainingFrames = len(os.listdir(framesFolder))
     frameFeatureDF = pd.DataFrame(columns=["frameId", "features"])
     # Prepare the model-specific variables
-    if modelName == "incp3":
+    if cnn == "incp3":
         # Load Inception-v3 model variables
         modelInputSize, modelPreprocess = getIncp3Variables()
-    elif modelName == "vgg19":
+    elif cnn == "vgg19":
         # Load VGG-19 model variables
         modelInputSize, modelPreprocess = getVgg19Variables()
     else:
-        print(f"Feature extraction model '{modelName}' is not supported! Exiting ...")
+        print(f"-- Feature extraction model '{cnn}' is not supported! Exiting ...")
         return
     # Loop over the frames in the folder
-    for imageType in imageTypes:
+    for imageType in frameImageFormats:
         for frameFile in glob(f"{framesFolder}/*.{imageType}"):
             # Variables
             frameFileName = os.path.basename(frameFile)
@@ -281,7 +280,7 @@ def modelRunner(model, framesFolder, outputDir, configs: dict):
                     packetIndex += 1
             except Exception as error:
                 print(
-                    f'- Error while extracting the features of "{frameFileName}" in "{framesFolder}": {str(error)}'
+                    f'- [Error] Error while extracting the features of "{frameFileName}" in "{framesFolder}": {str(error)}'
                 )
                 continue
     # Inform the user about the extraction process
