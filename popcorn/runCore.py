@@ -2,7 +2,6 @@
 
 from popcorn.pipelines.shots.utils import initFramesFoldersForShotDetection
 from popcorn.pipelines.shots.utils import initFeaturesFoldersForShotDetection
-from popcorn.pipelines.visual_embedding.aggregation import aggregateMovieFeatures
 from popcorn.pipelines.shots.shotDetection import extractShotsFromMovieFrames, extractShotsFromMovieFeatures
 
 
@@ -39,16 +38,3 @@ def runShotDetectionFromFeatures(configs: dict):
         return
     # Extract shots from the fetched features
     extractShotsFromMovieFeatures(configs, movieFeaturesPaths)
-
-def runAggFeatures(configs: dict):
-    """
-    Runs the feature aggregation pipeline
-
-    Parameters
-    ----------
-    configs: dict
-        The configurations dictionary
-    """
-    print("Running the feature aggregation pipeline ...")
-    # Aggregate features from the given set of extracted movie features
-    aggregateMovieFeatures(configs)

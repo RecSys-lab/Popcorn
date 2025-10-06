@@ -6,3 +6,6 @@ frameImageFormats = ["jpg", "jpeg", "png"]
 
 # Supported CNN models for feature extraction
 cnnModels = ["incp3", "vgg19"]
+
+# Supported aggregation methods
+aggMethods = ["Max", "Mean"]

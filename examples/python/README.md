@@ -21,3 +21,4 @@
 | [pipeline_trailer_fetch](/examples/python/pipeline_trailer_fetch.py)                         | Pipeline | Fetching and downloading trailers for given movies   |
 | [pipeline_frame_extract](/examples/python/pipeline_frame_extract.py)                         | Pipeline | Extracting frames from movie trailers                |
 | [pipeline_embedding_extract](/examples/python/pipeline_embedding_extract.py)                 | Pipeline | Extracting visual embeddings from movie frames       |
+| [pipeline_embedding_aggregate](/examples/python/pipeline_embedding_aggregate.py)             | Pipeline | Aggregating visual embeddings for given movies       |

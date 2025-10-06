@@ -86,6 +86,16 @@ pipelines:
     cnn: "incp3" # 'incp3' | 'vgg19'
     # Packets size (number of frames in each packet, between 1 and 50)
     packet_size: 25
+  # Visual embedding aggregation pipeline
+  visual_embedding_aggregator:
+    # Pipeline name
+    name: Visual-Embedding-Aggregator
+    # A root directory containing the extracted movie visual embeddings
+    features_path: "E:/Datasets/Movies/MovieFeatures"
+    # A root directory to save the aggregated visual embeddings
+    agg_features_path: "E:/Datasets/Movies/MovieAggFeatures"
+    # Aggregation methods to be used (in an array)
+    aggregation_methods: ["Max", "Mean"] # 'Max' | 'Mean'
   # Movie frames and extracted features shot detection pipeline
   movie_shots:
     # Pipeline name
@@ -115,17 +125,6 @@ pipelines:
         # Packets size (number of frames in each packet)
         # [Note] it is recommended to set it equal to the packet_size in the movie_frames_visual_features pipeline
         packet_size: 25
-  # Visual feature aggregation pipeline
-  feature_aggregation:
-    # Pipeline name
-    name: Feature-aggregator
-    # Features path (downloaded features)
-    features_path: "E:/Datasets/Movies/MovieFeatures"
-    # Aggregated features path
-    agg_features_path: "E:/Datasets/Movies/MovieAggFeatures"
-    # Aggregation models to be used (in an array)
-    # Possible values: ["Max", "Mean"]
-    aggregation_models: ["Max", "Mean"]
 # ------------------------- Multimodal configurations ------------------------
 multimodal:
   textual:

@@ -1,4 +1,4 @@
-# import os
+import os
 import yaml
 import json
 import requests
@@ -58,7 +58,7 @@ def loadJsonFromUrl(jsonUrl: str) -> dict:
 
     Parameters
     ----------
-    jsonUrl : str
+    jsonUrl: str
         The root address to load JSON data from.
 
     Returns
@@ -76,10 +76,32 @@ def loadJsonFromUrl(jsonUrl: str) -> dict:
         print("- JSON data loaded successfully!")
         return data
     except requests.exceptions.RequestException as e:
-        print(f"- Error fetching data from {jsonUrl}: {e}")
+        print(f"- [Error] Error fetching data from {jsonUrl}: {e}")
         return None
     except json.JSONDecodeError as e:
-        print(f"- Error parsing JSON data: {e}")
+        print(f"- [Error] Error parsing JSON data: {e}")
+        return None
+    
+def loadJsonFromFilePath(jsonPath: str):
+    """
+    Load `json` data from a given file path and return it.
+
+    Parameters:
+        jsonPath (str): The path to the JSON file.
+
+    Returns:
+        dict: The JSON data loaded from the file.
+    """
+    try:
+        # Check if the file exists
+        if not os.path.exists(jsonPath):
+            raise FileNotFoundError(f"- [Error] File '{jsonPath}' not found! Exiting ...")
+        # Load the JSON data
+        with open(jsonPath, 'r') as jsonFile:
+            jsonData = json.load(jsonFile)
+        return jsonData
+    except Exception as e:
+        print(f"- [Error] An error occurred while loading the JSON data: {e}")
         return None
 
 # def loadDataFromCSV(csvPath: str):
@@ -101,26 +123,4 @@ def loadJsonFromUrl(jsonUrl: str) -> dict:
 #         return csvData
 #     except Exception as e:
 #         print(f"- An error occurred while loading the CSV data: {e}")
-#         return None
-
-# def loadJsonFromFilePath(jsonPath: str):
-#     """
-#     Load `json` data from a given file path and return it.
-
-#     Parameters:
-#         jsonPath (str): The path to the JSON file.
-
-#     Returns:
-#         dict: The JSON data loaded from the file.
-#     """
-#     try:
-#         # Check if the file exists
-#         if not os.path.exists(jsonPath):
-#             raise FileNotFoundError(f"- File '{jsonPath}' not found! Exiting ...")
-#         # Load the JSON data
-#         with open(jsonPath, 'r') as jsonFile:
-#             jsonData = json.load(jsonFile)
-#         return jsonData
-#     except Exception as e:
-#         print(f"- An error occurred while loading the JSON data: {e}")
 #         return None
