@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 from popcorn.utils import readConfigs
-from popcorn.pipelines.frame_fetch.core import extractMovieFrames
+from popcorn.pipelines.shot_detect.frame_based import extractShotsFromFrames
+from popcorn.pipelines.shot_detect.embedding_based import extractShotsFromEmbeddings
 
 
 def main():
@@ -14,8 +15,8 @@ def main():
     if not configs:
         print("Error reading the configuration file!")
         return
-    # Run the pipeline
-    extractMovieFrames(configs)
+    # Shot detection from frames
+    extractShotsFromFrames(configs)
     # Stop
     print("\nStopping 'Popcorn'!")
 

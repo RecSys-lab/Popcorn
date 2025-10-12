@@ -79,8 +79,8 @@ def initFeaturesPath(framesPath: str, featuresRootPath: str):
 
     Returns
     -------
-    videoFiles: list
-        A list of fetched video files
+    generatedPath: str
+        The generated visual embeddings directory path
     """
     # Variables
     generatedPath = ""
@@ -193,7 +193,7 @@ def packetManager(
         # Create the packet name
         packetName = f"packet{packetIndex}"
         # Save the packet
-        print(f'- Saving "{packetName}" for "{framesFolder}" ...')
+        print(f'-- Saving "{packetName}" of movie "{framesFolder}" ...')
         featuresFile = featuresFileCreator(targetPath, packetName)
         dataFrame.to_json(featuresFile, orient="records", double_precision=6)
     except Exception as error:
