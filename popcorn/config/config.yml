@@ -39,8 +39,6 @@ datasets:
       agg_embedding_sources: ["full_movies_agg"] # 'full_movies_agg' | 'movie_shots_agg' | 'movie_trailers_agg'
       # Feature extraction methods to be used (in an array)
       cnns: ["incp3"] # 'incp3' | 'vgg19'
-      # Aggregation models to be used (in an array)
-      aggregation_models: ["Max"] # 'Max' | 'Mean'
     mmtf:
       # Dataset name
       name: MMTF-14K
@@ -97,33 +95,26 @@ pipelines:
     # Aggregation methods to be used (in an array)
     aggregation_methods: ["Max", "Mean"] # 'Max' | 'Mean'
   # Movie frames and extracted features shot detection pipeline
-  movie_shots:
+  shot_detector:
     # Pipeline name
-    name: Shot-detector
+    name: Shot-Detector
+    # Output shots path
+    shots_path: "E:/Datasets/Movies/MovieShotsFrames"
+    # Shot boundaries detection threshold (between 0.1 to 1.0, default: 0.7)
+    threshold: 0.65
     # Variants of shot detection
     variants:
       # Shot detection from frames
       from_frames:
-        # Input frames path
+        # A root directory containing the extracted movie frames
         frames_path: "E:/Datasets/Movies/MovieFrames"
-        # Output shot frames path
-        shot_frames_path: "E:/Datasets/Movies/MovieShotsFrames"
-        # Supported input image (saved frames) formats
-        image_formats: ["png", "jpg", "jpeg"]
         # Output file format
-        output_format: "jpg"
-        # Shot boundaries detection threshold
-        threshold: 0.65
-      # Shot detection from features
-      from_features:
-        # Input features path
+        frame_format: "jpg"
+      # Shot detection from visual embeddings
+      from_embeddings:
+        # A root directory containing the extracted movie visual embeddings
         features_path: "E:/Datasets/Movies/MovieFeatures"
-        # Output shot features path
-        shot_features_path: "E:/Datasets/Movies/MovieShotsFeatures"
-        # Shot boundaries detection threshold
-        threshold: 0.7
-        # Packets size (number of frames in each packet)
-        # [Note] it is recommended to set it equal to the packet_size in the movie_frames_visual_features pipeline
+        # Packets size (number of frames in each packet, between 1 and 50)
         packet_size: 25
 # ------------------------- Multimodal configurations ------------------------
 multimodal:

@@ -22,3 +22,4 @@
 | [pipeline_frame_extract](/examples/python/pipeline_frame_extract.py)                         | Pipeline | Extracting frames from movie trailers                |
 | [pipeline_embedding_extract](/examples/python/pipeline_embedding_extract.py)                 | Pipeline | Extracting visual embeddings from movie frames       |
 | [pipeline_embedding_aggregate](/examples/python/pipeline_embedding_aggregate.py)             | Pipeline | Aggregating visual embeddings for given movies       |
+| [pipeline_shot_detect](/examples/python/pipeline_shot_detect.py)                             | Pipeline | Detecting shots in movies (from frames/embeddings)   |
