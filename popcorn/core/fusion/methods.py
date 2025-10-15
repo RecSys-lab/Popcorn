@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.cross_decomposition import CCA
-from popcorn.multimodal.utils import parseEmbedding
+from popcorn.core.utils import parseEmbedding
 
 def fuseEmbeddingPCA(textualDF: pd.DataFrame, visualDF: pd.DataFrame, componentCount: int=128):
     """

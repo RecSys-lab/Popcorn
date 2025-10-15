@@ -5,7 +5,7 @@ from sklearn.decomposition import PCA
 from sklearn.cross_decomposition import CCA
 from sklearn.preprocessing import StandardScaler
 from popcorn.datasets.textaug.text import loadText
-from popcorn.multimodal.utils import MULTI_VARIANTS
+from popcorn.core.utils import MULTI_VARIANTS
 from popcorn.datasets.mmtf14k.helper_audio import loadAudio
 from popcorn.datasets.mmtf14k.helper_visual import loadVisual
 from cornac.data import ImageModality, FeatureModality, Dataset

@@ -4,7 +4,7 @@ import itertools
 import collections
 import numpy as np
 import pandas as pd
-from popcorn.multimodal.utils import gini, ild, kl_div
+from popcorn.core.utils import gini, ild, kl_div
 
 
 def topN(model, uid, N, train_set, iid_map, all_iids, train_seen):

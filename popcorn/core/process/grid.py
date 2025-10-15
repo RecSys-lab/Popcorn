@@ -6,7 +6,7 @@ from cornac.data import Dataset
 from concurrent.futures import ThreadPoolExecutor
 from sklearn.model_selection import train_test_split
 from cornac.models import MF, VBPR, VMF, AMR, VAECF, MostPop
-from popcorn.multimodal.utils import fitWithModalities, modelIsSelected
+from popcorn.core.utils import fitWithModalities, modelIsSelected
 
 
 def gridMetric(
