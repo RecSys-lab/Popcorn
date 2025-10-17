@@ -18,6 +18,7 @@
 | [experiment_kcore_ml-1m](/examples/python/experiment_kcore_ml-1m.py)                         | Setup    | Applying K-Core on MovieLens 1M                      |
 | [experiment_kcore_ml-25m](/examples/python/experiment_kcore_ml-25m.py)                       | Setup    | Applying K-Core on MovieLens 25M                     |
 | [experiment_split](/examples/python/experiment_split.py)                                     | Setup    | Applying K-Core and train/test split on MovieLens    |
+| [modality_data_overlap_check](/examples/python/modality_data_overlap_check.py)               | Modality | Checking data overlap between loaded datasets        |
 | [pipeline_trailer_fetch](/examples/python/pipeline_trailer_fetch.py)                         | Pipeline | Fetching and downloading trailers for given movies   |
 | [pipeline_frame_extract](/examples/python/pipeline_frame_extract.py)                         | Pipeline | Extracting frames from movie trailers                |
 | [pipeline_embedding_extract](/examples/python/pipeline_embedding_extract.py)                 | Pipeline | Extracting visual embeddings from movie frames       |

@@ -116,8 +116,8 @@ pipelines:
         features_path: "E:/Datasets/Movies/MovieFeatures"
         # Packets size (number of frames in each packet, between 1 and 50)
         packet_size: 25
-# ------------------------- Multimodal configurations ------------------------
-multimodal:
+# ------------------------- Workflow configurations ------------------------
+workflow:
   textual:
     # Path to the enriched dataset file
     llm_enriched_file_path: "E:/Datasets/LLM-Enriched/Enriched.csv"
