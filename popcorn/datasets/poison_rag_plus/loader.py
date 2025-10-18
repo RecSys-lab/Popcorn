@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import List
 from popcorn.utils import parseSafe
-from popcorn.datasets.poison_rag_plus.utils import PRP_ML_URL, supportedLLMs
+from popcorn.datasets.poison_rag_plus.utils import PRP_ML_URL, SUPPORTED_LLMS
 
 
 def loadPoisonRagPlus(config: dict) -> pd.DataFrame:
@@ -41,7 +41,7 @@ def loadPoisonRagPlus(config: dict) -> pd.DataFrame:
         f"\n- Preparing the '{DATASET_NAME}' dataset with '{LLM}'-driven {tag} embeddings ..."
     )
     # Some checks
-    if LLM not in supportedLLMs:
+    if LLM not in SUPPORTED_LLMS:
         print(f"- [Error] Unsupported LLM backbone '{LLM}'! Exiting ...")
         return
     if MAX_PARTS <= 0 or MAX_PARTS >= 30:

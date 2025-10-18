@@ -5,4 +5,4 @@ PRP_ML_URL: str = (
     "ml-latest-small/"
 )
 
-supportedLLMs = ["openai", "st", "llama"]
+SUPPORTED_LLMS = ["openai", "st", "llama"]

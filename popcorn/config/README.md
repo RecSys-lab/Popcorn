@@ -40,6 +40,7 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Pipeline             | `shot_detector` / `from_frames`     | `frame_format`        | the format of the extracted frames (e.g., jpg, png)                         |
 | Pipeline             | `shot_detector` / `from_embeddings` | `features_path`       | the path to the extracted movie visual embeddings                           |
 | Pipeline             | `shot_detector` / `from_embeddings` | `packet_size`         | the packets size (number of frames in each packet, between 1 and 50)        |
+| Modalities           | `output_path`                       | -                     | the root path to save fused datasets                                        |
 | Setup                | `seed`                              | -                     | the seed for reproducibility purposes                                       |
 | Setup                | `k_core`                            | -                     | the number of cores for k-core filtering                                    |
 | Setup                | `split`                             | `mode`                | the train/test splitting mode (supported: `random`, `temporal`, `per_user`) |

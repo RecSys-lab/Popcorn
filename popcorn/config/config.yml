@@ -116,14 +116,10 @@ pipelines:
         features_path: "E:/Datasets/Movies/MovieFeatures"
         # Packets size (number of frames in each packet, between 1 and 50)
         packet_size: 25
-# ------------------------- Workflow configurations ------------------------
-workflow:
-  textual:
-    # Path to the enriched dataset file
-    llm_enriched_file_path: "E:/Datasets/LLM-Enriched/Enriched.csv"
-  fused:
-    # Path to the output directory
-    output_dir: "H:/Datasets/Fused-Embeddings"
+# ------------------------- Modality configurations ------------------------
+modalities:
+  # Path to the output directory
+  output_path: "E:/Datasets/Fused-Embeddings"
 # ------------------------- Experimental configurations ------------------------
 setup:
   # Seed for reproducibility
