@@ -109,6 +109,7 @@ def loadJsonFromFilePath(jsonPath: str):
         print(f"- [Error] An error occurred while loading the JSON data: {e}")
         return None
 
+
 def serializeListColumn(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
     """
     Serialize a list column in a pandas DataFrame into a string representation.
@@ -126,4 +127,6 @@ def serializeListColumn(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
     pd.Series
         A pandas Series containing the serialized list column
     """
-    return dataFrame[columnName].apply(lambda x: ', '.join(map(str, x)) if isinstance(x, list) else x)
+    return dataFrame[columnName].apply(
+        lambda x: ", ".join(map(str, x)) if isinstance(x, list) else x
+    )

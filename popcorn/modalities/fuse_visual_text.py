@@ -2,14 +2,13 @@ import os
 import pandas as pd
 from popcorn.utils import serializeListColumn
 from popcorn.datasets.poison_rag_plus.utils import SUPPORTED_LLMS
-from popcorn.datasets.mmtf14k.utils import SUPPORTED_AUD_VARIANTS
-from popcorn.datasets.mmtf14k.helper_audio import loadAudioFusedDF
+from popcorn.datasets.mmtf14k.utils import SUPPORTED_VIS_VARIANTS
+from popcorn.datasets.mmtf14k.helper_visual import loadVisualFusedDF
 from popcorn.datasets.poison_rag_plus.loader import loadPoisonRagPlus
 
-
-def fuseTextualAudio_PoisonRag_MMTF14K(config: dict):
+def fuseTextualVisual_PoisonRag_MMTF14K(config: dict):
     """
-    Fuse 'Poison-RAG-Plus' textual data with 'MMTF-14K' audio features for recommendation
+    Fuse 'Poison-RAG-Plus' textual data with 'MMTF-14K' visual features for recommendation
 
     Parameters
     ----------
@@ -22,7 +21,7 @@ def fuseTextualAudio_PoisonRag_MMTF14K(config: dict):
         A dictionary containing the fused pandas DataFrames
     """
     # Variables
-    mmtfAudioDict = {}
+    mmtfVisualDict = {}
     poisonRagTextDict = {}
     fusedDataFrameDict = {}
     # Create output directory to save fused data files
@@ -46,31 +45,31 @@ def fuseTextualAudio_PoisonRag_MMTF14K(config: dict):
                 poisonRagTextDict[f"{llm}_{textAug}"] = poisonRagTextDF
             else:
                 print(f"- [Warn] Failed to load Textual data '{llm}_{textAug}'!")
-    # Step-2: Load MMTF-14K audio features
-    for audVariant in SUPPORTED_AUD_VARIANTS:
-        print(f"- Loading 'MMTF-14K' audio features variant '{audVariant}' ...")
-        config["datasets"]["multimodal"]["mmtf"]["audio_variant"] = audVariant
-        mmtfAudioDF = loadAudioFusedDF(config)
-        if mmtfAudioDF is not None:
-            mmtfAudioDict[audVariant] = mmtfAudioDF
+    # Step-2: Load MMTF-14K visual features
+    for visVariant in SUPPORTED_VIS_VARIANTS:
+        print(f"- Loading 'MMTF-14K' visual features variant '{visVariant}' ...")
+        config["datasets"]["multimodal"]["mmtf"]["visual_variant"] = visVariant
+        mmtfVisualDF = loadVisualFusedDF(config)
+        if mmtfVisualDF is not None:
+            mmtfVisualDict[visVariant] = mmtfVisualDF
         else:
-            print(f"- [Warn] Failed to load audio variant '{audVariant}'!")
-    # Step-3: Fuse textual and audio data
+            print(f"- [Warn] Failed to load visual variant '{visVariant}'!")
+    # Step-3: Fuse textual and visual data
     for textKey, textDF in poisonRagTextDict.items():
-        for audioKey, audioDF in mmtfAudioDict.items():
-            print(f"- Fusing '{textKey}' with '{audioKey}' ...")
-            fusedDF = pd.merge(textDF, audioDF, on="item_id", how="inner")
+        for visualKey, visualDF in mmtfVisualDict.items():
+            print(f"- Fusing '{textKey}' with '{visualKey}' ...")
+            fusedDF = pd.merge(textDF, visualDF, on="item_id", how="inner")
             if fusedDF is not None:
                 # Save the fused DataFrame to CSV
                 outputFilePath = os.path.join(
-                    outputPath, f"fused_poisonrag_{textKey}_mmtf_audio_{audioKey}.csv"
+                    outputPath, f"fused_poisonrag_{textKey}_mmtf_visual_{visualKey}.csv"
                 )
                 fusedDF.to_csv(outputFilePath, index=False)
                 print(
                     f"- Fused data with '{len(fusedDF)}' records saved to '{outputFilePath}'!"
                 )
-                fusedDataFrameDict[f"{textKey}_{audioKey}"] = fusedDF
+                fusedDataFrameDict[f"{textKey}_{visualKey}"] = fusedDF
             else:
-                print(f"- [Warn] Fusion failed for '{textKey}' with '{audioKey}'!")
+                print(f"- [Warn] Fusion failed for '{textKey}' with '{visualKey}'!")
     # Return the fused DataFrame dictionary
     return fusedDataFrameDict
