@@ -4,50 +4,50 @@ RAW_DATA_URL = f"{BASE_URL}/raw/main/"
 METADATA_URL = f"{BASE_URL}/resolve/main/stats.json"
 
 # Supported CNN models
-cnns = ["incp3", "vgg19"]
+SUPPORTED_CNNS = ["incp3", "vgg19"]
 
 # Supported aggregation models
-aggregationModels = ["Max", "Mean"]
+AGG_MODELS = ["Max", "Mean"]
 
 # Supported feature sources
-embeddingSources = ["full_movies", "movie_shots", "movie_trailers"]
-aggEmbeddingSources = ["full_movies_agg", "movie_shots_agg", "movie_trailers_agg"]
+EMBEDDING_SOURCES = ["full_movies", "movie_shots", "movie_trailers"]
+AGG_EMBEDDING_SOURCES = ["full_movies_agg", "movie_shots_agg", "movie_trailers_agg"]
 
 
 # Some checking functions
 def isValidCNN(cnn: str) -> bool:
     cnn = cnn.lower()
-    isValid = cnn in cnns
+    isValid = cnn in SUPPORTED_CNNS
     if not isValid:
-        print(f"- [Error] Invalid CNN model '{cnn}'. Choose from {cnns}.")
+        print(f"- [Error] Invalid CNN model '{cnn}'. Choose from {SUPPORTED_CNNS}.")
     return isValid
 
 
 def isValidEmbeddingSource(source: str) -> bool:
     source = source.lower()
-    isValid = source in embeddingSources
+    isValid = source in EMBEDDING_SOURCES
     if not isValid:
         print(
-            f"- [Error] Invalid embedding source '{source}'. Choose from {embeddingSources}."
+            f"- [Error] Invalid embedding source '{source}'. Choose from {EMBEDDING_SOURCES}."
         )
     return isValid
 
 
 def isValidAggEmbeddingSource(source: str) -> bool:
     source = source.lower()
-    isValid = source in aggEmbeddingSources
+    isValid = source in AGG_EMBEDDING_SOURCES
     if not isValid:
         print(
-            f"- [Error] Invalid aggregated embedding source '{source}'. Choose from {aggEmbeddingSources}."
+            f"- [Error] Invalid aggregated embedding source '{source}'. Choose from {AGG_EMBEDDING_SOURCES}."
         )
     return isValid
 
 
 def isValidAggregationModel(model: str) -> bool:
     model = model.capitalize()
-    isValid = model in aggregationModels
+    isValid = model in AGG_MODELS
     if not isValid:
         print(
-            f"- [Error] Invalid aggregation model '{model}'. Choose from {aggregationModels}."
+            f"- [Error] Invalid aggregation model '{model}'. Choose from {AGG_MODELS}."
         )
     return isValid

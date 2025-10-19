@@ -2,7 +2,8 @@
 
 from popcorn.utils import readConfigs
 from popcorn.modalities.fuse_visual_text import (
-    fuseTextualVisual_PoisonRag_MMTF14K
+    fuseTextualVisual_PoisonRag_MMTF14K,
+    fuseTextualVisual_PoisonRag_Popcorn
 )
 
 
@@ -19,6 +20,11 @@ def main():
     # Fuse Poison-RAG-Plus and Popcorn datasets
     print("\n----------- Poison-RAG-Plus & MMTF14K Visual -----------")
     fusedDF = fuseTextualVisual_PoisonRag_MMTF14K(configs)
+    if fusedDF is None:
+        print("- [Error] Fusion failed!")
+    # Fuse Poison-RAG-Plus and Popcorn datasets
+    print("\n----------- Poison-RAG-Plus & Popcorn Visual -----------")
+    fusedDF = fuseTextualVisual_PoisonRag_Popcorn(configs)
     if fusedDF is None:
         print("- [Error] Fusion failed!")
     # Stop
