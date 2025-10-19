@@ -3,6 +3,7 @@ import yaml
 import json
 import requests
 import numpy as np
+import pandas as pd
 
 
 def readConfigs(configPath: str = "popcorn/config/config.yml") -> dict:
@@ -107,3 +108,22 @@ def loadJsonFromFilePath(jsonPath: str):
     except Exception as e:
         print(f"- [Error] An error occurred while loading the JSON data: {e}")
         return None
+
+def serializeListColumn(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
+    """
+    Serialize a list column in a pandas DataFrame into a string representation.
+    This avoids truncation issues when saving to CSV by converting lists to comma-separated strings.
+
+    Parameters
+    ----------
+    dataFrame: pd.DataFrame
+        The input DataFrame containing the list column
+    columnName: str
+        The name of the column to serialize
+
+    Returns
+    -------
+    pd.Series
+        A pandas Series containing the serialized list column
+    """
+    return dataFrame[columnName].apply(lambda x: ', '.join(map(str, x)) if isinstance(x, list) else x)
