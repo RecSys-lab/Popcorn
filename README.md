@@ -38,30 +38,9 @@ As the framework supports multi-modal processing and covers **text**, **visual**
 
 ## 🗄️ Code Structure
 
-You can find below where to search for the codes in the framework inside the `movifex` folder:
+You can find below where to search for the codes in the framework inside the `popcorn` folder:
 
-```bash
-> [popcorn]
-    > [config]              ## framework configs & docs
-        - config.yml
-        - README.md
-    > [datasets]            ## dataset functions
-        > [movielens]
-        > [movifex]
-        - runDataset.py
-    > [pipelines]           ## core functionalities and pipelines
-        > [downloaders]     ## YouTube downloader for trailers
-        > [frames]          ## frame extraction functions
-        > [shots]           ## shot detection functions
-        > [visual_feats]    ## visual feature extraction functions
-    > [multimodal]          ## processing modules
-        > [textual]
-        > [visual]
-        > [fused]
-    - utils.py              ## general utilities
-    - runCore.py            ## core runner
-- main.py                   ## main file
-```
+![Popcorn Framework](./docs/img/file_structure.png "Popcorn Framework")
 
 ## 📝 Citation
 
