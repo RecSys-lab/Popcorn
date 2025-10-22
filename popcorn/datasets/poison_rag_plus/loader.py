@@ -78,6 +78,7 @@ def loadPoisonRagPlus(config: dict) -> pd.DataFrame:
         )
     # Combine all parts and remove duplicates
     itemsTextDF = pd.concat(dataFrames).drop_duplicates("item_id")
+    itemsTextDF["item_id"] = itemsTextDF.item_id.astype(str)
     print(
         f"- Finished loading {len(dataFrames)} parts of textual {tag} data with {len(itemsTextDF):,} items!"
     )

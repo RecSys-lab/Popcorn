@@ -101,6 +101,7 @@ def loadAudioFusedDF(config: dict) -> pd.DataFrame:
             dfAudio = loadAudioFusedCsv(AUD_FUSED_URL + AUD_FUSED_FILE_MAP["ivec"])
             # Rename columns for consistency
             dfAudio.rename(columns={"embedding": "audio"}, inplace=True)
+            dfAudio["item_id"] = dfAudio.item_id.astype(str)
             print(f"- Fetched {len(dfAudio):,} audio items using 'i-vector' features.")
             # Return the processed DataFrame
             return dfAudio
@@ -149,6 +150,7 @@ def loadAudioFusedDF(config: dict) -> pd.DataFrame:
             dfAudio = pd.DataFrame(
                 {"item_id": mergedDF["item_id"], "audio": list(X_pca)}
             )
+            dfAudio["item_id"] = dfAudio.item_id.astype(str)
             # Log information
             print(
                 f"- Fetched {len(dfAudio):,} audio items using 'blf' features (PCA {pcaRatio*100}% dims = {X_pca.shape[1]})."
