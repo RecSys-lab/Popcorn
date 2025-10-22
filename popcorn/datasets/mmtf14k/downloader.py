@@ -3,29 +3,31 @@ import zipfile
 import requests
 from popcorn.datasets.mmtf14k.utils import BASE_URL
 
-def downloadMMTF14k(downlpadPath: str):
+
+def downloadMMTF14k(downloadPath: str):
     """
-    Downloads the MMTF14k dataset from the given URL and saves it to the given path
+    Downloads the MMTF14k dataset (Base) from the given URL and saves it to the given path.
+    [Note]: The MMTF14K Fused dataset can be directly loaded and does not require downloading.
 
     Parameters
     ----------
-    downlpadPath: str
+    downloadPath: str
         The download path
-    
+
     Returns
     -------
     status: bool
         The status of the download
     """
-    print(f"- Downloading the MMTF-14K dataset from '{BASE_URL}' ...")
+    print(f"- Downloading the MMTF-14K dataset (Base) from '{BASE_URL}' ...")
     # Create the download path if it does not exist
-    downlpadPath = os.path.normpath(downlpadPath)
-    if not os.path.exists(downlpadPath):
-        print(f"- Creating the download path '{downlpadPath}' ...")
-        os.makedirs(downlpadPath)
+    downloadPath = os.path.normpath(downloadPath)
+    if not os.path.exists(downloadPath):
+        print(f"- Creating the download path '{downloadPath}' ...")
+        os.makedirs(downloadPath)
     else:
         print(
-            f"- The download path '{downlpadPath}' already exists! Skipping the download ..."
+            f"- The download path '{downloadPath}' already exists! Skipping the download ..."
         )
         return True
     # Fetch the dataset
@@ -35,16 +37,16 @@ def downloadMMTF14k(downlpadPath: str):
         response = requests.get(BASE_URL)
         response.raise_for_status()
         # Save the downloaded file
-        datasetZip = os.path.join(downlpadPath, 'mmtf14k.zip')
-        with open(datasetZip, 'wb') as file:
+        datasetZip = os.path.join(downloadPath, "mmtf14k.zip")
+        with open(datasetZip, "wb") as file:
             file.write(response.content)
         # Inform the user
         print("- Download completed and the dataset is saved as a 'zip' file!")
         # Extract the dataset
-        print(f"- Extracting the dataset files inside '{downlpadPath}' ...")
-        with zipfile.ZipFile(datasetZip, 'r') as zipRef:
-            zipRef.extractall(downlpadPath)
-        print(f"- Dataset extracted to '{downlpadPath}' successfully!")
+        print(f"- Extracting the dataset files inside '{downloadPath}' ...")
+        with zipfile.ZipFile(datasetZip, "r") as zipRef:
+            zipRef.extractall(downloadPath)
+        print(f"- Dataset extracted to '{downloadPath}' successfully!")
         # Remove the zip file after extraction
         print(f"- Removing the zip file {datasetZip} ...")
         os.remove(datasetZip)

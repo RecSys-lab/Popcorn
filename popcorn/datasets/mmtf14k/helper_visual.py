@@ -1,7 +1,7 @@
 import pandas as pd
 from popcorn.utils import parseSafe
 from popcorn.datasets.mmtf14k.utils import (
-    VIS_FUSED_BASE,
+    VIS_FUSED_URL,
     VIS_FUSED_FILE_MAP,
     SUPPORTED_VIS_VARIANTS,
 )
@@ -9,8 +9,8 @@ from popcorn.datasets.mmtf14k.utils import (
 
 def loadVisualFusedDF(config: dict) -> pd.DataFrame:
     """
-    Load and process visual embeddings (fused) from the MMTF-14K dataset based on the specified variant.
-    This function supports two types of visual embeddings:
+    Load and process visual embeddings (fused with llm-augmented text) from the MMTF-14K dataset
+    based on the specified variant. This function supports two types of visual embeddings:
         1. CNN features: Extracted from a pre-trained Convolutional Neural Network (AlexNet).
         2. AVF features: Extracted from Aesthetic Visual Features (AVF) model.
 
@@ -46,7 +46,7 @@ def loadVisualFusedDF(config: dict) -> pd.DataFrame:
     # Handle visual variants
     try:
         # Read the CSV file
-        dfVisual = pd.read_csv(VIS_FUSED_BASE + VIS_FUSED_FILE_MAP[variant])
+        dfVisual = pd.read_csv(VIS_FUSED_URL + VIS_FUSED_FILE_MAP[variant])
         # Rename 'itemId' column to ensure consistency
         dfVisual.rename(columns={"itemId": "item_id"}, inplace=True)
         # Parse embeddings from string to numpy arrays

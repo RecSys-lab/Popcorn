@@ -1,19 +1,16 @@
 import pandas as pd
 
-# URLs for accessing Popcorn dataset
+# URLs for accessing MMTF14K dataset
 BASE_URL = "https://drive.google.com/drive/folders/1sBD8drB2H0WHl_MSsSCH-FA-bonjStr_?usp=sharing"
+FUSED_URL = (
+    "https://raw.githubusercontent.com/RecSys-lab/reproducibility_data/refs/heads/main/"
+)
 
 # Base URL for MMTF-14K audio features fused with textual features
-AUD_FUSED_URL = (
-    "https://raw.githubusercontent.com/RecSys-lab/"
-    "reproducibility_data/refs/heads/main/fused_textual_audio/"
-)
+AUD_FUSED_URL = FUSED_URL + "fused_textual_audio/"
 
 # Base URL for MMTF-14K visual features fused with textual features
-VIS_FUSED_BASE = (
-    "https://raw.githubusercontent.com/RecSys-lab/"
-    "reproducibility_data/refs/heads/main/fused_textual_visual/"
-)
+VIS_FUSED_URL = FUSED_URL + "fused_textual_visual/"
 
 # Mapping of MMTF-14K audio feature variants to their corresponding file names
 AUD_FUSED_FILE_MAP = {

@@ -13,7 +13,7 @@ from popcorn.datasets.mmtf14k.utils import (
 
 def loadAudioFusedCsv(url: str) -> pd.DataFrame:
     """
-    Read and process MMTF audio embeddings (fused) from a CSV file into a DataFrame.
+    Read and process MMTF audio embeddings (fused with llm-augmented text) from a CSV file into a DataFrame.
 
     Parameters
     ----------
@@ -56,8 +56,8 @@ def loadAudioFusedCsv(url: str) -> pd.DataFrame:
 
 def loadAudioFusedDF(config: dict) -> pd.DataFrame:
     """
-    Load and process audio embeddings (fused) from the MMTF-14K dataset based on the specified variant.
-    This function supports two types of audio embeddings:
+    Load and process audio embeddings (fused with llm-augmented text) from the MMTF-14K dataset
+    based on the specified variant. This function supports two types of audio embeddings:
         1. i-vector: Direct loading of i-vector features
         2. blf (Block-level Features): Combines multiple MMTF features with PCA
 

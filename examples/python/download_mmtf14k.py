@@ -17,7 +17,8 @@ def main():
     # Get common configurations
     cfgMovieLens = configs["datasets"]["multimodal"]["mmtf"]
     downloadPath = cfgMovieLens["download_path"]
-    # Download MovieLens dataset - 100k version
+    # Download MMTF-14K dataset (Base)
+    print("\n----------- MMTF-14K (Base) -----------")
     downloadMMTF14k(downloadPath)
     print("\nStopping 'Popcorn'!")
 
