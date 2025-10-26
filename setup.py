@@ -12,7 +12,7 @@ def parseRequirements(filename):
 
 setup(
     name="Popcorn",
-    version="1.5.0",
+    version="1.6.0",
     maintainer='Ali Tourani',
     python_requires=">=3.10",
     include_package_data=True,
