@@ -22,6 +22,7 @@
 | [modality_data_fusion_text_audio](/examples/python/modality_data_fusion_text_audio.py)       | Modality | Fusing textual and audio modalities                  |
 | [modality_data_fusion_text_visual](/examples/python/modality_data_fusion_text_visual.py)     | Modality | Fusing textual and visual modalities                 |
 | [modality_data_fusion_all_mmtf](/examples/python/modality_data_fusion_all_mmtf.py)           | Modality | Fusing textual and MMTF audio-visual modalities      |
+| [modality_data_fusion_all_popcorn](/examples/python/modality_data_fusion_all_popcorn.py)     | Modality | Fusing textual and Popcorn visual modalities         |
 | [pipeline_trailer_fetch](/examples/python/pipeline_trailer_fetch.py)                         | Pipeline | Fetching and downloading trailers for given movies   |
 | [pipeline_frame_extract](/examples/python/pipeline_frame_extract.py)                         | Pipeline | Extracting frames from movie trailers                |
 | [pipeline_embedding_extract](/examples/python/pipeline_embedding_extract.py)                 | Pipeline | Extracting visual embeddings from movie frames       |

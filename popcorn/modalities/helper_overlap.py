@@ -49,6 +49,7 @@ def checkOverlap_PoisonRag_Popcorn(config: dict):
     popcornDF["id"] = popcornDF["id"].astype(int)
     popcornDF = popcornDF[["id"]]
     popcornDF.rename(columns={"id": "item_id"}, inplace=True)
+    popcornDF["item_id"] = popcornDF.item_id.astype(str)
     # Merge the datasets based on 'item_id'
     print(f"- Merging the datasets based on 'item_id' to find overlapped items ...")
     overlappedDF = pd.merge(poisonRagDF, popcornDF, on="item_id", how="inner")
@@ -141,6 +142,7 @@ def checkOverlap_Popcorn_MMTF14K(config: dict):
     popcornDF["id"] = popcornDF["id"].astype(int)
     popcornDF = popcornDF[["id"]]
     popcornDF.rename(columns={"id": "item_id"}, inplace=True)
+    popcornDF["item_id"] = popcornDF.item_id.astype(str)
     mmtfDF = mmtfDF[["item_id"]]
     # Merge the datasets based on 'item_id'
     print(f"- Merging the datasets based on 'item_id' to find overlapped items ...")

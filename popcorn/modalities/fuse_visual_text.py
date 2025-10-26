@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from popcorn.utils import serializeListColumn
+from popcorn.utils import converListColToStr
 from popcorn.datasets.poison_rag_plus.utils import SUPPORTED_LLMS
 from popcorn.datasets.mmtf14k.utils import SUPPORTED_VIS_VARIANTS
 from popcorn.datasets.mmtf14k.helper_visual import loadVisualFusedDF
@@ -47,7 +47,7 @@ def fuseTextualVisual_PoisonRag_MMTF14K(config: dict):
             poisonRagTextDF = loadPoisonRagPlus(config)
             if poisonRagTextDF is not None:
                 # Apply anti-truncation to text embeddings
-                poisonRagTextDF["text"] = serializeListColumn(poisonRagTextDF, "text")
+                poisonRagTextDF["text"] = converListColToStr(poisonRagTextDF, "text")
                 poisonRagTextDict[f"{llm}_{textAug}"] = poisonRagTextDF
             else:
                 print(f"- [Warn] Failed to load Textual data '{llm}_{textAug}'!")
@@ -117,7 +117,7 @@ def fuseTextualVisual_PoisonRag_Popcorn(config: dict):
             poisonRagTextDF = loadPoisonRagPlus(config)
             if poisonRagTextDF is not None:
                 # Apply anti-truncation to text embeddings
-                poisonRagTextDF["text"] = serializeListColumn(poisonRagTextDF, "text")
+                poisonRagTextDF["text"] = converListColToStr(poisonRagTextDF, "text")
                 poisonRagTextDict[f"{llm}_{textAug}"] = poisonRagTextDF
             else:
                 print(f"- [Warn] Failed to load Textual data '{llm}_{textAug}'!")

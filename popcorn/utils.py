@@ -110,7 +110,7 @@ def loadJsonFromFilePath(jsonPath: str):
         return None
 
 
-def serializeListColumn(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
+def converListColToStr(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
     """
     Serialize a list column in a pandas DataFrame into a string representation.
     This avoids truncation issues when saving to CSV by converting lists to comma-separated strings.
@@ -129,4 +129,26 @@ def serializeListColumn(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
     """
     return dataFrame[columnName].apply(
         lambda x: ", ".join(map(str, x)) if isinstance(x, list) else x
+    )
+
+
+def convertStrToListCol(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
+    """
+    Deserialize a string representation of a list in a pandas DataFrame back into a list.
+    This is useful for reading CSV files where lists were saved as comma-separated strings.
+
+    Parameters
+    ----------
+    dataFrame: pd.DataFrame
+        The input DataFrame containing the string column
+    columnName: str
+        The name of the column to deserialize
+
+    Returns
+    -------
+    pd.Series
+        A pandas Series containing the deserialized list column
+    """
+    return dataFrame[columnName].apply(
+        lambda x: [float(i) for i in x.split(",")] if isinstance(x, str) else x
     )

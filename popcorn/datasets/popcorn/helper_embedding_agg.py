@@ -232,5 +232,8 @@ def loadAggEmbeddings(aggEmbeddingUrlList: list) -> tuple:
             print(
                 f"- Loading aggregated features ({int(counter / len(aggEmbeddingUrlList) * 100)}%) ..."
             )
+    # Normalize item_id to string
+    dfAggEmbedsMax["item_id"] = dfAggEmbedsMax.item_id.astype(str)
+    dfAggEmbedsMean["item_id"] = dfAggEmbedsMean.item_id.astype(str)
     # Return
     return dfAggEmbedsMax, dfAggEmbedsMean
