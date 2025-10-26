@@ -215,14 +215,14 @@ def loadAggEmbeddings(aggEmbeddingUrlList: list) -> tuple:
         dfAggEmbedsMax = pd.concat(
             [
                 dfAggEmbedsMax,
-                pd.DataFrame([{"item_id": int(itemId), "embedding": aggFeatMax}]),
+                pd.DataFrame([{"item_id": int(itemId), "visual": aggFeatMax}]),
             ],
             ignore_index=True,
         )
         dfAggEmbedsMean = pd.concat(
             [
                 dfAggEmbedsMean,
-                pd.DataFrame([{"item_id": int(itemId), "embedding": aggFeatMean}]),
+                pd.DataFrame([{"item_id": int(itemId), "visual": aggFeatMean}]),
             ],
             ignore_index=True,
         )

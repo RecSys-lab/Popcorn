@@ -19,7 +19,7 @@ def loadPoisonRagPlus(config: dict) -> pd.DataFrame:
     Returns
     -------
     itemsTextDF: pd.DataFrame
-        The DataFrame containing item (movie) data and text embeddings.
+        The DataFrame containing item (movie) data and text embeddings (columns: item_id, text).
 
     Notes
     -----
