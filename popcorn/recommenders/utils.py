@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from cornac.data import ImageModality, FeatureModality
 
+SUPPORTED_MODALITIES = ["audio_mmtf", "visual_mmtf", "text_rag_plus", "visual_popcorn"]
 
 def getImageModality(df: pd.DataFrame, col: str) -> ImageModality:
     """

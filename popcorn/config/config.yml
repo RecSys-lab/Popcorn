@@ -120,6 +120,11 @@ pipelines:
 modalities:
   # Path to the output directory
   output_path: "E:/Datasets/Fused-Embeddings"
+  # The list of selected modalities to be used
+  # [Supported]: 'audio_mmtf' | 'visual_mmtf' | 'text_rag_plus' | 'visual_popcorn'
+  selected: ["audio_mmtf", "visual_mmtf", "text_rag_plus"]
+  # Save fused modalities? (if true, fused modalities will be saved to output_path)
+  save_fused: true
 # ------------------------- Experimental configurations ------------------------
 setup:
   # Seed for reproducibility

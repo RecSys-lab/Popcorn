@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from cornac.data import Dataset
 
 
 def trainTestSplit(ratingsDF: pd.DataFrame, config: dict):
@@ -69,3 +70,43 @@ def trainTestSplit(ratingsDF: pd.DataFrame, config: dict):
     )
     # Return the train and test DataFrames
     return trainDF, testDF
+
+
+def applyKeepList(trainDF: pd.DataFrame, testDF: pd.DataFrame, keepSet: set):
+    """
+    Applies the keepSet to the ratings DataFrame, filtering it to only include
+    the user-item interactions specified in the keepSet.
+
+    Parameters
+    ----------
+    trainDF: pd.DataFrame
+        The DataFrame containing user-item interaction (ratings) data for training.
+    testDF: pd.DataFrame
+        The DataFrame containing user-item interaction (ratings) data for testing.
+    keepSet: set
+        A set of tuples specifying the user-item pairs to keep.
+
+    Returns
+    -------
+    trainDF: pd.DataFrame
+        The filtered DataFrame containing only the interactions in the keepSet for training.
+    testDF: pd.DataFrame
+        The filtered DataFrame containing only the interactions in the keepSet for testing.
+    trainSet: cornac.data.Dataset
+        The Cornac Dataset object created from the filtered training DataFrame.
+    """
+    # Arguments check
+    if not keepSet or len(keepSet) == 0:
+        print("- [Warn] Empty keepSet provided! Returning original DataFrames ...")
+        return trainDF, testDF
+    if trainDF is None or testDF is None:
+        print("- [Error] trainDF or testDF is None! Exiting ...")
+        return
+    # Process
+    trainDF = trainDF[trainDF.item_id.astype(str).isin(keepSet)].reset_index(drop=True)
+    testDF = testDF[testDF.item_id.astype(str).isin(keepSet)].reset_index(drop=True)
+    trainSet = Dataset.from_uir(
+        trainDF[["user_id", "item_id", "rating"]].values.tolist()
+    )
+    # Return filtered DataFrames
+    return trainDF, testDF, trainSet
