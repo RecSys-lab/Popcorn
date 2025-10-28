@@ -123,8 +123,14 @@ modalities:
   # The list of selected modalities to be used
   # [Supported]: 'audio_mmtf' | 'visual_mmtf' | 'text_rag_plus' | 'visual_popcorn'
   selected: ["audio_mmtf", "visual_mmtf", "text_rag_plus"]
-  # Save fused modalities? (if true, fused modalities will be saved to output_path)
-  save_fused: true
+  # Methods for modality fusion
+  fusion_methods:
+    # List of fusion methods to be used
+    selected: ["concat", "cca", "pca"] # 'concat' | 'cca' | 'pca'
+    # CCA components (only for 'cca' fusion method)
+    cca_components: 40
+    # PCA variance to retain (only for 'pca' fusion method, between 0 and 1, e.g., 0.95 for 95%)
+    pca_variance: 0.95
 # ------------------------- Experimental configurations ------------------------
 setup:
   # Seed for reproducibility

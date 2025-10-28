@@ -42,7 +42,9 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Pipeline             | `shot_detector` / `from_embeddings` | `packet_size`         | the packets size (number of frames in each packet, between 1 and 50)        |
 | Modalities           | `output_path`                       | -                     | the root path to save fused datasets                                        |
 | Modalities           | `selected`                          | -                     | the list of selected modalities to be used                                  |
-| Modalities           | `save_fused`                        | -                     | save fused modalities? (if true, will be saved to output_path)              |
+| Modalities           | `fusion_methods`                    | `selected`            | the list of fusion methods to be used                                       |
+| Modalities           | `fusion_methods`                    | `cca_components`      | the CCA components (only for 'cca' fusion method)                           |
+| Modalities           | `fusion_methods`                    | `pca_variance`        | the PCA variance to retain (only for 'pca' fusion method, between 0 and 1)  |
 | Setup                | `seed`                              | -                     | the seed for reproducibility purposes                                       |
 | Setup                | `k_core`                            | -                     | the number of cores for k-core filtering                                    |
 | Setup                | `split`                             | `mode`                | the train/test splitting mode (supported: `random`, `temporal`, `per_user`) |

@@ -1,16 +1,22 @@
+import os
 from popcorn.datasets.utils import applyKcore
 from popcorn.utils import convertStrToListCol
 from popcorn.modalities.fuse_all import createMultimodalDF
-from popcorn.recommenders.utils import SUPPORTED_MODALITIES
 from popcorn.datasets.movielens.loader import loadMovieLens
 from popcorn.datasets.mmtf14k.helper_audio import loadAudioFusedDF
 from popcorn.datasets.mmtf14k.helper_visual import loadVisualFusedDF
 from popcorn.datasets.poison_rag_plus.loader import loadPoisonRagPlus
-from popcorn.recommenders.utils import getImageModality, getFeatureModality
 from popcorn.datasets.movielens.process import applyKeepList, trainTestSplit
+from popcorn.recommenders.utils import SUPPORTED_MODALITIES, SUPPORTED_FUSION_METHODS
 from popcorn.datasets.popcorn.helper_embedding_agg import (
     loadAggEmbeddings,
     generateAllAggEmbeddingUrls,
+)
+from popcorn.recommenders.utils import (
+    applyPCAModality,
+    applyCCAModality,
+    getImageModality,
+    getFeatureModality,
 )
 
 
@@ -22,7 +28,7 @@ def assembleModality(config: dict):
     ----------
     config: dict
         The configuration dictionary
-    
+
     Returns
     -------
     trainDF: pd.DataFrame
@@ -38,6 +44,7 @@ def assembleModality(config: dict):
     assemblyDict = {}
     textDF, audioDF, visualDF = None, None, None
     selectedModalities = config["modalities"]["selected"]
+    fusionVars = config["modalities"]["fusion_methods"]["selected"]
     # Arguments check
     if not selectedModalities or len(selectedModalities) == 0:
         print("- [Error] No modalities selected for assembly! Exiting ...")
@@ -108,6 +115,28 @@ def assembleModality(config: dict):
         "all_image": getImageModality(fusedDF, "all"),
         "all_feature": getFeatureModality(fusedDF, "all"),
     }
-    # Step#8: 
+    # Step#8: Apply fusion methods
+    for fusionMethod in fusionVars:
+        if fusionMethod not in SUPPORTED_FUSION_METHODS:
+            print(
+                f"- [Warn] Fusion method '{fusionMethod}' is not supported! Ignoring ..."
+            )
+            continue
+        if fusionMethod == "concat":
+            continue
+        if fusionMethod == "pca":
+            # Apply PCA
+            pcaDF, name = applyPCAModality(fusedDF, config)
+            assemblyDict[name] = {
+                "all_image": getImageModality(pcaDF, name),
+                "all_feature": getFeatureModality(pcaDF, name),
+            }
+        elif fusionMethod == "cca":
+            # Apply CCA
+            ccaDF, name = applyCCAModality(fusedDF, config)
+            assemblyDict[name] = {
+                "all_image": getImageModality(ccaDF, name),
+                "all_feature": getFeatureModality(ccaDF, name),
+            }
     # Return
     return trainDF, testDF, trainSet, modalitiesDict
