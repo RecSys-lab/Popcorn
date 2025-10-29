@@ -94,7 +94,9 @@ def calculateDiversity(givenList: list) -> float:
         # Find all unique pairs
         pairs = itertools.combinations(givenList, 2)
         # Calculate dissimilarity for each pair
-        dissimilarity = [1 - len(set(a) & set(b)) / len(set(a) | set(b)) for a, b in pairs]
+        dissimilarity = [
+            1 - len(set(a) & set(b)) / len(set(a) | set(b)) for a, b in pairs
+        ]
         # Return average dissimilarity
         diversity = float(np.mean(dissimilarity))
         # Handle empty dissimilarity case
@@ -110,3 +112,37 @@ def calculateDiversity(givenList: list) -> float:
     except Exception as e:
         print(f"- [Error] Exception occurred while calculating diversity: {e}")
         return 0.0
+
+
+def calculateGini(values: list) -> float:
+    """
+    Calculate the Gini coefficient for a list of values.
+
+    Parameters
+    ----------
+    values: list of float
+        A list of numerical values representing a distribution.
+
+    Returns
+    -------
+    gini: float
+        The Gini coefficient, which ranges from 0 (perfect equality) to 1 (perfect inequality).
+    """
+    # Variables
+    gini = 0.0
+    # Check input arguments
+    if not values or len(values) == 0:
+        print("- [Warn] The input list is empty. Returning Gini coefficient as 0.0 ...")
+        return gini
+    # Sort values
+    sortedValues = sorted(values)
+    valueLength = len(sortedValues)
+    valueSum = sum(sortedValues)
+    # Handle case where all values are zero
+    if valueSum == 0:
+        print("- [Warn] All values are zero. Returning Gini coefficient as 0.0 ...")
+        return 0.0
+    # Calculate Gini coefficient
+    cum = sum((i + 1) * val for i, val in enumerate(sortedValues))
+    gini = (2 * cum) / (valueLength * valueSum) - (valueLength + 1) / valueLength
+    return gini

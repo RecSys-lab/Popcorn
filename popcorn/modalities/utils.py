@@ -2,7 +2,31 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.cross_decomposition import CCA
-from popcorn.core.utils import parseEmbedding
+
+
+def parseEmbedding(givenEmbedding):
+    """
+    Parses the embedding string or list into a numpy array.
+    [Note] It can work with textual of visual embeddings.
+
+    Parameters
+    ----------
+    givenEmbedding: str or list
+        Given embedding in the form of a string or list.
+
+    Returns
+    -------
+    np.ndarray
+        Parsed embedding as a numpy array.
+    """
+    # Check the type of the given embedding
+    if isinstance(givenEmbedding, str):
+        arr = [float(x) for x in givenEmbedding.strip().split()]
+        return np.array(arr, dtype=np.float32)
+    elif isinstance(givenEmbedding, (list, np.ndarray)):
+        return np.array(givenEmbedding, dtype=np.float32)
+    else:
+        return None
 
 
 def applyPCA(
@@ -59,9 +83,7 @@ def applyPCA(
     return fusedDF
 
 
-def applyCCA(
-    textualDF: pd.DataFrame, visualDF: pd.DataFrame, componentCount: int = 64
-):
+def applyCCA(textualDF: pd.DataFrame, visualDF: pd.DataFrame, componentCount: int = 64):
     """
     Uses Canonical Correlation Analysis (CCA) to fuse textual and visual embeddings (both dataFrames).
     The shared latent space (the correlated components) are used for fusion.
