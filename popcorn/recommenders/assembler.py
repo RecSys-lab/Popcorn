@@ -84,10 +84,11 @@ def assembleModality(config: dict):
     elif "visual_popcorn" in selectedModalities:
         aggEmbeddingUrlDict = generateAllAggEmbeddingUrls(config)
         if aggEmbeddingUrlDict:
-            # Make a flat list of all URLs
-            aggEmbeddingUrlList = [
-                url for sublist in aggEmbeddingUrlDict.values() for url in sublist
-            ]
+            # Take all generated addresses
+            aggEmbeddingUrlList = []
+            for embedding in aggEmbeddingUrlDict:
+                for cnn in aggEmbeddingUrlDict[embedding]:
+                    aggEmbeddingUrlList.extend(aggEmbeddingUrlDict[embedding][cnn])
             # Load aggregated features into a DataFrame
             dfAggEmbedsMax, dfAggEmbedsMean = loadAggEmbeddings(aggEmbeddingUrlList)
             # Consider the 'Max' variant for assembly

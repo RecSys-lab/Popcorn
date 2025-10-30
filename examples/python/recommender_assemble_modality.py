@@ -14,7 +14,19 @@ def main():
     if not configs:
         print("Error reading the configuration file!")
         return
-    # Assemble modalities
+    # Sample#1: Assemble modalities - MMTF (audio+video)
+    print("\n----------- MMTF (audio+video) + Poison-RAG-Plus (text) -----------")
+    configs["modalities"]['selected'] = ["audio_mmtf", "visual_mmtf", "text_rag_plus"]
+    trainDF, testDF, trainSet, modalitiesDict = assembleModality(configs)
+    if trainDF is None or testDF is None or trainSet is None:
+        print("- Error in assembling modalities! Exiting ...")
+        return
+    print("\n✔ Modalities assembled successfully!")
+    print(f"- Training set size: {trainDF.shape}, Testing set size: {testDF.shape}")
+    print(f"- Available modalities: {list(modalitiesDict.keys())}")
+    # Sample#2: Assemble modalities - Popcorn (visual) + MMTF (audio) + Poison-RAG-Plus (text)
+    print("\n----------- Popcorn (visual) + MMTF (audio) + Poison-RAG-Plus (text) -----------")
+    configs["modalities"]['selected'] = ["audio_mmtf", "visual_popcorn", "text_rag_plus"]
     trainDF, testDF, trainSet, modalitiesDict = assembleModality(configs)
     if trainDF is None or testDF is None or trainSet is None:
         print("- Error in assembling modalities! Exiting ...")
