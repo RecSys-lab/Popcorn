@@ -145,6 +145,10 @@ setup:
     mode: "random" # 'random' | 'temporal' | 'per_user'
     # Ratio of test data
     test_ratio: 0.2
+  # Is it a fast prototype run?
+  is_fast_prototype: true
+  # Number of epochs for training
+  n_epochs: 10
 recommender:
   topN_k: 10
   cold_threshold: 5 # LE 5 ratings is cold

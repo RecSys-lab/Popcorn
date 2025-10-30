@@ -49,3 +49,5 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Setup                | `k_core`                            | -                     | the number of cores for k-core filtering                                    |
 | Setup                | `split`                             | `mode`                | the train/test splitting mode (supported: `random`, `temporal`, `per_user`) |
 | Setup                | `split`                             | `test_ratio`          | the test ratio (between 0.1 to 1.0, otherwise is set to 0.2)                |
+| Setup                | `is_fast_prototype`                 | -                     | the flag to indicate a fast prototype run (True/False)                      |
+| Setup                | `n_epochs`                          | -                     | the number of epochs for training                                           |
