@@ -146,3 +146,27 @@ def calculateGini(values: list) -> float:
     cum = sum((i + 1) * val for i, val in enumerate(sortedValues))
     gini = (2 * cum) / (valueLength * valueSum) - (valueLength + 1) / valueLength
     return gini
+
+
+def modelSelected(tag: str, model: str) -> bool:
+    """
+    Checks if the given tag corresponds to a model selected in the configuration.
+
+    Parameters
+    ----------
+    tag: str
+        The tag representing the model.
+    model: str
+        The model selected in the configuration.
+
+    Returns
+    -------
+    bool
+        True if the tag corresponds to the selected model, False otherwise.
+    """
+    return (
+        (model == "cf" and tag in {"MF", "VAECF", "TopPop"})
+        or (model == "vbpr" and tag == "VBPR")
+        or (model == "vmf" and tag == "VMF")
+        or (model == "amr" and tag == "AMR")
+    )

@@ -3,6 +3,7 @@ import pandas as pd
 from cornac.data import Dataset
 from sklearn.model_selection import train_test_split
 from popcorn.optimizers.parameters import getParametersGrid
+from popcorn.optimizers.hpo import applyHyperparameterOptimization
 
 
 def gridSearch(
@@ -34,6 +35,7 @@ def gridSearch(
     finalModels = {}
     seed = config["setup"]["seed"]
     nEpochs = config["setup"]['n_epochs']
+    modelChoice = config["setup"]["model_choice"]
     testRatio = config["setup"]["split"]["test_ratio"]
     isFastPrtye = config["setup"]['is_fast_prototype']
     # Check arguments
@@ -61,8 +63,19 @@ def gridSearch(
     )
     allItemIds, itemIdMap = trainFitSet.item_ids, trainFitSet.iid_map
     print(f"- Training and validation sets prepared!")
+    # Keep them in a dictionary
+    dataDict = {
+        "val_grp": valGrp,
+        "train_seen": trainSeen,
+        "iid_map": itemIdMap,
+        "all_iids": allItemIds,
+        "train_fit_set": trainFitSet,
+        "config": config,
+    }
     # Get parameter grid
     if nEpochs is None or not isinstance(nEpochs, int) or nEpochs <= 0 or nEpochs > 100:
         print(f"- [Warning] Invalid number of epochs {nEpochs}. Using default of 10 epochs.")
         nEpochs = 10
     parametersGrid = getParametersGrid(isFastPrtye, nEpochs)
+    # Apply HPO for the models
+    applyHyperparameterOptimization(modelChoice, parametersGrid, dataDict, modalitiesDict)
