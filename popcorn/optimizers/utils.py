@@ -1,3 +1,4 @@
+import copy
 import itertools
 import numpy as np
 
@@ -170,3 +171,38 @@ def modelSelected(tag: str, model: str) -> bool:
         or (model == "vmf" and tag == "VMF")
         or (model == "amr" and tag == "AMR")
     )
+
+
+def fitModalities(model: object, trainSet: object, imgModality=None, featModality=None):
+    """
+    Fits the given model with the specified item modalities.
+
+    Parameters
+    ----------
+    model: object
+        The model to be fitted.
+    trainSet: object
+        The training dataset containing user-item interactions.
+    imgModality: np.ndarray, optional
+        The item image modality to be used in the dataset.
+    featModality: np.ndarray, optional
+        The item feature modality to be used in the dataset.
+    """
+    # Check input arguments
+    if not trainSet:
+        print(
+            "- [Warn] The training set is empty. Returning without fitting the model."
+        )
+        return
+    if model is None:
+        print("- [Warn] The model is None. Returning without fitting the model.")
+        return
+    # Get a copy of the training set to avoid modifying the original
+    tempSet = copy.deepcopy(trainSet)
+    # Set modalities if provided
+    if imgModality is not None:
+        tempSet.item_image = imgModality
+    if featModality is not None:
+        tempSet.item_feature = featModality
+    # Fit the model with the modified training set
+    model.fit(tempSet)

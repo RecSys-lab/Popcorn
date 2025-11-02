@@ -147,6 +147,8 @@ setup:
     test_ratio: 0.2
   # Is it a fast prototype run?
   is_fast_prototype: true
+  # Use GPU for training (if available)
+  use_gpu: true
   # Number of epochs for training
   n_epochs: 10
 recommender:
