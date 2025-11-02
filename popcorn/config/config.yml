@@ -69,7 +69,7 @@ pipelines:
     # Output file format
     frame_format: "jpg"
     # Frequency of frames extraction (picking 'n' frames every second, between 1 and 25)
-    frequency: 1    
+    frequency: 1
     # Frame width (with automatic aspect ratio, should match the CNN model input size, between 1 and 1920)
     frame_width: 420
   # Movie frames visual embedding extractor pipeline
@@ -151,7 +151,9 @@ setup:
   use_gpu: true
   # Number of epochs for training
   n_epochs: 10
+# ------------------------- Recommender configurations ------------------------
 recommender:
-  topN_k: 10
-  cold_threshold: 5 # LE 5 ratings is cold
-
+  # Number of top-N recommendations
+  top_n: 10
+  # Minimum number of ratings to consider a user/item as warm
+  cold_threshold: 5
