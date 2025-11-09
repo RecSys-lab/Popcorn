@@ -1,6 +1,10 @@
 import math
+import time
+import inspect
 import numpy as np
 from cornac.data import Dataset
+from concurrent.futures import ThreadPoolExecutor
+from popcorn.optimizers.utils import fitModalities
 
 
 def gridMetric(
@@ -81,5 +85,76 @@ def gridMetric(
         return metric
 
 
-def grid():
-    print(f"- Preparing GridSearch procedure ...")
+def grid(
+    dataDict: dict, cornacModel, name: str, scenario: str, paramGrid: dict, *fit_args
+) -> dict:
+    """
+    Performs hyperparameter optimization (HPO) using grid search for a given model class.
+
+    Parameters
+    ----------
+    dataDict: dict
+        A dictionary containing the data to be used for hyperparameter optimization.
+    cornacModel: class
+        The Cornac model class for which to perform hyperparameter optimization.
+    name: str
+        The name of the model being optimized.
+    scenario: str
+        The scenario or modality for which the model is being optimized.
+    paramGrid: dict
+        A dictionary containing the hyperparameter grid to search over.
+    fit_args: tuple
+        Additional arguments to be passed to the model fitting function.
+
+    Returns
+    -------
+    """
+    # Variables
+    start = time.time()
+    config = dataDict["config"]
+    valGrp = dataDict["val_grp"]
+    itemIdMap = dataDict["iid_map"]
+    allItemIds = dataDict["all_iids"]
+    trainSeen = dataDict["train_seen"]
+    trainFitSet = dataDict["train_fit_set"]
+    # Config Variables
+    seed = config["setup"]["seed"]
+    useGPU = config["setup"]["use_gpu"]
+    parallelHPO = config["setup"]["use_parallel"]
+    print(
+        f"- Starting GridSearch procedure (seed: {seed}, useGPU: {useGPU}, parallelHPO: {parallelHPO})..."
+    )
+
+    # Evaluation function
+    def gridEvalCalculator(params: dict):
+        # Make a copy of parameters
+        paramCopy = params.copy()
+        # Fit with modalities if needed
+        if useGPU and "use_gpu" in inspect.signature(cornacModel).parameters:
+            paramCopy["use_gpu"] = True
+        # Fit model
+        model = cornacModel(seed=seed, **paramCopy)
+        # fitModalities expects (model, baseDataset, imgModality=None, featModality=None)
+        fitModalities(model, trainFitSet, *fit_args)
+        # Compute metric
+        smetric = gridMetric(
+            model, valGrp, trainFitSet, trainSeen, itemIdMap, allItemIds, useGPU
+        )
+        print(f"-- Fitting '{paramCopy}' to get {smetric:.4f} ...")
+        return smetric, model, paramCopy
+
+    # Perform grid search
+    print(
+        f"-- HPO '{name}' in scenario '{scenario}' with {len(paramGrid)} param sets..."
+    )
+    if parallelHPO and len(paramGrid) > 1:
+        with ThreadPoolExecutor(max_workers=min(8, len(paramGrid))) as ex:
+            results = list(ex.map(gridEvalCalculator, paramGrid))
+    else:
+        results = [gridEvalCalculator(p) for p in paramGrid]
+    # Get best result
+    best = max(results, key=lambda x: x[0])
+    print(
+        f"-- Found the best case: '{name}' in '{scenario}', item '{best[2]}' ({best[0]:.4f}), done in {time.time()-start:.1f}s."
+    )
+    return best[1], best[2]

@@ -173,7 +173,9 @@ def modelSelected(tag: str, model: str) -> bool:
     )
 
 
-def fitModalities(model: object, trainSet: object, imgModality=None, featModality=None):
+def fitModalities(
+    model: object, baseDataset: object, imgModality=None, featModality=None
+):
     """
     Fits the given model with the specified item modalities.
 
@@ -181,7 +183,7 @@ def fitModalities(model: object, trainSet: object, imgModality=None, featModalit
     ----------
     model: object
         The model to be fitted.
-    trainSet: object
+    baseDataset: object
         The training dataset containing user-item interactions.
     imgModality: np.ndarray, optional
         The item image modality to be used in the dataset.
@@ -189,7 +191,7 @@ def fitModalities(model: object, trainSet: object, imgModality=None, featModalit
         The item feature modality to be used in the dataset.
     """
     # Check input arguments
-    if not trainSet:
+    if not baseDataset:
         print(
             "- [Warn] The training set is empty. Returning without fitting the model."
         )
@@ -198,7 +200,7 @@ def fitModalities(model: object, trainSet: object, imgModality=None, featModalit
         print("- [Warn] The model is None. Returning without fitting the model.")
         return
     # Get a copy of the training set to avoid modifying the original
-    tempSet = copy.deepcopy(trainSet)
+    tempSet = copy.deepcopy(baseDataset)
     # Set modalities if provided
     if imgModality is not None:
         tempSet.item_image = imgModality

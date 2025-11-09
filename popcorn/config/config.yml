@@ -145,10 +145,12 @@ setup:
     mode: "random" # 'random' | 'temporal' | 'per_user'
     # Ratio of test data
     test_ratio: 0.2
-  # Is it a fast prototype run?
+  # Is it a fast prototype run? Run only in one epoch with a small subset of data
   is_fast_prototype: true
   # Use GPU for training (if available)
-  use_gpu: true
+  use_gpu: false
+  # Use parallel processing (if available)
+  use_parallel: true
   # Number of epochs for training
   n_epochs: 10
 # ------------------------- Recommender configurations ------------------------

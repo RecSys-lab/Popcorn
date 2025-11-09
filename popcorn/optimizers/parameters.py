@@ -15,7 +15,7 @@ def getParametersGrid(isFastPrtye: bool = True, nEpochs: int = 10):
         A dictionary containing the parameter grid for each optimizer.
     """
     print(
-        f"- Preparing parameter grid for optimizers ('prototype=' {isFastPrtye}', epochs='{nEpochs}) ..."
+        f"- Preparing parameter grid for optimizers (prototype='{isFastPrtye}', epochs={nEpochs}) ..."
     )
     # Define parameter grids
     GR_MF = [
