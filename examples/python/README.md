@@ -30,4 +30,7 @@
 | [pipeline_shot_detect_frame](/examples/python/pipeline_shot_detect_frame.py)                 | Pipeline    | Detecting shots in movies (from frames)              |
 | [pipeline_shot_detect_embedding](/examples/python/pipeline_shot_detect_embedding.py)         | Pipeline    | Detecting shots in movies (from embeddings)          |
 | [recommender_assemble_modality](/examples/python/recommender_assemble_modality.py)           | Recommender | Assembling modalities for recommender systems        |
-| [recommender_get_grid](/examples/python/recommender_get_grid.py)                             | Recommender | Hyperparameter optimization with grid search         |
+| [recommender_get_grid_cf](/examples/python/recommender_get_grid_cf.py)                       | Recommender | Hyperparameter optimization with grid search (CF)    |
+| [recommender_get_grid_vbpr](/examples/python/recommender_get_grid_vbpr.py)                   | Recommender | Hyperparameter optimization with grid search (VBPR)  |
+| [recommender_get_grid_vmf](/examples/python/recommender_get_grid_vmf.py)                     | Recommender | Hyperparameter optimization with grid search (VMF)   |
+| [recommender_get_grid_amr](/examples/python/recommender_get_grid_amr.py)                     | Recommender | Hyperparameter optimization with grid search (AMR)   |

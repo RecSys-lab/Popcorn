@@ -41,7 +41,7 @@ def assembleModality(config: dict):
         A dictionary containing the individual modality DataFrames.
     """
     # Variables
-    assemblyDict = {}
+    modalitiesDict = {}
     textDF, audioDF, visualDF = None, None, None
     selectedModalities = config["modalities"]["selected"]
     fusionVars = config["modalities"]["fusion_methods"]["selected"]
@@ -96,12 +96,12 @@ def assembleModality(config: dict):
             # Apply anti-truncation to visual embeddings
             visualDF["visual"] = convertStrToListCol(visualDF, "visual")
     # Step#5: Create a modality dictionary and fuse them
-    modalitiesDict = {
+    multimodalDict = {
         "text": textDF,
         "audio": audioDF,
         "visual": visualDF,
     }
-    fusedDF, keep = createMultimodalDF(modalitiesDict)
+    fusedDF, keep = createMultimodalDF(multimodalDict)
     if fusedDF is None:
         print("- [Error] Failed to create fused DataFrame! Exiting ...")
         return
@@ -109,7 +109,7 @@ def assembleModality(config: dict):
     trainDF, testDF, trainSet = applyKeepList(trainDF, testDF, keep)
     # Step#7: Prepare the assembled dictionary
     print("\n- Assembling (concatenating) modalities ...")
-    assemblyDict["concat"] = {
+    modalitiesDict["concat"] = {
         "audio_image": getImageModality(fusedDF, "audio"),
         "visual_image": getImageModality(fusedDF, "visual"),
         "text_image": getImageModality(fusedDF, "text"),
@@ -128,14 +128,14 @@ def assembleModality(config: dict):
         if fusionMethod == "pca":
             # Apply PCA
             pcaDF, name = applyPCAModality(fusedDF, config)
-            assemblyDict[name] = {
+            modalitiesDict[name] = {
                 "all_image": getImageModality(pcaDF, name),
                 "all_feature": getFeatureModality(pcaDF, name),
             }
         elif fusionMethod == "cca":
             # Apply CCA
             ccaDF, name = applyCCAModality(fusedDF, config)
-            assemblyDict[name] = {
+            modalitiesDict[name] = {
                 "all_image": getImageModality(ccaDF, name),
                 "all_feature": getFeatureModality(ccaDF, name),
             }
