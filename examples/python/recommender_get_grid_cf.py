@@ -17,7 +17,7 @@ def main():
         return
     # Assemble modalities - MMTF (audio+video)
     print("\n----------- MMTF (audio+video) + Poison-RAG-Plus (text) -----------")
-    configs["datasets"]["unimodal"]["movielens"]["version"] = "100k"  # Use MovieLens 1M
+    configs["datasets"]["unimodal"]["movielens"]["version"] = "1m"  # Use MovieLens 1M
     configs["datasets"]["multimodal"]["mmtf"][
         "audio_variant"
     ] = "ivec"  # Use i-vector audio
