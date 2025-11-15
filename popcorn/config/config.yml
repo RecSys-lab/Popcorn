@@ -156,6 +156,6 @@ setup:
 # ------------------------- Recommender configurations ------------------------
 recommender:
   # Number of top-N recommendations
-  top_n: 10
+  top_n: 10 # 5 | 10 | 15 | 20 | 25 | 30 | 50
   # Minimum number of ratings to consider a user/item as warm
   cold_threshold: 5

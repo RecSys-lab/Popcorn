@@ -9,6 +9,8 @@ SUPPORTED_MODALITIES = ["audio_mmtf", "visual_mmtf", "text_rag_plus", "visual_po
 
 SUPPORTED_FUSION_METHODS = ["concat", "cca", "pca"]
 
+SUPPORTED_TOP_N = [5, 10, 15, 20, 25, 30, 50]
+
 
 def getImageModality(df: pd.DataFrame, col: str) -> ImageModality:
     """

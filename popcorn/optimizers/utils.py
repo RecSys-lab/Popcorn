@@ -1,3 +1,4 @@
+import math
 import copy
 import itertools
 import numpy as np
@@ -113,6 +114,88 @@ def calculateDiversity(givenList: list) -> float:
     except Exception as e:
         print(f"- [Error] Exception occurred while calculating diversity: {e}")
         return 0.0
+
+
+def calculateDcg(recList: list, gtList: list) -> float:
+    """
+    Calculate the Discounted Cumulative Gain (DCG) for a list of relevance scores.
+
+    Parameters
+    ----------
+    recList: list
+        A list of recommended item IDs.
+    gtList: list
+        A list of ground truth item IDs.
+
+    Returns
+    -------
+    dcg: float
+        The DCG value, which measures the usefulness of a recommendation list.
+    """
+    # Value
+    dcg = 0.0
+    # Check input arguments
+    if not recList or len(recList) == 0:
+        print("- [Warn] The input recList is empty. Returning DCG as 0.0 ...")
+        return dcg
+    if not gtList or len(gtList) == 0:
+        print("- [Warn] The input gtList is empty. Returning DCG as 0.0 ...")
+        return dcg
+    # Calculate DCG
+    dcg = sum(1 / math.log2(rnk + 2) for rnk, it in enumerate(recList) if it in gtList)
+    return dcg
+
+
+def calculateIdcg(gtList: list) -> float:
+    """
+    Calculate the Ideal Discounted Cumulative Gain (IDCG) for a list of ground truth item IDs.
+
+    Parameters
+    ----------
+    gtList: list
+        A list of ground truth item IDs.
+
+    Returns
+    -------
+    idcg: float
+        The IDCG value, which measures the maximum possible DCG for the given ground truth.
+    """
+    # Value
+    idcg = 0.0
+    # Check input arguments
+    if not gtList or len(gtList) == 0:
+        print("- [Warn] The input gtList is empty. Returning IDCG as 0.0 ...")
+        return idcg
+    # Calculate IDCG
+    idcg = sum(1 / math.log2(rnk + 2) for rnk, it in enumerate(gtList))
+    return idcg
+
+
+def calculateNdcg(dcg: float, idcg: float) -> float:
+    """
+    Calculate the Normalized Discounted Cumulative Gain (NDCG).
+
+    Parameters
+    ----------
+    dcg: float
+        The Discounted Cumulative Gain value.
+    idcg: float
+        The Ideal Discounted Cumulative Gain value.
+
+    Returns
+    -------
+    ndcg: float
+        The NDCG value, which normalizes DCG by IDCG.
+    """
+    # Value
+    ndcg = 0.0
+    # Check input arguments
+    if idcg == 0:
+        print("- [Warn] IDCG is zero. Returning NDCG as 0.0 ...")
+        return ndcg
+    # Calculate NDCG
+    ndcg = dcg / idcg
+    return ndcg
 
 
 def calculateGini(values: list) -> float:
