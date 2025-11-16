@@ -2,6 +2,7 @@
 
 from popcorn.utils import readConfigs
 from popcorn.optimizers.grid_search import gridSearch
+from popcorn.recommenders.reclist import generateLists
 from popcorn.recommenders.assembler import assembleModality
 
 
@@ -21,7 +22,7 @@ def main():
     configs["datasets"]["multimodal"]["mmtf"][
         "audio_variant"
     ] = "ivec"  # Use i-vector audio
-    configs["modalities"]["fusion_methods"]["selected"] = ["concat"]
+    configs["modalities"]["fusion_methods"]["selected"] = []
     configs["modalities"]["selected"] = ["audio_mmtf", "visual_mmtf", "text_rag_plus"]
     trainDF, testDF, trainSet, modalitiesDict, genreDict = assembleModality(configs)
     if trainDF is None or testDF is None or trainSet is None:
@@ -32,7 +33,7 @@ def main():
     print(f"- Available modalities: {list(modalitiesDict.keys())}")
     # Apply grid search to find the best model configurations
     configs["setup"]["use_gpu"] = False  # Disable GPU for grid search
-    configs["setup"]["model_choice"] = "vmf"  # Model choice for grid search
+    configs["setup"]["model_choice"] = "cf"  # Model choice for grid search
     configs["setup"][
         "use_parallel"
     ] = True  # Enable parallel processing for grid search
@@ -42,6 +43,8 @@ def main():
     finalModels = gridSearch(configs, trainDF, trainSet, modalitiesDict)
     print("\n✔ Grid search completed successfully!")
     print(f"- Final models after HPO: {list(finalModels.keys())}")
+    # Generate recommendation lists
+    generateLists(configs, trainDF, trainSet, testDF, genreDict, finalModels)
     # Stop
     print("\nStopping 'Popcorn'!")
 

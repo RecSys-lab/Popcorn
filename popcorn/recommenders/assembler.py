@@ -3,6 +3,7 @@ from popcorn.datasets.utils import applyKcore
 from popcorn.utils import convertStrToListCol
 from popcorn.modalities.fuse_all import createMultimodalDF
 from popcorn.datasets.movielens.loader import loadMovieLens
+from popcorn.datasets.movielens.helper_genres import getGenreDict
 from popcorn.datasets.mmtf14k.helper_audio import loadAudioFusedDF
 from popcorn.datasets.mmtf14k.helper_visual import loadVisualFusedDF
 from popcorn.datasets.poison_rag_plus.loader import loadPoisonRagPlus
@@ -39,6 +40,8 @@ def assembleModality(config: dict):
         The Cornac Dataset object created from the training DataFrame.
     modalitiesDict: dict
         A dictionary containing the individual modality DataFrames.
+    genreDict: dict
+        A dictionary mapping item IDs to their genres.
     """
     # Variables
     modalitiesDict = {}
@@ -64,6 +67,9 @@ def assembleModality(config: dict):
     if ratingsDF is None or itemsDF is None or usersDF is None:
         print("- [Error] Error in loading the MovieLens dataset! Exiting ...")
         return
+    # Also load genres
+    genreDict = getGenreDict(itemsDF, config, saveOutput=True)
+    print(f"- Genre dictionary loaded: \n{dict(list(genreDict.items())[:3])}")
     # Step#2: Apply k-core filtering (if specified in config)
     K_CORE = config["setup"]["k_core"]
     if K_CORE > 0:
@@ -140,4 +146,4 @@ def assembleModality(config: dict):
                 "all_feature": getFeatureModality(ccaDF, name),
             }
     # Return
-    return trainDF, testDF, trainSet, modalitiesDict
+    return trainDF, testDF, trainSet, modalitiesDict, genreDict

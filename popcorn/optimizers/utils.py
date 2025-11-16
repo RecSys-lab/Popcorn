@@ -224,7 +224,6 @@ def calculateGini(values: list) -> float:
     valueSum = sum(sortedValues)
     # Handle case where all values are zero
     if valueSum == 0:
-        print("- [Warn] All values are zero. Returning Gini coefficient as 0.0 ...")
         return 0.0
     # Calculate Gini coefficient
     cum = sum((i + 1) * val for i, val in enumerate(sortedValues))

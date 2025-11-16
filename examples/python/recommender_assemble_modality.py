@@ -17,7 +17,7 @@ def main():
     # Sample#1: Assemble modalities - MMTF (audio+video)
     print("\n----------- MMTF (audio+video) + Poison-RAG-Plus (text) -----------")
     configs["modalities"]['selected'] = ["audio_mmtf", "visual_mmtf", "text_rag_plus"]
-    trainDF, testDF, trainSet, modalitiesDict = assembleModality(configs)
+    trainDF, testDF, trainSet, modalitiesDict, genreDict = assembleModality(configs)
     if trainDF is None or testDF is None or trainSet is None:
         print("- Error in assembling modalities! Exiting ...")
         return

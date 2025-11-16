@@ -220,16 +220,21 @@ def generateLists(
     outputSavePath = (
         os.path.join(ROOT_PATH, "outputs") if OUTPUT_PATH == "" else OUTPUT_PATH
     )
+    if not os.path.exists(outputSavePath):
+        os.mkdir(outputSavePath)
     reclistSavePath = os.path.join(outputSavePath, f"reclist_{suffix}.csv")
-    metricsSavePath = os.path.join(outputSavePath, f"metrics_{suffix}.csv")
     recs.to_csv(reclistSavePath, index=False)
-    print(f"- Recommendation lists saved have been saved in '{reclistSavePath}'! Samples:")
+    print(
+        f"- Recommendation lists saved have been saved in '{reclistSavePath}'! Samples:"
+    )
     print(recs.head(3))
-    # # Calculate average metrics
-    # metric_rows = calculateMeanRecMetrics(recs)
-    # agg = pd.DataFrame(metric_rows)
-    # agg.to_csv(aggmetrics_save_path, index=False)
-    # print(f"✔ metrics saved → {aggmetrics_save_path}")
-    # pd.options.display.float_format = lambda x: f"{x:8.3f}"
-    # print("\n═════ FINAL METRICS ═════")
-    # print(agg.sort_values(["model", "scenario"]).to_string(index=False))
+    # Calculate and save metrics
+    metricsSavePath = os.path.join(outputSavePath, f"metrics_{suffix}.csv")
+    metricRows = calculateMeanRecMetrics(recs)
+    aggMetrics = pd.DataFrame(metricRows)
+    aggMetrics.to_csv(metricsSavePath, index=False)
+    print(
+        f"- Recommendation lists saved have been saved in '{metricsSavePath}'! Samples:"
+    )
+    pd.options.display.float_format = lambda x: f"{x:8.3f}"
+    print(aggMetrics.sort_values(["model", "scenario"]).to_string(index=False))
