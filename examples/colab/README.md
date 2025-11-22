@@ -8,6 +8,7 @@
 | [load_movielens_movies](/examples/colab/load_movielens_movies.ipynb)                           | Data   | Working around with MovieLens movies                 |
 | [load_movielens_genres](/examples/colab/load_movielens_genres.ipynb)                           | Data   | Working around with MovieLens genres                 |
 | [load_movielens_users](/examples/colab/load_movielens_users.ipynb)                             | Data   | Working around with MovieLens users and interactions |
+| [load_poison_rag_plus](/examples/colab/load_poison_rag_plus.ipynb)                             | Data   | Loading Poison-RAG-Plus data into Pandas DataFrame   |
 | [load_popcorn_dataset_meta](/examples/colab/load_popcorn_dataset_meta.ipynb)                   | Data   | Working around with Popcorn dataset metadata         |
 | [load_popcorn_dataset_embedding](/examples/colab/load_popcorn_dataset_embedding.ipynb)         | Data   | Working around with Popcorn embeddings               |
 | [load_popcorn_dataset_embedding_agg](/examples/colab/load_popcorn_dataset_embedding_agg.ipynb) | Data   | Working around with Popcorn aggregated embeddings    |
