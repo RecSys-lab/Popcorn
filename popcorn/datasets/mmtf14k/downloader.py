@@ -1,7 +1,7 @@
 import os
 import zipfile
 import requests
-from popcorn.datasets.mmtf14k.utils import BASE_URL
+from popcorn.datasets.mmtf14k.utils import ORIG_URL
 
 
 def downloadMMTF14k(downloadPath: str):
@@ -19,7 +19,7 @@ def downloadMMTF14k(downloadPath: str):
     status: bool
         The status of the download
     """
-    print(f"- Downloading the MMTF-14K dataset (Base) from '{BASE_URL}' ...")
+    print(f"- Downloading the MMTF-14K dataset (Base) from '{ORIG_URL}' ...")
     # Create the download path if it does not exist
     downloadPath = os.path.normpath(downloadPath)
     if not os.path.exists(downloadPath):
@@ -33,8 +33,8 @@ def downloadMMTF14k(downloadPath: str):
     # Fetch the dataset
     try:
         # Download the dataset
-        print(f"- Fetching data from '{BASE_URL}' ...")
-        response = requests.get(BASE_URL)
+        print(f"- Fetching data from '{ORIG_URL}' ...")
+        response = requests.get(ORIG_URL)
         response.raise_for_status()
         # Save the downloaded file
         datasetZip = os.path.join(downloadPath, "mmtf14k.zip")
@@ -53,5 +53,5 @@ def downloadMMTF14k(downloadPath: str):
         print("- Zip file removed successfully!")
         return True
     except requests.exceptions.RequestException as e:
-        print(f"- [Error] Error fetching data from {BASE_URL}: {e}\n")
+        print(f"- [Error] Error fetching data from {ORIG_URL}: {e}\n")
         return False

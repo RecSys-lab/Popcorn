@@ -1,7 +1,7 @@
 import pandas as pd
 
 # URLs for accessing MMTF14K dataset
-BASE_URL = "https://drive.google.com/drive/folders/1sBD8drB2H0WHl_MSsSCH-FA-bonjStr_?usp=sharing"
+ORIG_URL = "https://zenodo.org/api/records/1225406/files-archive"
 FUSED_URL = (
     "https://raw.githubusercontent.com/RecSys-lab/reproducibility_data/refs/heads/main/"
 )
