@@ -12,6 +12,8 @@
 | [load_popcorn_dataset_meta](/examples/colab/load_popcorn_dataset_meta.ipynb)                   | Data   | Working around with Popcorn dataset metadata         |
 | [load_popcorn_dataset_embedding](/examples/colab/load_popcorn_dataset_embedding.ipynb)         | Data   | Working around with Popcorn embeddings               |
 | [load_popcorn_dataset_embedding_agg](/examples/colab/load_popcorn_dataset_embedding_agg.ipynb) | Data   | Working around with Popcorn aggregated embeddings    |
+| [load_mmtf_audio](/examples/colab/load_mmtf_audio.ipynb)                                       | Data   | Loading MMTF-14K data into Pandas DataFrame          |
+| [load_mmtf_visual](/examples/colab/load_mmtf_visual.ipynb)                                     | Data   | Loading MMTF-14K data into Pandas DataFrame          |
 | [experiment_kcore_ml-1m](/examples/colab/experiment_kcore_ml-1m.ipynb)                         | Setup  | Applying K-Core on MovieLens 1M                      |
 | [experiment_kcore_ml-25m](/examples/colab/experiment_kcore_ml-25m.ipynb)                       | Setup  | Applying K-Core on MovieLens 25M                     |
 | [experiment_split](/examples/colab/experiment_split.ipynb)                                     | Setup  | Applying K-Core and train/test split on MovieLens    |
