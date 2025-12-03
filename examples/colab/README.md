@@ -20,3 +20,5 @@
 | [modality_data_overlap_check](/examples/colab/modality_data_overlap_check.ipynb)               | Modality | Checking data overlap between loaded datasets        |
 | [modality_data_fusion_text_audio](/examples/colab/modality_data_fusion_text_audio.ipynb)       | Modality | Fusing textual and audio modalities                  |
 | [modality_data_fusion_text_visual](/examples/colab/modality_data_fusion_text_visual.ipynb)     | Modality | Fusing textual and visual modalities                 |
+| [modality_data_fusion_all_mmtf](/examples/colab/modality_data_fusion_all_mmtf.ipynb)           | Modality | Fusing textual and MMTF audio-visual modalities      |
+| [modality_data_fusion_all_popcorn](/examples/colab/modality_data_fusion_all_popcorn.ipynb)     | Modality | Fusing textual and Popcorn visual modalities         |
