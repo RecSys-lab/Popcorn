@@ -134,7 +134,7 @@ def generateAllAggEmbeddingUrls(configs: dict) -> dict:
         * len(aggEmbeddingUrlDict[embeddings[0]][cnns[0]])
     )
     print(
-        f"- Generated {count} aggregated feature addresses, e.g., {aggEmbeddingUrlDict['full_movies_agg']['incp3'][0]} ..."
+        f"- Generated {count} aggregated feature addresses, e.g., {aggEmbeddingUrlDict[embeddings[0]][cnns[0]][0]} ..."
     )
     # Return
     return aggEmbeddingUrlDict
