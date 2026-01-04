@@ -28,9 +28,9 @@ def calculateKLDiv(pDist: dict, qDist: dict, eps: float = 1e-8) -> float:
     kldiv = 0.0
     # Check input arguments
     if not pDist and not qDist:
-        print(
-            "- [Warn] Both distributions are empty. Returning KL-Divergence as 0.0 ..."
-        )
+        # print(
+        #     "- [Warn] Both distributions are empty. Returning KL-Divergence as 0.0 ..."
+        # )
         return 0.0
     if not pDist or not qDist:
         print(
@@ -38,9 +38,9 @@ def calculateKLDiv(pDist: dict, qDist: dict, eps: float = 1e-8) -> float:
         )
         return float("inf")
     if pDist == qDist:
-        print(
-            "- [Warn] Both distributions are identical. Returning KL-Divergence as 0.0 ..."
-        )
+        # print(
+        #     "- [Warn] Both distributions are identical. Returning KL-Divergence as 0.0 ..."
+        # )
         return 0.0
     try:
         # Get the unique keys from both distributions
@@ -88,9 +88,9 @@ def calculateDiversity(givenList: list) -> float:
     diversity = 0.0
     # Check input arguments
     if not givenList or len(givenList) <= 1:
-        print(
-            "- [Warn] The input list has one or fewer elements. Returning diversity as 0.0 ..."
-        )
+        # print(
+        #     "- [Warn] The input list has one or fewer elements. Returning diversity as 0.0 ..."
+        # )
         return 0.0
     try:
         # Find all unique pairs
@@ -136,10 +136,10 @@ def calculateDcg(recList: list, gtList: list) -> float:
     dcg = 0.0
     # Check input arguments
     if not recList or len(recList) == 0:
-        print("- [Warn] The input recList is empty. Returning DCG as 0.0 ...")
+        # print("- [Warn] The input recList is empty. Returning DCG as 0.0 ...")
         return dcg
     if not gtList or len(gtList) == 0:
-        print("- [Warn] The input gtList is empty. Returning DCG as 0.0 ...")
+        # print("- [Warn] The input gtList is empty. Returning DCG as 0.0 ...")
         return dcg
     # Calculate DCG
     dcg = sum(1 / math.log2(rnk + 2) for rnk, it in enumerate(recList) if it in gtList)
@@ -216,7 +216,7 @@ def calculateGini(values: list) -> float:
     gini = 0.0
     # Check input arguments
     if not values or len(values) == 0:
-        print("- [Warn] The input list is empty. Returning Gini coefficient as 0.0 ...")
+        # print("- [Warn] The input list is empty. Returning Gini coefficient as 0.0 ...")
         return gini
     # Sort values
     sortedValues = sorted(values)
