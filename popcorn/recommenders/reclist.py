@@ -230,7 +230,7 @@ def generateLists(
     print(recs.head(3))
     # Calculate and save metrics
     metricsSavePath = os.path.join(outputSavePath, f"metrics_{suffix}.csv")
-    metricRows = calculateMeanRecMetrics(recs)
+    metricRows = calculateMeanRecMetrics(recs, TOP_N)
     aggMetrics = pd.DataFrame(metricRows)
     aggMetrics.to_csv(metricsSavePath, index=False)
     print(

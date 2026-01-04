@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def calculateMeanRecMetrics(recs: pd.DataFrame) -> list[dict]:
+def calculateMeanRecMetrics(recs: pd.DataFrame, top_n: int) -> list[dict]:
     """
     Calculate average metrics from the recommendation records.
     This function computes various metrics such as Recall, NDCG, Cold-start Rate,
@@ -10,8 +10,10 @@ def calculateMeanRecMetrics(recs: pd.DataFrame) -> list[dict]:
 
     Parameters
     ----------
-    recs : pd.DataFrame
+    recs: pd.DataFrame
         A DataFrame containing recommendation records with columns for various metrics.
+    top_n: int
+        The number of top recommendations considered for metric calculations.
 
     Returns
     -------
@@ -43,14 +45,14 @@ def calculateMeanRecMetrics(recs: pd.DataFrame) -> list[dict]:
         metricRows.append(
             {
                 "model": model,
-                "NDCG@10": ndcg,
+                f"NDCG@{top_n}": ndcg,
                 "Novelty": novelty,
-                "Recall@10": recall,
+                f"Recall@{top_n}": recall,
                 "scenario": scenario,
                 "Fairness": fairness,
                 "Diversity": diversity,
-                "Coverage@10": coverage,
-                "ColdRate@10": coldrate,
+                f"Coverage@{top_n}": coverage,
+                f"ColdRate@{top_n}": coldrate,
                 "PopularityBias": popBias,
                 "CalibrationBias": calBias,
             }
