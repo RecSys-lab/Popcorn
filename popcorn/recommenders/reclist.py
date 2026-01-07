@@ -228,7 +228,7 @@ def generateLists(
         coverage = len(items) / len(allItemIds)
         recs[f"CV_{mdl}_{scn}"] = coverage
     # Save recommendation lists and metrics
-    suffix = f"ml{ML_VERSION}_{MODEL_CHOICE}_{LLM}_{AUGMENTED}"
+    suffix = f"ml{ML_VERSION}_{MODEL_CHOICE}_{LLM}_{AUGMENTED}_top{TOP_N}"
     outputSavePath = (
         os.path.join(ROOT_PATH, "outputs") if OUTPUT_PATH == "" else OUTPUT_PATH
     )
