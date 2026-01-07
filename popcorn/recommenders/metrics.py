@@ -37,24 +37,30 @@ def calculateMeanRecMetrics(recs: pd.DataFrame, top_n: int) -> list[dict]:
         popBias = recs[f"PB_{model}_{scenario}"].mean()
         novelty = recs[f"NO_{model}_{scenario}"].mean()
         calBias = recs[f"CB_{model}_{scenario}"].mean()
+        hitrate = recs[f"HR_{model}_{scenario}"].mean()
         fairness = recs[f"FA_{model}_{scenario}"].mean()
         coldrate = recs[f"CR_{model}_{scenario}"].mean()
         coverage = recs[f"CV_{model}_{scenario}"].mean()
         diversity = recs[f"DI_{model}_{scenario}"].mean()
+        precision = recs[f"PR_{model}_{scenario}"].mean()
+        map_score = recs[f"AP_{model}_{scenario}"].mean()
         # Append the metrics for the current model and scenario
         metricRows.append(
             {
                 "model": model,
+                "scenario": scenario,
                 f"NDCG@{top_n}": ndcg,
                 "Novelty": novelty,
                 f"Recall@{top_n}": recall,
-                "scenario": scenario,
                 "Fairness": fairness,
                 "Diversity": diversity,
                 f"Coverage@{top_n}": coverage,
                 f"ColdRate@{top_n}": coldrate,
                 "PopularityBias": popBias,
                 "CalibrationBias": calBias,
+                "HitRate": hitrate,
+                "Precision": precision,
+                "MAP": map_score,
             }
         )
     return metricRows

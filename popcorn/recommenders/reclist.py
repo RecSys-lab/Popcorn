@@ -195,15 +195,27 @@ def generateLists(
             idcg = calculateIdcg(gt)
             ndcg = calculateNdcg(dcg, idcg)
             recall = len(set(rec) & gt) / len(gt) if gt else 0
+            precision = len(set(rec) & gt) / len(rec) if rec else 0
+            # Calculate mAP
+            map_score = 0.0
+            hitrate = 0
+            for rank, item in enumerate(rec, start=1):
+                if item in gt:
+                    hitrate += 1
+                    map_score += hitrate / rank
+            map_score /= len(gt) if gt else 1
             # Update the row with the calculated metrics
             r.update(
                 {
                     f"ND_{mdl}_{scn}": ndcg,
                     f"CB_{mdl}_{scn}": calib,
                     f"RC_{mdl}_{scn}": recall,
+                    f"HR_{mdl}_{scn}": hitrate,
                     f"NO_{mdl}_{scn}": novelty,
                     f"FA_{mdl}_{scn}": fairness,
                     f"DI_{mdl}_{scn}": diversity,
+                    f"PR_{mdl}_{scn}": precision,
+                    f"AP_{mdl}_{scn}": map_score,
                     f"PB_{mdl}_{scn}": popularityBias,
                 }
             )
