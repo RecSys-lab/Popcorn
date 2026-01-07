@@ -77,7 +77,7 @@ def getParametersGrid(isFastPrtye: bool = True, nEpochs: int = 10):
         ][0:5]
     else:
         GR_AMR = [
-            {"k": k, "k2": k2, "learning_rate": lr}
+            {"k": k, "k2": k2, "learning_rate": lr, "n_epochs": nEpochs}
             for k in (32, 64, 128)
             for k2 in (16, 32)
             for lr in (0.001,)
