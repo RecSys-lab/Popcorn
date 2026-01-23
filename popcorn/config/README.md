@@ -44,7 +44,9 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Modalities           | `selected`                          | -                     | the list of selected modalities to be used                                  |
 | Modalities           | `fusion_methods`                    | `selected`            | the list of fusion methods to be used                                       |
 | Modalities           | `fusion_methods`                    | `cca_components`      | the CCA components (only for 'cca' fusion method)                           |
+| Modalities           | `fusion_methods`                    | `cca_regularization`  | the CCA regularization (only for 'cca' fusion method)                       |
 | Modalities           | `fusion_methods`                    | `pca_variance`        | the PCA variance to retain (only for 'pca' fusion method, between 0 and 1)  |
+| Modalities           | `fusion_methods`                    | `pca_regularization`  | the PCA regularization (only for 'pca' fusion method)                       |
 | Setup                | `seed`                              | -                     | the seed for reproducibility purposes                                       |
 | Setup                | `k_core`                            | -                     | the number of cores for k-core filtering                                    |
 | Setup                | `split`                             | `mode`                | the train/test splitting mode (supported: `random`, `temporal`, `per_user`) |

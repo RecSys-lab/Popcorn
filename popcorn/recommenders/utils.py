@@ -71,6 +71,7 @@ def applyPCAModality(df: pd.DataFrame, config: dict) -> pd.DataFrame:
         The name of the new PCA modality column.
     """
     # Variables
+    reg = config["modalities"]["fusion_methods"]["pca_reg"]
     ratio = config["modalities"]["fusion_methods"]["pca_variance"]
     print(f"- Applying PCA with variance ratio '{ratio}' ...")
     # Check ratio validity
@@ -79,12 +80,20 @@ def applyPCAModality(df: pd.DataFrame, config: dict) -> pd.DataFrame:
             f"- [Warn] PCA variance ratio must be between 0 and 1, but given '{ratio}'. Setting to 0.95 ..."
         )
         ratio = 0.95
+    if not (0.0 <= reg <= 1.0):
+        print(
+            f"- [Warn] PCA regularization must be between 0 and 1, but given '{reg}'. Setting to 0.0 ..."
+        )
+        reg = 0.0
     # Set the name
     name = f"pca_{int(ratio * 100)}"
     # Apply PCA
     mat = StandardScaler().fit_transform(np.vstack(df["all"]))
-    mat = PCA(ratio, random_state=42).fit_transform(mat)
-    df[name] = list(mat.astype(np.float32))
+    # Add ridge regularization: X^T X + λI
+    mat_reg = np.vstack([mat, np.sqrt(reg) * np.eye(mat.shape[1])])
+    # Fit and transform
+    pca_result = PCA(ratio, random_state=42).fit_transform(mat_reg[:mat.shape[0]])
+    df[name] = list(pca_result.astype(np.float32))
     # Log and return
     print(f"- Applied PCA-{int(ratio*100)} and generated dimensions {mat.shape[1]}!")
     return df, name
@@ -109,6 +118,7 @@ def applyCCAModality(df: pd.DataFrame, config: dict) -> pd.DataFrame:
         The name of the new CCA modality column.
     """
     # Variables
+    reg = config["modalities"]["fusion_methods"]["cca_reg"]
     comps = config["modalities"]["fusion_methods"]["cca_components"]
     print(f"- Applying CCA with components '{comps}' ...")
     # Check components validity
@@ -117,14 +127,37 @@ def applyCCAModality(df: pd.DataFrame, config: dict) -> pd.DataFrame:
             f"- [Warn] CCA components must be a positive integer, but given '{comps}'. Setting to 40 ..."
         )
         comps = 40
+    if not (0.0 <= reg <= 1.0):
+        print(
+            f"- [Warn] CCA regularization must be between 0 and 1, but given '{reg}'. Setting to 0.0 ..."
+        )
+        reg = 0.0
     # Set the name
     name = f"cca_{comps}"
     # Apply CCA
     half = len(df["all"][0]) // 2
     big = np.vstack(df["all"])
     X, Y = big[:, :half], big[:, half:]
-    cca = CCA(n_components=comps).fit(X, Y)
-    df[name] = list(cca.transform(X, Y)[0].astype(np.float32))
+    # Add ridge regularization by augmenting the data
+    if reg > 0:
+        n_features_x = X.shape[1]
+        n_features_y = Y.shape[1]
+        max_features = max(n_features_x, n_features_y)
+        # Create regularization matrices with matching dimensions
+        X_reg_part = np.sqrt(reg) * np.eye(max_features)[:, :n_features_x]
+        Y_reg_part = np.sqrt(reg) * np.eye(max_features)[:, :n_features_y]
+        # Stack to create augmented data
+        X_reg = np.vstack([X, X_reg_part])
+        Y_reg = np.vstack([Y, Y_reg_part])
+        # Fit CCA on regularized data
+        cca = CCA(n_components=comps).fit(X_reg, Y_reg)
+        # Transform only original data (not regularization rows)
+        result = cca.transform(X, Y)[0]
+    else:
+        # No regularization
+        cca = CCA(n_components=comps).fit(X, Y)
+        result = cca.transform(X, Y)[0]
+    df[name] = list(result.astype(np.float32))
     # Log and return
     print(f"- Applied CCA-{comps} and generated dimensions {comps}!")
     return df, name

@@ -129,8 +129,12 @@ modalities:
     selected: ["concat", "cca", "pca"] # 'concat' | 'cca' | 'pca'
     # CCA components (only for 'cca' fusion method)
     cca_components: 40
+    # CCA regularization (only for 'cca' fusion method)
+    cca_reg: 0.0 # 0.0 to 1.0, such as 1e-2
     # PCA variance to retain (only for 'pca' fusion method, between 0 and 1, e.g., 0.95 for 95%)
     pca_variance: 0.95
+    # PCA regularization (only for 'pca' fusion method)
+    pca_reg: 0.0 # 0.0 to 1.0, such as 1e-2
 # ------------------------- Experimental configurations ------------------------
 setup:
   # Seed for reproducibility
