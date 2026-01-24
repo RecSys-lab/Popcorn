@@ -29,6 +29,16 @@ def applyHyperparameterOptimization(
     """
     # Variables
     modelsCfg = {}
+    config = dataDict["config"]
+    # Get the requested modalities
+    modalities = []
+    for item in config["modalities"]["selected"]:
+        if item.startswith("visual"):
+            modalities.append("visual")
+        elif item.startswith("audio"):
+            modalities.append("audio")
+        elif item.startswith("text"):
+            modalities.append("text")
     print("- Starting HPO ...")
     # MF
     if modelSelected("MF", model):
@@ -40,7 +50,7 @@ def applyHyperparameterOptimization(
         )
     # VBPR
     if modelSelected("VBPR", model):
-        for mod in ("visual", "audio", "text"):
+        for mod in modalities:
             modelsCfg[f"VBPR_{mod}"] = grid(
                 dataDict,
                 VBPR,
@@ -62,7 +72,7 @@ def applyHyperparameterOptimization(
             )
     # VMF
     if modelSelected("VMF", model):
-        for mod in ("visual", "audio", "text"):
+        for mod in modalities:
             modelsCfg[f"VMF_{mod}"] = grid(
                 dataDict,
                 VMF,
@@ -84,7 +94,7 @@ def applyHyperparameterOptimization(
             )
     # AMR
     if modelSelected("AMR", model):
-        for mod in ("visual", "audio", "text"):
+        for mod in modalities:
             modelsCfg[f"AMR_{mod}"] = grid(
                 dataDict,
                 AMR,
@@ -137,6 +147,15 @@ def refitBestModels(
     finalModels = {}
     seed = cfg["setup"]["seed"]
     useGpu = cfg["setup"]["use_gpu"]
+    # Get the requested modalities
+    modalities = []
+    for item in cfg["modalities"]["selected"]:
+        if item.startswith("visual"):
+            modalities.append("visual")
+        elif item.startswith("audio"):
+            modalities.append("audio")
+        elif item.startswith("text"):
+            modalities.append("text")
     # Re-fit models
     if modelSelected("TopPop", modelChoice):
         mpop = MostPop()
@@ -152,7 +171,7 @@ def refitBestModels(
             fitModalities(new, trainSet)
             finalModels[(model, variant)] = new
         else:
-            if variant in ("visual", "audio", "text"):
+            if variant in modalities:
                 img = modalitiesDict["concat"][f"{variant}_image"]
                 feat = None
             else:
