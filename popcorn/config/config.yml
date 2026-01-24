@@ -142,7 +142,7 @@ setup:
   # Number of cores for k-core filtering
   k_core: 10
   # Model choice for the experiment
-  model_choice: "cf" # 'cf' | 'vbpr' | 'amr' | 'vmf'
+  model_choice: "vbpr" # 'cf' | 'vbpr' | 'amr' | 'vmf'
   # Dataset split configuration
   split:
     # Mode of dataset splitting

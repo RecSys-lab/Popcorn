@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+
 def createMultimodalDF(unimodalDict: dict):
     """
     Fuses multiple unimodal DataFrames into a single multimodal DataFrame based on common item IDs.
@@ -26,22 +27,28 @@ def createMultimodalDF(unimodalDict: dict):
     print("- Creating multimodal DataFrame from unimodal DataFrames ...")
     # Check to avoid empty dictionary
     if not unimodalDict:
-        print("- [Warn] No unimodal dataframes provided for fusion! Returning empty dictionary ...")
+        print(
+            "- [Warn] No unimodal dataframes provided for fusion! Returning empty dictionary ..."
+        )
         return {}
     # Check for supported modalities
     for key in unimodalDict.keys():
         if key not in supportedModalities:
-            print(f"- [Warn] Unsupported modality '{key}' found! Supported modalities are {supportedModalities}. Returning empty dictionary ...")
+            print(
+                f"- [Warn] Unsupported modality '{key}' found! Supported modalities are {supportedModalities}. Returning empty dictionary ..."
+            )
             return {}
     # Check to see which modalities are missing
     for modality in supportedModalities:
         if modality not in modalities:
-            print(f"- [Warn] Modality '{modality}' not found in input dictionary. Proceeding with available modalities ...")
+            print(
+                f"- [Warn] Modality '{modality}' not found in input dictionary. Proceeding with available modalities ..."
+            )
     # Normalize item ID columns (if necessary) to 'item_id'
     for key, df in unimodalDict.items():
-        if 'itemId' in df.columns:
+        if "itemId" in df.columns:
             print(f"- Renaming 'itemId' column to 'item_id' in '{key}' dataframe ...")
-            df = df.rename(columns={'itemId': 'item_id'})
+            df = df.rename(columns={"itemId": "item_id"})
             unimodalDict[key] = df
     # Find common items across all modalities
     for key, df in unimodalDict.items():
@@ -58,7 +65,9 @@ def createMultimodalDF(unimodalDict: dict):
             fusedDF = df
         else:
             fusedDF = pd.merge(fusedDF, df, on="item_id", how="inner")
-    print(f"- Created a Fused DataFrame ({fusedDF.shape}) with modalities: {list(unimodalDict.keys())} ...\n{fusedDF.head(3)}")
+    print(
+        f"- Created a Fused DataFrame ({fusedDF.shape}) with modalities: {list(unimodalDict.keys())} ...\n{fusedDF.head(3)}"
+    )
     # Guard against NaN/Inf
     for col in modalities:
         fusedDF[col] = fusedDF[col].apply(
@@ -70,6 +79,8 @@ def createMultimodalDF(unimodalDict: dict):
     )
     # Kept items
     keep = set(fusedDF.item_id)
-    print(f"- Final fused DataFrame has {len(keep):,} items after combining all modalities ...")
+    print(
+        f"- Final fused DataFrame has {len(keep):,} items after combining all modalities ..."
+    )
     # Return the fused DataFrame
     return fusedDF, keep

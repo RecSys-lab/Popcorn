@@ -102,11 +102,13 @@ def assembleModality(config: dict):
             # Apply anti-truncation to visual embeddings
             visualDF["visual"] = convertStrToListCol(visualDF, "visual")
     # Step#5: Create a modality dictionary and fuse them
-    multimodalDict = {
-        "text": textDF,
-        "audio": audioDF,
-        "visual": visualDF,
-    }
+    multimodalDict = {}
+    if textDF is not None:
+        multimodalDict["text"] = textDF
+    if audioDF is not None:
+        multimodalDict["audio"] = audioDF
+    if visualDF is not None:
+        multimodalDict["visual"] = visualDF
     fusedDF, keep = createMultimodalDF(multimodalDict)
     if fusedDF is None:
         print("- [Error] Failed to create fused DataFrame! Exiting ...")
@@ -116,9 +118,24 @@ def assembleModality(config: dict):
     # Step#7: Prepare the assembled dictionary
     print("\n- Assembling (concatenating) modalities ...")
     modalitiesDict["concat"] = {
-        "audio_image": getImageModality(fusedDF, "audio"),
-        "visual_image": getImageModality(fusedDF, "visual"),
-        "text_image": getImageModality(fusedDF, "text"),
+        "audio_image": (
+            getImageModality(fusedDF, "audio")
+            if "audio_mmtf" in selectedModalities
+            else None
+        ),
+        "visual_image": (
+            getImageModality(fusedDF, "visual")
+            if (
+                "visual_mmtf" in selectedModalities
+                or "visual_popcorn" in selectedModalities
+            )
+            else None
+        ),
+        "text_image": (
+            getImageModality(fusedDF, "text")
+            if "text_rag_plus" in selectedModalities
+            else None
+        ),
         "all_image": getImageModality(fusedDF, "all"),
         "all_feature": getFeatureModality(fusedDF, "all"),
     }
