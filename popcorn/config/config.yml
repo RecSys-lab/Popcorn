@@ -6,8 +6,10 @@ general:
   root_path: "" # Empty for local, "Popcorn" for using in Google Colab
   # Path to save the outputs of the framework (if empty, it will be saved in the root_path/outputs)
   output_path: ""
-  # Verbose logging (prints detailed logs)
-  verbose: true
+  # Keys for external services
+  external_key:
+    # OpenAI API key
+    openai: "your-openai-api-key"
 # ------------------------- Datasets configurations ------------------------
 datasets:
   # Textual

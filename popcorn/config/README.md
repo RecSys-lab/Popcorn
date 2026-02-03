@@ -7,7 +7,7 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | -------------------- | ----------------------------------- | --------------------- | --------------------------------------------------------------------------- |
 | General              | `root_path`                         | -                     | the root location of the framework (`Popcorn` for using in Google Colab)    |
 | General              | `output_path`                       | -                     | the output location of the framework for saving output data                 |
-| General              | `verbose`                           | -                     | the detailed logs flag                                                      |
+| General              | `external_key`                      | -                     | the external API keys for services                                          |
 | Dataset (Unimodal)   | `movielens`                         | `name`                | the standard name of the dataset (mainly for logging)                       |
 | Dataset (Unimodal)   | `movielens`                         | `version`             | the demanded version (supported: `100k`, `1m`, `25m`)                       |
 | Dataset (Unimodal)   | `movielens`                         | `download_path`       | the root path to download the dataset (if exists, will be skipped)          |
