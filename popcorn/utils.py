@@ -69,13 +69,13 @@ def loadJsonFromUrl(jsonUrl: str) -> dict:
         The JSON data loaded from the URL.
     """
     data = {}
-    print(f"- Loading JSON data from the given URL '{jsonUrl}' ...")
+    # print(f"- Loading JSON data from the given URL '{jsonUrl}' ...")
     try:
         # Load JSON data from the URL
         response = requests.get(jsonUrl)
         response.raise_for_status()  # Raise an error for bad status codes
         data = response.json()  # Parse JSON data
-        print("- JSON data loaded successfully!")
+        # print("- JSON data loaded successfully!")
         return data
     except requests.exceptions.RequestException as e:
         print(f"- [Error] Error fetching data from {jsonUrl}: {e}")

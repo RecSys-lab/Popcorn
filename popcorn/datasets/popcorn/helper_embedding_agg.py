@@ -228,7 +228,7 @@ def loadAggEmbeddings(aggEmbeddingUrlList: list) -> tuple:
         )
         # Better logging for the user
         counter += 1
-        if counter % 2 == 0:
+        if counter % 10 == 0:
             print(
                 f"- Loading aggregated features ({int(counter / len(aggEmbeddingUrlList) * 100)}%) ..."
             )
