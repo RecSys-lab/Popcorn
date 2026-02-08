@@ -1,7 +1,9 @@
 # 🍿 Popcorn
 
-Welcome to **Popcorn**, a multi-faceted movie recommendation framework that blends the magic of cinema with the power of **Computer Vision**, **Generative AI**, and **Recommender Systems**.
-Whether you are a researcher, developer, or just a movie lover, **Popcorn** helps you explore smarter, more immersive ways to recommend films. 🎥
+![Popcorn Framework](./docs/img/flowchart.jpg "Popcorn Framework")
+
+This is **Popcorn**; a multi-faceted resource that recommends movies with the power of **Computer Vision**, **Generative AI**, and **Recommender Systems**.
+Whether you are a researcher, developer, or just a movie lover, **Popcorn** helps you explore smarter, more immersive ways to get movie recommendations. 🎥
 
 ## ✨ Why Popcorn?
 
@@ -11,6 +13,8 @@ Whether you are a researcher, developer, or just a movie lover, **Popcorn** help
 
 ## 🛠️ Getting Started
 
+### I. Installation from Source
+
 1. Clone the repository using `git clone git@github.com:RecSys-lab/Popcorn.git`
 2. Set up your environment (recommended: Python `3.10.4`). We highly suggest to create a Python virtual environment (using `python -m venv .venv`) and activate it (`source .venv/bin/activate` (Linux) or `.\.venv\Scripts\activate` (Windows)) before installing dependencies.
 3. Install dependencies
@@ -19,6 +23,11 @@ Whether you are a researcher, developer, or just a movie lover, **Popcorn** help
 cd Popcorn
 pip install -e .
 ```
+
+### II. Using PIP
+
+1. Install the package using `pip install Popcorn`.
+2. After installation, you can import the package in your Python code using `import popcorn`.
 
 ## 🚀 Launching the Framework
 
