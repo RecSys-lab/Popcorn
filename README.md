@@ -16,23 +16,26 @@ Whether you are a researcher, developer, or just a movie lover, **Popcorn** help
 ### I. Installation from Source
 
 1. Clone the repository using `git clone git@github.com:RecSys-lab/Popcorn.git`
-2. Set up your environment (recommended: Python `3.10.4`). We highly suggest to create a Python virtual environment (using `python -m venv .venv`) and activate it (`source .venv/bin/activate` (Linux) or `.\.venv\Scripts\activate` (Windows)) before installing dependencies.
+2. Set up your environment (recommended: Python `3.10.4`). We highly suggest creating a Python virtual environment (using `python -m venv .venv`) and activating it (`source .venv/bin/activate` (Linux) or `.\.venv\Scripts\activate` (Windows)) before installing dependencies.
 3. Install dependencies
 
 ```bash
-cd Popcorn
+cd popcorn
 pip install -e .
 ```
 
-### II. Using PIP
+### II. Installation via pip (Coming Soon)
 
-1. Install the package using `pip install Popcorn`.
-2. After installation, you can import the package in your Python code using `import popcorn`.
+The package is not yet fully available on `PyPI`. Once released, it will be installable via:
 
-## 🚀 Launching the Framework
+```bash
+pip install popcorn-recsys
+```
 
-1. Modify the configurations based on what you target. You need to modify the [config.yml](/popcorn/config/config.yml) file based on the [documentations provided for it](/popcorn/config/README.md).
-2. After activating the `.venv` (if set), run the framework using `python main.py` and enjoy working with the framework!
+## 🚀 Quick Start
+
+1. Modify the configurations based on what you target. In this case, you can modify the [config.yml](/popcorn/config/config.yml) file based on the [provided documentation](/popcorn/config/README.md).
+2. Run the framework using `python main.py` and enjoy using the framework!
 
 ### 💡 Examples?
 
