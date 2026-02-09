@@ -35,7 +35,26 @@ pip install popcorn-recsys
 ## 🚀 Quick Start
 
 1. Modify the configurations based on what you target. In this case, you can modify the [config.yml](/popcorn/config/config.yml) file based on the [provided documentation](/popcorn/config/README.md).
-2. Run a quick framework test using `python examples/python/quick_test.py`.
+2. Run a quick framework test using `python examples/python/quick_test.py`, similar to the one below:
+
+```python
+from popcorn.utils import readConfigs
+from popcorn.optimizers.grid_search import gridSearch
+from popcorn.recommenders.reclist import generateLists
+from popcorn.recommenders.assembler import assembleModality
+
+# Step-0: Read the configuration file
+configs = readConfigs("popcorn/config/config.yml")
+
+# Step-1: Data ingestion and modality assembly
+trainDF, testDF, trainSet, modalitiesDict, genreDict = assembleModality(configs)
+
+# Step-2: Apply grid search to find the best model configurations
+finalModels = gridSearch(configs, trainDF, trainSet, modalitiesDict)
+
+# Step-3: Generate recommendation lists
+generateLists(configs, trainDF, trainSet, testDF, genreDict, finalModels)
+```
 
 ### 💡 Need More Examples?
 
