@@ -56,6 +56,10 @@ finalModels = gridSearch(configs, trainDF, trainSet, modalitiesDict)
 generateLists(configs, trainDF, trainSet, testDF, genreDict, finalModels)
 ```
 
+Running such a script will execute the whole pipeline of the framework, including data loading, modality assembly, model training, and recommendation list generation. Apart from the generated recommendation lists, you can also find a sample output below:
+
+![Popcorn Framework Output](./docs/img/output.png "Popcorn Framework Output")
+
 ### 💡 Need More Examples?
 
 We have included a collection of ready-to-run examples in the [examples](/examples/) folder. The examples cover various use cases of the framework, prepared in **local Python files** and **Google Colab** environments.
