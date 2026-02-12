@@ -16,34 +16,63 @@ Whether you are a researcher, developer, or just a movie lover, **Popcorn** help
 ### I. Installation from Source
 
 1. Clone the repository using `git clone git@github.com:RecSys-lab/Popcorn.git`
-2. Set up your environment (recommended: Python `3.10.4`). We highly suggest to create a Python virtual environment (using `python -m venv .venv`) and activate it (`source .venv/bin/activate` (Linux) or `.\.venv\Scripts\activate` (Windows)) before installing dependencies.
+2. Set up your environment (recommended: Python `3.10.4`). We highly suggest creating a Python virtual environment (using `python -m venv .venv`) and activating it (`source .venv/bin/activate` (Linux) or `.\.venv\Scripts\activate` (Windows)) before installing dependencies.
 3. Install dependencies
 
 ```bash
-cd Popcorn
+cd popcorn
 pip install -e .
 ```
 
-### II. Using PIP
+### II. Installation via pip (Coming Soon)
 
-1. Install the package using `pip install Popcorn`.
-2. After installation, you can import the package in your Python code using `import popcorn`.
+The package is not yet fully available on `PyPI`. Once released, it will be installable via:
 
-## 🚀 Launching the Framework
+```bash
+pip install popcorn-recsys
+```
 
-1. Modify the configurations based on what you target. You need to modify the [config.yml](/popcorn/config/config.yml) file based on the [documentations provided for it](/popcorn/config/README.md).
-2. After activating the `.venv` (if set), run the framework using `python main.py` and enjoy working with the framework!
+## 🚀 Quick Start
 
-### 💡 Examples?
+1. Modify the configurations based on what you target. In this case, you can modify the [config.yml](/popcorn/config/config.yml) file based on the [provided documentation](/popcorn/config/README.md).
+2. Run a quick framework test using `python examples/python/quick_test.py`, similar to the one below:
 
-Not sure where to start? We have included a collection of ready-to-run examples in the [examples](/examples/) folder.
+```python
+from popcorn.utils import readConfigs
+from popcorn.optimizers.grid_search import gridSearch
+from popcorn.recommenders.reclist import generateLists
+from popcorn.recommenders.assembler import assembleModality
+
+# Step-0: Read the configuration file
+configs = readConfigs("popcorn/config/config.yml")
+
+# Step-1: Data ingestion and modality assembly
+trainDF, testDF, trainSet, modalitiesDict, genreDict = assembleModality(configs)
+
+# Step-2: Apply grid search to find the best model configurations
+finalModels = gridSearch(configs, trainDF, trainSet, modalitiesDict)
+
+# Step-3: Generate recommendation lists
+generateLists(configs, trainDF, trainSet, testDF, genreDict, finalModels)
+```
+
+Running such a script will execute the whole pipeline of the framework, including data loading, modality assembly, model training, and recommendation list generation. Apart from the generated recommendation lists, you can also find a sample output below:
+
+![Popcorn Framework Output](./docs/img/output.png "Popcorn Framework Output")
+
+### 💡 Need More Examples?
+
+We have included a collection of ready-to-run examples in the [examples](/examples/) folder. The examples cover various use cases of the framework, prepared in **local Python files** and **Google Colab** environments.
 
 ## 📊 Supported Datasets
 
 As the framework supports multi-modal processing and covers **text**, **visual**, and **fused data**, varios datasets can be fed for reproducibility, evaluation, and experiments purposes:
 
-- **Text Feed:** `MovieLenz-25M` ([link](https://grouplens.org/datasets/movielens/25m/)) is recommended to provide data about movies, user interactions, _etc._
-- **Visual Feed:** `Popcorn Dataset` ([link](https://huggingface.co/datasets/alitourani/Popcorn_Dataset)) is collected by the team and provides frame-level features for each movie using different Convolutional Neural Networks (CNNs).
+- 🖹 **Textual Data:** `MovieLens` ([link](https://grouplens.org/datasets/movielens)) variants can be simply loaded in the framework to provide metadata about movies, user interactions, _etc._. Additionally, `RAG+` dataset ([link](https://github.com/yasdel/Poison-RAG-Plus/tree/main)) provides rich textual features extracted and augmented using Retrieval-Augmented Generation (RAG) techniques.
+
+- 📸 **Visual Data:** `Popcorn-Visual` ([link](https://huggingface.co/datasets/alitourani/Popcorn_Dataset)) is collected by the team using this framework and includes visual features extracted from full-length movie videos, trailers, and shots using various visual content extractors. Additionally, `MMTF-14K` ([link](https://mmprj.github.io/mtrm_dataset/)) provides multi-modal features extracted from movie trailers and can be easily loaded by the framework.
+
+- 🔊 **Audio Data:** `MMTF-14K` ([link](https://mmprj.github.io/mtrm_dataset/)) also provides audio features extracted from movie trailers and can be easily loaded by the framework.
 
 ## 🗄️ Code Structure
 
