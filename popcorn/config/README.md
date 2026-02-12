@@ -56,3 +56,5 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Setup                | `n_epochs`                          | -                     | the number of epochs for training                                           |
 | Recommender          | `topN_k`                            | -                     | the number of top-N recommendations                                         |
 | Recommender          | `cold_threshold`                    | -                     | the minimum number of ratings to consider a user/item as warm               |
+| Visual RAG           | `enabled`                           | -                     | the flag to indicate whether to use RAG for visual grounding (True/False)   |
+| Visual RAG           | `topk_evidence`                     | -                     | the number of top-k evidence snippets to retrieve for visual grounding      |

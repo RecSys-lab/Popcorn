@@ -165,3 +165,9 @@ recommender:
   top_n: 10 # 2 | 5 | 10 | 15 | 20 | 25 | 30 | 50
   # Minimum number of ratings to consider a user/item as warm
   cold_threshold: 5
+# ------------------------- Visual RAG ------------------------
+visual_rag:
+  # Enable or disable visual RAG
+  enabled: true
+  # Top-k evidence to retrieve for each query
+  topk_evidence: 10
