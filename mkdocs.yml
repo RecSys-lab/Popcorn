@@ -3,75 +3,39 @@ site_url: https://recsys-lab.github.io/Popcorn/
 repo_url: https://github.com/RecSys-lab/Popcorn
 repo_name: snt-arg/robot_suite
 theme:
-    theme:
-    logo: assets/favicon.png
-    favicon: assets/favicon.png
-    features:
-        - content.code.copy
-        - search.suggest
-        - search.highlight
-        - content.footnote.tooltips
-        - navigation.tabs
-        - navigation.tabs.sticky
-        - navigation.sections
-        - navigation.footer
-    icon:
-        repo: fontawesome/brands/github
-    name: material
-    palette:
-        # Dark Mode
-        - scheme: slate
-          primary: black
-          accent: teal
-          toggle:
-              icon: material/weather-sunny
-              name: Switch to light mode
-
-        # Light Mode
-        - scheme: default
-          primary: black
-          accent: teal
-          toggle:
-              icon: material/weather-night
-              name: Switch to dark mode
+  features:
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  icon:
+    repo: fontawesome/brands/github
+  name: material
+  palette:
+    # Dark Mode
+    - scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: light mode
+    # Light Mode
+    - scheme: default
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: dark mode
 markdown_extensions:
-    - admonition
-    - abbr
-    - attr_list
-    - md_in_html
-    - pymdownx.inlinehilite
-    - pymdownx.snippets
-    - pymdownx.details
-    - pymdownx.superfences
-    - pymdownx.blocks.caption
-    - pymdownx.highlight:
-          anchor_linenums: true
-          line_spans: __span
-          pygments_lang_class: true
-    - footnotes
-    - pymdownx.critic
-    - pymdownx.caret
-    - pymdownx.keys
-    - pymdownx.mark
-    - pymdownx.tilde
-    - pymdownx.emoji:
-          emoji_index: !!python/name:material.extensions.emoji.twemoji
-          emoji_generator:
-              !!python/name:material.extensions.emoji.to_svg # Page tree
-
-
-nav:
-    - 🏠 Home:
-          - Overview: index.md
-          # - Publications: publications.md
-    # - 🚀 Getting Started:
-    #       - Installation: GettingStarted/installation.md
-    #       - Docker: GettingStarted/docker.md
-    #       - Contribute: GettingStarted/contribute.md
-    # - 📦 Packages:
-    #       - Robot Bringup: Packages/robot_bringup.md
-    #       - Robot Behavior Tree: Packages/robot_bt.md
-    #       - Tello Control Station: Packages/tello_control_station.md
-    # - 🧩 Plugins:
-    #       - Plugins/index.md
-    #       - Plugin Bridge: Plugins/plugin_base.md
+  - admonition
+  - abbr
+  - attr_list
+  - md_in_html
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.blocks.caption
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true

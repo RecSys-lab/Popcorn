@@ -1,6 +1,14 @@
-!!! danger "Important"
+# 🍿 Popcorn
 
-    - This project is still a work in progress, so expect some bugs! If you encounter any, please open an issue or submit a PR with a fix.
-    - This suite has been ported from the `tello_suite` project, so some names may not have been fully updated to reflect the new `robot_...` naming convention.
+## 📎 Related Repositories
 
-Sample
+- 🔨 [ViLLA-MMBench: Multimodal Recommender](https://github.com/RecSys-lab/ViLLA-MMBench)
+- 🎞️ [RAG-VisualRec](https://github.com/recsys-lab/rag-visualrec)
+
+## 🔑 License
+
+This project is licensed under the GPL-3.0 license - see the [LICENSE](/LICENSE) for more details.
+
+## 📬 Contact
+
+If you have any questions or collaboration opportunities, please open an issue or contact the authors.
