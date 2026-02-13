@@ -1,7 +1,7 @@
-site_name: Popcorn
+site_name: 🍿 Popcorn
 site_url: https://recsys-lab.github.io/Popcorn/
 repo_url: https://github.com/RecSys-lab/Popcorn
-repo_name: snt-arg/robot_suite
+repo_name: RecSys-lab/Popcorn
 theme:
   features:
     - content.code.copy

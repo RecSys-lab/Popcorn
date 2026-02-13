@@ -1,5 +1,7 @@
 # 🍿 Popcorn
 
+[Popcorn Framework](./docs/img/flowchart.jpg "Popcorn Framework")
+
 ## 📎 Related Repositories
 
 - 🔨 [ViLLA-MMBench: Multimodal Recommender](https://github.com/RecSys-lab/ViLLA-MMBench)
