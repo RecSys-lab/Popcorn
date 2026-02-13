@@ -1,6 +1,6 @@
-site_name: Robot Suite
-site_url: https://snt-arg.github.io/robot_suite/
-repo_url: https://github.com/snt-arg/robot_suite
+site_name: Popcorn
+site_url: https://recsys-lab.github.io/Popcorn/
+repo_url: https://github.com/RecSys-lab/Popcorn
 repo_name: snt-arg/robot_suite
 theme:
     theme:
@@ -63,15 +63,15 @@ markdown_extensions:
 nav:
     - 🏠 Home:
           - Overview: index.md
-          - Publications: publications.md
-    - 🚀 Getting Started:
-          - Installation: GettingStarted/installation.md
-          - Docker: GettingStarted/docker.md
-          - Contribute: GettingStarted/contribute.md
-    - 📦 Packages:
-          - Robot Bringup: Packages/robot_bringup.md
-          - Robot Behavior Tree: Packages/robot_bt.md
-          - Tello Control Station: Packages/tello_control_station.md
-    - 🧩 Plugins:
-          - Plugins/index.md
-          - Plugin Bridge: Plugins/plugin_base.md
+          # - Publications: publications.md
+    # - 🚀 Getting Started:
+    #       - Installation: GettingStarted/installation.md
+    #       - Docker: GettingStarted/docker.md
+    #       - Contribute: GettingStarted/contribute.md
+    # - 📦 Packages:
+    #       - Robot Bringup: Packages/robot_bringup.md
+    #       - Robot Behavior Tree: Packages/robot_bt.md
+    #       - Tello Control Station: Packages/tello_control_station.md
+    # - 🧩 Plugins:
+    #       - Plugins/index.md
+    #       - Plugin Bridge: Plugins/plugin_base.md
