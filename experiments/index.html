@@ -1,0 +1,1342 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://recsys-lab.github.io/Popcorn/experiments/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../quick/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>🔎 Experiments - 🍿 Popcorn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#experiments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="🍿 Popcorn" class="md-header__button md-logo" aria-label="🍿 Popcorn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🍿 Popcorn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🔎 Experiments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RecSys-lab/Popcorn" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RecSys-lab/Popcorn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="🍿 Popcorn" class="md-nav__button md-logo" aria-label="🍿 Popcorn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🍿 Popcorn
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RecSys-lab/Popcorn" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RecSys-lab/Popcorn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🍿 Popcorn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔎 Experiments
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔎 Experiments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-best-performing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I. Best-Performing Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Best-Performing Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#n-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 n = 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 n = 10
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-visual-rag-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        II. Visual-RAG Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Visual-RAG Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Accuracy Metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Accuracy Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieval-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retrieval Stage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommender-manual-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommender (Manual) Stage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommender-llm-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommender (LLM) Stage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-best-performing-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I. Best-Performing Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Best-Performing Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#n-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 n = 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 n = 10
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-visual-rag-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        II. Visual-RAG Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Visual-RAG Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Accuracy Metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Accuracy Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieval-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retrieval Stage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommender-manual-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommender (Manual) Stage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommender-llm-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommender (LLM) Stage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="experiments">🔎 Experiments</h1>
+<h2 id="i-best-performing-results"><strong>I. Best-Performing Results</strong></h2>
+<ul>
+<li><strong>Settings:</strong> <code>n_epochs=10</code>, <code>test_ratio=0.2</code>, <code>k_core=10</code>, <code>top_n ∈ {2,10}</code>  </li>
+<li><strong>Visual</strong>: Popcorn-Visual (Inception-v3 + max pooling)  </li>
+<li><strong>Text</strong>: Text-RAG-Plus (<code>text_aug ∈ {true,false}</code>)</li>
+<li><strong>MovieLens</strong>: <code>1M</code> version</li>
+</ul>
+<hr />
+<h3 id="n-2">🧩 <strong>n = 2</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Modality</strong></th>
+<th><strong>Params</strong></th>
+<th><strong>NDCG (Trailer)</strong></th>
+<th><strong>Recall (Trailer)</strong></th>
+<th><strong>NDCG (Full Movie)</strong></th>
+<th><strong>Recall (Full Movie)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VBPR</td>
+<td>Text</td>
+<td>llm=llama, text_aug=false</td>
+<td>0.222</td>
+<td>0.195</td>
+<td>0.224</td>
+<td>0.194</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>Visual</td>
+<td>cnn=inception3</td>
+<td>0.206</td>
+<td>0.177</td>
+<td>0.207</td>
+<td>0.179</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>CCA</td>
+<td>llama,false, cca=8</td>
+<td>0.230</td>
+<td>0.202</td>
+<td>0.225</td>
+<td>0.194</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>CCA</td>
+<td>llama,true, cca=8</td>
+<td>0.230</td>
+<td>0.199</td>
+<td>0.228</td>
+<td>0.198</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>CCA</td>
+<td>llama,true, cca=40</td>
+<td>0.240</td>
+<td>0.207</td>
+<td>0.233</td>
+<td>0.202</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>CCA</td>
+<td>openai,true, cca=40</td>
+<td>0.234</td>
+<td>0.201</td>
+<td>0.235</td>
+<td>0.203</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>PCA</td>
+<td>llama,false, pca=0.9</td>
+<td>0.200</td>
+<td>0.170</td>
+<td>0.211</td>
+<td>0.180</td>
+</tr>
+<tr>
+<td>AMR</td>
+<td>Text</td>
+<td>openai,false</td>
+<td>0.211</td>
+<td>0.182</td>
+<td>0.195</td>
+<td>0.168</td>
+</tr>
+<tr>
+<td>AMR</td>
+<td>Visual</td>
+<td>inception3</td>
+<td>0.142</td>
+<td>0.122</td>
+<td>0.166</td>
+<td>0.143</td>
+</tr>
+<tr>
+<td>AMR</td>
+<td>CCA</td>
+<td>llama,true,8</td>
+<td>0.223</td>
+<td>0.191</td>
+<td>0.229</td>
+<td>0.196</td>
+</tr>
+<tr>
+<td>AMR</td>
+<td>CCA</td>
+<td>openai,false,40</td>
+<td>0.227</td>
+<td>0.195</td>
+<td>0.232</td>
+<td>0.199</td>
+</tr>
+<tr>
+<td>VMF</td>
+<td>Text</td>
+<td>openai,false</td>
+<td>0.129</td>
+<td>0.108</td>
+<td>0.130</td>
+<td>0.111</td>
+</tr>
+<tr>
+<td>VMF</td>
+<td>Visual</td>
+<td>inception3</td>
+<td>0.121</td>
+<td>0.101</td>
+<td>0.105</td>
+<td>0.086</td>
+</tr>
+<tr>
+<td>VMF</td>
+<td>CCA</td>
+<td>llama,false,40</td>
+<td>0.133</td>
+<td>0.113</td>
+<td>0.134</td>
+<td>0.114</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="n-10">🧩 <strong>n = 10</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Modality</strong></th>
+<th><strong>Params</strong></th>
+<th><strong>NDCG (Trailer)</strong></th>
+<th><strong>Recall (Trailer)</strong></th>
+<th><strong>NDCG (Full Movie)</strong></th>
+<th><strong>Recall (Full Movie)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VBPR</td>
+<td>Text</td>
+<td>llama,true</td>
+<td>0.399</td>
+<td>0.535</td>
+<td>0.416</td>
+<td>0.557</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>Visual</td>
+<td>inception3</td>
+<td>0.433</td>
+<td>0.575</td>
+<td>0.413</td>
+<td>0.552</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>CCA</td>
+<td>llama,true,40</td>
+<td>0.444</td>
+<td>0.579</td>
+<td>0.436</td>
+<td>0.573</td>
+</tr>
+<tr>
+<td>VBPR</td>
+<td>PCA</td>
+<td>llama,true,0.8</td>
+<td>0.428</td>
+<td>0.565</td>
+<td>0.413</td>
+<td>0.553</td>
+</tr>
+<tr>
+<td>AMR</td>
+<td>Text</td>
+<td>openai,false</td>
+<td>0.401</td>
+<td>0.531</td>
+<td>0.378</td>
+<td>0.506</td>
+</tr>
+<tr>
+<td>AMR</td>
+<td>Visual</td>
+<td>inception3</td>
+<td>0.339</td>
+<td>0.468</td>
+<td>0.298</td>
+<td>0.411</td>
+</tr>
+<tr>
+<td>AMR</td>
+<td>CCA</td>
+<td>openai,false,40</td>
+<td>0.425</td>
+<td>0.555</td>
+<td>0.434</td>
+<td>0.564</td>
+</tr>
+<tr>
+<td>VMF</td>
+<td>Text</td>
+<td>openai,false</td>
+<td>0.280</td>
+<td>0.390</td>
+<td>0.280</td>
+<td>0.390</td>
+</tr>
+<tr>
+<td>VMF</td>
+<td>Visual</td>
+<td>inception3</td>
+<td>0.281</td>
+<td>0.395</td>
+<td>0.266</td>
+<td>0.382</td>
+</tr>
+<tr>
+<td>VMF</td>
+<td>CCA</td>
+<td>openai,false,40</td>
+<td>0.275</td>
+<td>0.385</td>
+<td>0.285</td>
+<td>0.391</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ii-visual-rag-results"><strong>II. Visual-RAG Results</strong></h2>
+<h3 id="accuracy-metrics">🧩 <strong>Accuracy Metrics</strong></h3>
+<h4 id="retrieval-stage"><strong>Retrieval Stage</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Visual</th>
+<th>Textual</th>
+<th>PCA</th>
+<th>CCA</th>
+<th>Recal (temp)</th>
+<th>NDCG (temp)</th>
+<th>Recal (avg)</th>
+<th>NDCG (avg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ST Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.160541</td>
+<td>0.159737</td>
+<td>0.116791</td>
+<td>0.089738</td>
+</tr>
+<tr>
+<td>OpenAI Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.176216</td>
+<td>0.181286</td>
+<td>0.116251</td>
+<td>0.101413</td>
+</tr>
+<tr>
+<td>Llama3.0 Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.093495</td>
+<td>0.096862</td>
+<td>0.070260</td>
+<td>0.055245</td>
+</tr>
+<tr>
+<td>Visual Unimodal</td>
+<td>*</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.036688</td>
+<td>0.037534</td>
+<td>0.026457</td>
+<td>0.025499</td>
+</tr>
+<tr>
+<td>Visual + Textual (ST)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.104882</td>
+<td>0.122977</td>
+<td>0.092985</td>
+<td>0.096264</td>
+</tr>
+<tr>
+<td>Visual + Textual (OpenAI)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.105041</td>
+<td>0.123262</td>
+<td>0.092985</td>
+<td>0.096195</td>
+</tr>
+<tr>
+<td>Visual + Textual (Llama3.0)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.108416</td>
+<td>0.139363</td>
+<td>0.089009</td>
+<td>0.099592</td>
+</tr>
+<tr>
+<td>Visual + Textual (ST)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.205637</td>
+<td>0.252080</td>
+<td>0.180762</td>
+<td>0.174588</td>
+</tr>
+<tr>
+<td>Visual + Textual (OpenAI)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.087140</td>
+<td>0.080328</td>
+<td>0.072103</td>
+<td>0.055052</td>
+</tr>
+<tr>
+<td>Visual + Textual (Llama3.0)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.119989</td>
+<td>0.148211</td>
+<td>0.099557</td>
+<td>0.095724</td>
+</tr>
+</tbody>
+</table>
+<h4 id="recommender-manual-stage"><strong>Recommender (Manual) Stage</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Visual</th>
+<th>Textual</th>
+<th>PCA</th>
+<th>CCA</th>
+<th>Recal (temp)</th>
+<th>NDCG (temp)</th>
+<th>Recal (avg)</th>
+<th>NDCG (avg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ST Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.084321</td>
+<td>0.167488</td>
+<td>0.050541</td>
+<td>0.079941</td>
+</tr>
+<tr>
+<td>OpenAI Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.075686</td>
+<td>0.166709</td>
+<td>0.059188</td>
+<td>0.104077</td>
+</tr>
+<tr>
+<td>Llama3.0 Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.039820</td>
+<td>0.091084</td>
+<td>0.034442</td>
+<td>0.062854</td>
+</tr>
+<tr>
+<td>Visual Unimodal</td>
+<td>*</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.016110</td>
+<td>0.045019</td>
+<td>0.011980</td>
+<td>0.030501</td>
+</tr>
+<tr>
+<td>Visual + Textual (ST)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.043374</td>
+<td>0.124830</td>
+<td>0.035712</td>
+<td>0.080947</td>
+</tr>
+<tr>
+<td>Visual + Textual (OpenAI)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.037374</td>
+<td>0.115342</td>
+<td>0.036908</td>
+<td>0.078362</td>
+</tr>
+<tr>
+<td>Visual + Textual (Llama3.0)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.037333</td>
+<td>0.114743</td>
+<td>0.032583</td>
+<td>0.075561</td>
+</tr>
+<tr>
+<td>Visual + Textual (ST)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.107084</td>
+<td>0.268102</td>
+<td>0.095418</td>
+<td>0.174363</td>
+</tr>
+<tr>
+<td>Visual + Textual (OpenAI)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.028301</td>
+<td>0.078006</td>
+<td>0.025079</td>
+<td>0.059463</td>
+</tr>
+<tr>
+<td>Visual + Textual (Llama3.0)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.047614</td>
+<td>0.145944</td>
+<td>0.041977</td>
+<td>0.092620</td>
+</tr>
+</tbody>
+</table>
+<h4 id="recommender-llm-stage"><strong>Recommender (LLM) Stage</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Visual</th>
+<th>Textual</th>
+<th>PCA</th>
+<th>CCA</th>
+<th>Recal (temp)</th>
+<th>NDCG (temp)</th>
+<th>Recal (avg)</th>
+<th>NDCG (avg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ST Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.077300</td>
+<td>0.169313</td>
+<td>0.051284</td>
+<td>0.086847</td>
+</tr>
+<tr>
+<td>OpenAI Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.089671</td>
+<td>0.179811</td>
+<td>0.057714</td>
+<td>0.101169</td>
+</tr>
+<tr>
+<td>Llama3.0 Unimodal</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td>0.033492</td>
+<td>0.083699</td>
+<td>0.032395</td>
+<td>0.066655</td>
+</tr>
+<tr>
+<td>Visual Unimodal</td>
+<td>*</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.017340</td>
+<td>0.046774</td>
+<td>0.008470</td>
+<td>0.027337</td>
+</tr>
+<tr>
+<td>Visual + Textual (ST)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.035130</td>
+<td>0.120745</td>
+<td>0.030523</td>
+<td>0.066660</td>
+</tr>
+<tr>
+<td>Visual + Textual (OpenAI)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.036987</td>
+<td>0.101464</td>
+<td>0.034161</td>
+<td>0.072735</td>
+</tr>
+<tr>
+<td>Visual + Textual (Llama3.0)</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>0.038048</td>
+<td>0.118645</td>
+<td>0.028749</td>
+<td>0.078329</td>
+</tr>
+<tr>
+<td>Visual + Textual (ST)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.097654</td>
+<td>0.246567</td>
+<td>0.089355</td>
+<td>0.159758</td>
+</tr>
+<tr>
+<td>Visual + Textual (OpenAI)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.040250</td>
+<td>0.084531</td>
+<td>0.029190</td>
+<td>0.063593</td>
+</tr>
+<tr>
+<td>Visual + Textual (Llama3.0)</td>
+<td>*</td>
+<td>*</td>
+<td></td>
+<td>*</td>
+<td>0.048338</td>
+<td>0.141869</td>
+<td>0.034597</td>
+<td>0.079539</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
