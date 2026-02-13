@@ -1,14 +1,15 @@
 # 🔎 Experiments (Full Version)
 
-## I. Selected Best-Performing Results (MovieLens-1M + Popcorn-Visual)
+## I. Selected Best-Performing Results
 
-**Settings:** `n_epochs=10`, `test_ratio=0.2`, `k_core=10`, `top_n ∈ {2,10}`  
-Visual: Popcorn-Visual (Inception-v3 + max pooling)  
-Text: Text-RAG-Plus (`text_aug ∈ {true,false}`)
+- **Settings:** `n_epochs=10`, `test_ratio=0.2`, `k_core=10`, `top_n ∈ {2,10}`  
+- **Visual**: Popcorn-Visual (Inception-v3 + max pooling)  
+- **Text**: Text-RAG-Plus (`text_aug ∈ {true,false}`)
+- **MovieLens**: `1M` version
 
 ---
 
-## n = 2
+## 🧩 **n = 2**
 
 | **Method** | **Modality** | **Params** | **NDCG (Trailer)** | **Recall (Trailer)** | **NDCG (Full Movie)** | **Recall (Full Movie)** |
 |--------|----------|--------|--------|----------|--------|----------|
@@ -29,7 +30,7 @@ Text: Text-RAG-Plus (`text_aug ∈ {true,false}`)
 
 ---
 
-## n = 10
+## 🧩 **n = 10**
 
 | **Method** | **Modality** | **Params** | **NDCG (Trailer)** | **Recall (Trailer)** | **NDCG (Full Movie)** | **Recall (Full Movie)** |
 |--------|----------|--------|--------|----------|--------|----------|
