@@ -94,8 +94,3 @@
 | Visual + Textual (ST) | * | * |  | * | 0.097654 | 0.246567 | 0.089355 | 0.159758 |
 | Visual + Textual (OpenAI) | * | * |  | * | 0.040250 | 0.084531 | 0.029190 | 0.063593 |
 | Visual + Textual (Llama3.0) | * | * |  | * | 0.048338 | 0.141869 | 0.034597 | 0.079539 |
-
-### 🧩 **Beyond-Accuracy Metrics**
-
-- **Retrieval Stage**
-
