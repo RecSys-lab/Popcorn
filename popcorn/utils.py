@@ -1,3 +1,4 @@
+import re
 import os
 import yaml
 import json
@@ -152,3 +153,23 @@ def convertStrToListCol(dataFrame: pd.DataFrame, columnName: str) -> pd.Series:
     return dataFrame[columnName].apply(
         lambda x: [float(i) for i in x.split(",")] if isinstance(x, str) else x
     )
+
+
+def safeFilename(title: str) -> str:
+    """
+    Convert a movie title into a filesystem-safe filename.
+
+    Parameters
+    ----------
+    title: str
+        The original movie title to be converted into a safe filename.
+
+    Returns
+    -------
+    str
+        A filesystem-safe filename derived from the original title.
+    """
+    # Remove unallowed characters
+    name = re.sub(r'[\\/*?:"<>|]', "", title)
+    name = name.replace(" ", "_")
+    return name[:100]

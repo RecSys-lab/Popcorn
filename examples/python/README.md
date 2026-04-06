@@ -26,6 +26,7 @@
 | [modality_data_fusion_all_mmtf](/examples/python/modality_data_fusion_all_mmtf.py)           | Modality    | Fusing textual and MMTF audio-visual modalities         |
 | [modality_data_fusion_all_popcorn](/examples/python/modality_data_fusion_all_popcorn.py)     | Modality    | Fusing textual and Popcorn visual modalities            |
 | [pipeline_trailer_fetch](/examples/python/pipeline_trailer_fetch.py)                         | Pipeline    | Fetching and downloading trailers for given movies      |
+| [pipeline_thumbnail_fetch](/examples/python/pipeline_thumbnail_fetch.py)                     | Pipeline    | Fetching and downloading thumbnails for given movies    |
 | [pipeline_frame_extract](/examples/python/pipeline_frame_extract.py)                         | Pipeline    | Extracting frames from movie trailers                   |
 | [pipeline_embedding_extract](/examples/python/pipeline_embedding_extract.py)                 | Pipeline    | Extracting visual embeddings from movie frames          |
 | [pipeline_embedding_aggregate](/examples/python/pipeline_embedding_aggregate.py)             | Pipeline    | Aggregating visual embeddings for given movies          |

@@ -60,6 +60,18 @@ pipelines:
     name: Trailer-Fetcher
     # Path to the pipeline
     download_path: "E:/Datasets/Movies/MovieTrailers"
+  # Movie thumbnail finder and downloader pipeline
+  thumbnail_fetch:
+    # Pipeline name
+    name: Thumbnail-Fetcher
+    # TMDB API Key (Check https://developer.themoviedb.org/docs/getting-started)
+    tmdb_api_key: "YOUR_KEY_HERE"
+    # Dataset variant to be used
+    dataset_variant: "dummy" # 'dummy' | 'mmtf' | 'popcorn'
+    # Poster size to be downloaded
+    poster_size: "w500" # "w92" | "w154" | "w185" | "w342" | "w500" | "w780" | "original"
+    # Path to the pipeline
+    download_path: "E:/Datasets/Movies/MovieThumbnails"
   # Movie frames extractor pipeline
   frame_extractor:
     # Pipeline name
