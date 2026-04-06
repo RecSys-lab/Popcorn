@@ -2,7 +2,6 @@
 
 from popcorn.utils import readConfigs
 from popcorn.datasets.movielens.loader import loadMovieLens
-from popcorn.datasets.movielens.helper_ratings import filterRatingsByUserInteraction
 
 
 def main():
@@ -15,16 +14,13 @@ def main():
     if not configs:
         print("Error reading the configuration file!")
         return
-    # Load MovieLens dataset - 1m version
-    configs["datasets"]["unimodal"]["movielens"]["version"] = "1m"
+    # Load MovieLens dataset - 25m version (only 25M has the linksDF)
+    configs["datasets"]["unimodal"]["movielens"]["version"] = "25m"
     itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(configs)
-    if ratingsDF is None:
+    if linksDF is None:
         print("Error in loading the MovieLens dataset! Exiting ...")
         return
-    print(f"\n- ratingsDF (shape: {ratingsDF.shape}): \n{ratingsDF.head()}\n")
-    # [Util-1] Apply interaction limits
-    ratingsDF_filtered = filterRatingsByUserInteraction(ratingsDF, 15, 30)
-    print(f"- Filtered ratingsDF: \n{ratingsDF_filtered.head(3)}")
+    print(f"\n- linksDF (shape: {linksDF.shape}): \n{linksDF.head(5)}")
     # Stop
     print("\nStopping 'Popcorn'!")
 

@@ -63,7 +63,7 @@ def assembleModality(config: dict):
         )
         return
     # Step#1: Load MovieLens train and test sets
-    itemsDF, usersDF, ratingsDF = loadMovieLens(config)
+    itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(config)
     if ratingsDF is None or itemsDF is None or usersDF is None:
         print("- [Error] Error in loading the MovieLens dataset! Exiting ...")
         return

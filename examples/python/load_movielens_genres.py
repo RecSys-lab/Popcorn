@@ -23,7 +23,7 @@ def main():
         return
     # Load MovieLens dataset - 100k version
     configs["datasets"]["unimodal"]["movielens"]["version"] = "100k"
-    itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
+    itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(configs)
     if itemsDF is None:
         print("Error in loading the MovieLens dataset! Exiting ...")
         return

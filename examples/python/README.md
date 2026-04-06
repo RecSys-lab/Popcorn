@@ -7,6 +7,7 @@
 | [load_movielens](/examples/python/load_movielens.py)                                         | Data        | Loading MovieLens data into Pandas DataFrame            |
 | [load_movielens_movies](/examples/python/load_movielens_movies.py)                           | Data        | Working around with MovieLens movies                    |
 | [load_movielens_genres](/examples/python/load_movielens_genres.py)                           | Data        | Working around with MovieLens genres                    |
+| [load_movielens_links](/examples/python/load_movielens_links.py)                             | Data        | Working around with MovieLens links                     |
 | [load_movielens_users](/examples/python/load_movielens_users.py)                             | Data        | Working around with MovieLens users and interactions    |
 | [load_poison_rag_plus](/examples/python/load_poison_rag_plus.py)                             | Data        | Loading Poison-RAG-Plus data into Pandas DataFrame      |
 | [load_popcorn_dataset_meta](/examples/python/load_popcorn_dataset_meta.py)                   | Data        | Working around with Popcorn dataset metadata            |

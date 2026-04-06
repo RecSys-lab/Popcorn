@@ -17,7 +17,7 @@ def main():
         return
     # Load MovieLens dataset - 25m version
     configs["datasets"]["unimodal"]["movielens"]["version"] = "25m"
-    itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
+    itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(configs)
     if ratingsDF is not None:
         print(f"\n- RatingsDF original row count: {len(ratingsDF):,}")
     # Now, apply k-core filtering and see the difference

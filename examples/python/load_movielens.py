@@ -18,7 +18,7 @@ def main():
     # Load MovieLens dataset - 100k version
     print("\n----------- MovieLens 100k -----------")
     configs["datasets"]["unimodal"]["movielens"]["version"] = "100k"
-    itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
+    itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(configs)
     if itemsDF is not None:
         print(f"\n- ItemsDF (shape: {itemsDF.shape}): \n{itemsDF.head()}")
     if usersDF is not None:
@@ -29,7 +29,7 @@ def main():
     # Load MovieLens dataset - 1m version
     print("\n----------- MovieLens 1m -----------")
     configs["datasets"]["unimodal"]["movielens"]["version"] = "1m"
-    itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
+    itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(configs)
     if itemsDF is not None:
         print(f"\n- ItemsDF (shape: {itemsDF.shape}): \n{itemsDF.head()}")
     if usersDF is not None:
@@ -40,7 +40,7 @@ def main():
     # Load MovieLens dataset - 25m version
     print("\n----------- MovieLens 25m -----------")
     configs["datasets"]["unimodal"]["movielens"]["version"] = "25m"
-    itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
+    itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(configs)
     if itemsDF is not None:
         print(f"\n- ItemsDF (shape: {itemsDF.shape}): \n{itemsDF.head()}")
     if usersDF is not None:

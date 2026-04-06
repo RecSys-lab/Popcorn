@@ -22,6 +22,7 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Dataset (Multimodal) | `popcorn`                           | `feature_models`      | features extracted from which **models** should be used?                    |
 | Dataset (Multimodal) | `popcorn`                           | `agg_feature_sources` | aggregated features extracted from which **sources** should be used?        |
 | Pipeline             | `trailer_fetch`                     | `download_path`       | the path to downloaded trailers saved                                       |
+| Pipeline             | `thumbnail_fetch`                   | `download_path`       | the path to downloaded thumbnails saved                                     |
 | Pipeline             | `frame_extractor`                   | `movies_path`         | the path to the movies directory                                            |
 | Pipeline             | `frame_extractor`                   | `frames_path`         | the path to save the extracted frames                                       |
 | Pipeline             | `frame_extractor`                   | `frame_format`        | the format of the extracted frames (e.g., jpg, png)                         |

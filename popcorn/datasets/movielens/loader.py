@@ -29,6 +29,7 @@ def loadMovieLens(config: dict):
         The DataFrame containing user-item interaction (ratings) data.
     """
     # Variables
+    linksDF = pd.DataFrame()
     itemsDF = pd.DataFrame()
     usersDF = pd.DataFrame()
     ratingsDF = pd.DataFrame()
@@ -60,6 +61,7 @@ def loadMovieLens(config: dict):
         delimU = delimR = delimI
     elif VERSION == "25m":
         filePathItem = os.path.join(datasetRoot, "movies.csv")
+        filePathLinks = os.path.join(datasetRoot, "links.csv")
         filePathRating = os.path.join(datasetRoot, "ratings.csv")
         delimI, eng = ",", None
         delimU = delimR = delimI
@@ -114,10 +116,24 @@ def loadMovieLens(config: dict):
             low_memory=False if eng != "python" else True,
         )
         print(f"- Ratings have been loaded. Number of rows: {len(ratingsDF):,}")
+        # Read links file (only for 25M version, will contain movieId, imdbId, and tmdbId columns)
+        if VERSION == "25m":
+            linksDF = pd.read_csv(
+                filePathLinks,
+                sep=delimI,
+                engine=eng,
+                header=0,
+                low_memory=False if eng != "python" else True,
+            )
+            # Remove rows with missing tmdbId (since some are undefined)            
+            linksDF = linksDF[linksDF["tmdbId"].notna()]
+            # Convert tmdbId to int
+            linksDF["tmdbId"] = linksDF["tmdbId"].astype(int)
+            print(f"- Links have been loaded. Number of rows: {len(linksDF):,}")
         # Preparations
         itemsDF["item_id"] = itemsDF["item_id"].astype(str)
     except Exception as e:
         print(f"- [Error] An error occurred while loading the dataset files: {e}")
         return None, None, None
     # Return
-    return itemsDF, usersDF, ratingsDF
+    return itemsDF, usersDF, ratingsDF, linksDF

@@ -20,7 +20,7 @@ def main():
     configs["setup"]["k_core"] = 40
     configs["datasets"]["unimodal"]["movielens"]["version"] = "1m"
     # Load MovieLens dataset - 1m version
-    itemsDF, usersDF, ratingsDF = loadMovieLens(configs)
+    itemsDF, usersDF, ratingsDF, linksDF = loadMovieLens(configs)
     if ratingsDF is None:
         print("Error in loading the MovieLens dataset! Exiting ...")
         return
