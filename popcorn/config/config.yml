@@ -67,7 +67,7 @@ pipelines:
     # TMDB API Key (Check https://developer.themoviedb.org/docs/getting-started)
     tmdb_api_key: "YOUR_KEY_HERE"
     # Dataset variant to be used
-    dataset_variant: "dummy" # 'dummy' | 'mmtf' | 'popcorn'
+    dataset_variant: "ml25m" # 'dummy' | 'mmtf' | 'popcorn' | 'ml25m'
     # Poster size to be downloaded
     poster_size: "w500" # "w92" | "w154" | "w185" | "w342" | "w500" | "w780" | "original"
     # Path to the pipeline

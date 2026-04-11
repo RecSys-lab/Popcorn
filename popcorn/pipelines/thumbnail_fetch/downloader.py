@@ -202,3 +202,4 @@ def downloadThumbnails(
         if r["path"]:
             print(f"      → {r['path']}")
     return results
+

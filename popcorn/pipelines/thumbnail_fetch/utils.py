@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Supported dataset variants for thumbnail fetching
-SUPPORTED_DATASET_VARIANTS = ["dummy", "mmtf", "popcorn"]
+SUPPORTED_DATASET_VARIANTS = ["dummy", "mmtf", "popcorn", "ml25m"]
 
 # Supported poster sizes for TMDB images
 SUPPORTED_POSTER_SIZES = ["w92", "w154", "w185", "w342", "w500", "w780", "original"]
