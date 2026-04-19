@@ -16,6 +16,7 @@
 | [download_mmtf14k](/examples/python/download_mmtf14k.py)                                     | Data        | Downloading MMTF-14K dataset into disk                  |
 | [load_mmtf_audio](/examples/python/load_mmtf_audio.py)                                       | Data        | Loading MMTF-14K data into Pandas DataFrame             |
 | [load_mmtf_visual](/examples/python/load_mmtf_visual.py)                                     | Data        | Loading MMTF-14K data into Pandas DataFrame             |
+| [download_ml25m_thumbnails](/examples/python/download_ml25m_thumbnails.py)                   | Data        | Downloading MovieLens 25M thumbnails into disk          |
 | [experiment_kcore_ml-1m](/examples/python/experiment_kcore_ml-1m.py)                         | Setup       | Applying K-Core on MovieLens 1M                         |
 | [experiment_kcore_ml-25m](/examples/python/experiment_kcore_ml-25m.py)                       | Setup       | Applying K-Core on MovieLens 25M                        |
 | [experiment_split](/examples/python/experiment_split.py)                                     | Setup       | Applying K-Core and train/test split on MovieLens       |

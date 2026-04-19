@@ -15,6 +15,9 @@ All the key parameters can be easily adjusted in the [`config.yml`](/popcorn/con
 | Dataset (Unimodal)   | `poison_rag_plus`                   | `llm`                 | the demanded llm backbone (supported: `openai`, `llama`, `st`)              |
 | Dataset (Unimodal)   | `poison_rag_plus`                   | `augmented`           | the boolean to choose original or augmented (enriched) variants             |
 | Dataset (Unimodal)   | `poison_rag_plus`                   | `max_parts`           | the maximum number of textual embedding files parts                         |
+| Dataset (Unimodal)   | `ml_thumbnail`                      | `name`                | the standard name of the dataset (mainly for logging)                       |
+| Dataset (Unimodal)   | `ml_thumbnail`                      | `variant`             | the variant of the dataset (supported: `raw_frame`, `clip`, `dinov2`)       |
+| Dataset (Unimodal)   | `ml_thumbnail`                      | `download_path`       | the temporary download path for 'raw_frame'                                 |
 | Dataset (Multimodal) | `popcorn`                           | `name`                | the standard name of the dataset (mainly for logging)                       |
 | Dataset (Multimodal) | `popcorn`                           | `path_metadata`       | the path to the metadata json file of Popcorn dataset                       |
 | Dataset (Multimodal) | `popcorn`                           | `path_raw`            | the path to the raw packets of the dataset, containing visual features      |
