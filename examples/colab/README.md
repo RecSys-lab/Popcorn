@@ -22,7 +22,7 @@
 | [modality_data_fusion_text_visual](/examples/colab/modality_data_fusion_text_visual.ipynb)     | Modality    | Fusing textual and visual modalities                 |
 | [modality_data_fusion_all_mmtf](/examples/colab/modality_data_fusion_all_mmtf.ipynb)           | Modality    | Fusing textual and MMTF audio-visual modalities      |
 | [modality_data_fusion_all_popcorn](/examples/colab/modality_data_fusion_all_popcorn.ipynb)     | Modality    | Fusing textual and Popcorn visual modalities         |
-| [pipeline_thumbnail_fetch](/examples/colab/download_ml25m_thumbnails.py)                       | Pipeline    | Fetching and downloading thumbnails for given movies |
+| [pipeline_thumbnail_fetch](/examples/colab/download_ml25m_thumbnails.ipynb)                    | Pipeline    | Fetching and downloading thumbnails for given movies |
 | [recommender_assemble_modality](/examples/colab/recommender_assemble_modality.ipynb)           | Recommender | Assembling modalities for recommender systems        |
 | [recommender_get_grid_cf](/examples/colab/recommender_get_grid_cf.ipynb)                       | Recommender | Hyperparameter optimization with grid search (CF)    |
 | [recommender_get_grid_vbpr](/examples/colab/recommender_get_grid_vbpr.ipynb)                   | Recommender | Hyperparameter optimization with grid search (VBPR)  |
