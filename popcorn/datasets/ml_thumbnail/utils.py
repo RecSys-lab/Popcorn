@@ -2,7 +2,7 @@
 BASE_URL = "https://huggingface.co/datasets/alitourani/movielens-25m-thumb"
 RAW_DATA_URL = f"{BASE_URL}/resolve/main/thumbnails_ml25m_part{{part_id}}.zip"
 EMBEDDINGS_URL = (
-    f"{BASE_URL}/raw/main/embedding_{{variant}}/thumbnails_ml25m_part{{part_id}}.csv"
+    f"{BASE_URL}/resolve/main/embedding_{{variant}}/thumbnails_ml25m_part{{part_id}}.csv"
 )
 
 # Maximum number of parts

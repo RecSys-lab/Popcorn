@@ -19,9 +19,11 @@ def main():
         print("Error reading the configuration file!")
         return
     # Load thumbnails
+    print("\n----------- Thumbnail Indexing -----------")
     root = configs["datasets"]["unimodal"]["ml_thumbnail"]["download_path"]
     thumbnailsDF = indexThumbnails(root)
     # Load a specific movie thumbnail
+    print("\n----------- Thumbnail Loading -----------")
     movieId = 5
     print(f"Loading thumbnail for movie ID '{movieId}'...")
     thumbnail = loadMovieThumbnail(movieId, configs)

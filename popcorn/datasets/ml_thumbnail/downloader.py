@@ -1,7 +1,7 @@
 import os
 import zipfile
 import requests
-from popcorn.datasets.ml_thumbnail.utils import RAW_DATA_URL
+from popcorn.datasets.ml_thumbnail.utils import RAW_DATA_URL, isValidPart
 
 
 def downloadMovieLensThumbnailImages(partId: str, downloadPath: str):
@@ -22,6 +22,10 @@ def downloadMovieLensThumbnailImages(partId: str, downloadPath: str):
     status: bool
         The status of the download
     """
+    # Argument validation
+    if not isValidPart(partId):
+        print(f"- [Error] Invalid part ID: {partId}")
+        return False
     # Variables
     url = RAW_DATA_URL.format(part_id=partId)
     print(
@@ -36,9 +40,7 @@ def downloadMovieLensThumbnailImages(partId: str, downloadPath: str):
     folderName = f"thumbnails_ml25m_part{partId}.zip"
     folderZip = os.path.join(downloadPath, folderName)
     if os.path.exists(folderZip):
-        print(
-            f"- The file '{folderZip}' already exists! Skipping the download ..."
-        )
+        print(f"- The file '{folderZip}' already exists! Skipping the download ...")
         return True
     # Fetch the dataset
     try:
