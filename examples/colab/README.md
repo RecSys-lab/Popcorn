@@ -15,6 +15,8 @@
 | [load_mmtf_audio](/examples/colab/load_mmtf_audio.ipynb)                                       | Data        | Loading MMTF-14K data into Pandas DataFrame          |
 | [load_mmtf_visual](/examples/colab/load_mmtf_visual.ipynb)                                     | Data        | Loading MMTF-14K data into Pandas DataFrame          |
 | [download_ml25m_thumbnails](/examples/colab/download_ml25m_thumbnails_raw.ipynb)               | Data        | Downloading MovieLens 25M thumbnails dataset         |
+| [load_ml_thumbnail_raw](/examples/colab/load_ml_thumbnail_raw.ipynb)                           | Data        | Loading MovieLens 25M thumbnails as raw frames       |
+| [load_ml_thumbnail_embeddings](/examples/colab/load_ml_thumbnail_embeddings.ipynb)             | Data        | Loading MovieLens 25M thumbnail embeddings           |
 | [experiment_kcore_ml-1m](/examples/colab/experiment_kcore_ml-1m.ipynb)                         | Setup       | Applying K-Core on MovieLens 1M                      |
 | [experiment_kcore_ml-25m](/examples/colab/experiment_kcore_ml-25m.ipynb)                       | Setup       | Applying K-Core on MovieLens 25M                     |
 | [experiment_split](/examples/colab/experiment_split.ipynb)                                     | Setup       | Applying K-Core and train/test split on MovieLens    |
