@@ -5,7 +5,13 @@ from sklearn.cross_decomposition import CCA
 from sklearn.preprocessing import StandardScaler
 from cornac.data import ImageModality, FeatureModality
 
-SUPPORTED_MODALITIES = ["audio_mmtf", "visual_mmtf", "text_rag_plus", "visual_popcorn"]
+SUPPORTED_MODALITIES = [
+    "audio_mmtf",
+    "visual_mmtf",
+    "text_rag_plus",
+    "visual_popcorn",
+    "visual_ml25thumb",
+]
 
 SUPPORTED_FUSION_METHODS = ["concat", "cca", "pca"]
 
@@ -92,7 +98,7 @@ def applyPCAModality(df: pd.DataFrame, config: dict) -> pd.DataFrame:
     # Add ridge regularization: X^T X + λI
     mat_reg = np.vstack([mat, np.sqrt(reg) * np.eye(mat.shape[1])])
     # Fit and transform
-    pca_result = PCA(ratio, random_state=42).fit_transform(mat_reg[:mat.shape[0]])
+    pca_result = PCA(ratio, random_state=42).fit_transform(mat_reg[: mat.shape[0]])
     df[name] = list(pca_result.astype(np.float32))
     # Log and return
     print(f"- Applied PCA-{int(ratio*100)} and generated dimensions {mat.shape[1]}!")

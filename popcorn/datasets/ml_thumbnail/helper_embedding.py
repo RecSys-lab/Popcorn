@@ -38,10 +38,18 @@ def loadMovieLensThumbnailEmbeddings(partId: int, variant: str) -> pd.DataFrame:
     print(f"- Fetching embeddings from '{url}' ...")
     try:
         embeddings = pd.read_csv(url)
-        print(f"- {len(embeddings)} thumbnail embeddings loaded successfully!")
+        # Rename 'movie_id' column to ensure consistency
+        embeddings.rename(columns={"movie_id": "item_id"}, inplace=True)
+        embeddings["item_id"] = embeddings.item_id.astype(str)
+        # Concat all other columns (except 'item_id') as a "visual" column in a list
+        tempDF = embeddings.drop(columns=["item_id"]).astype(str).agg(list, axis=1)
+        embeddings["visual"] = tempDF
+        print(f"- Fetched {len(embeddings):,} thumbnail embeddings using '{variant}' features.")
+        # Return the processed DataFrame
+        return embeddings[["item_id", "visual"]]
     except Exception as e:
         print(f"- [Error] Error loading embeddings from '{url}': {e}")
-    return embeddings
+        return pd.DataFrame()
 
 
 def loadAllMovieLensThumbnailEmbeddings(variant: str) -> pd.DataFrame:

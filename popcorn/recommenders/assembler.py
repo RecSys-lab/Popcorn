@@ -9,6 +9,9 @@ from popcorn.datasets.mmtf14k.helper_visual import loadVisualFusedDF
 from popcorn.datasets.poison_rag_plus.loader import loadPoisonRagPlus
 from popcorn.datasets.movielens.process import applyKeepList, trainTestSplit
 from popcorn.recommenders.utils import SUPPORTED_MODALITIES, SUPPORTED_FUSION_METHODS
+from popcorn.datasets.ml_thumbnail.helper_embedding import (
+    loadAllMovieLensThumbnailEmbeddings,
+)
 from popcorn.datasets.popcorn.helper_embedding_agg import (
     loadAggEmbeddings,
     generateAllAggEmbeddingUrls,
@@ -57,9 +60,10 @@ def assembleModality(config: dict):
             print(f"- [Error] Modality '{modality}' is not supported! Exiting ...")
             return
     # Check for incompatible modality combinations
-    if "visual_mmtf" in selectedModalities and "visual_popcorn" in selectedModalities:
+    visual_modalities = [m for m in selectedModalities if m.startswith("visual_")]
+    if len(visual_modalities) > 1:
         print(
-            "- [Error] Cannot have both 'visual_mmtf' and 'visual_popcorn' modalities together! Exiting ..."
+            f"- [Error] Cannot have several visual modalities {', '.join(visual_modalities)} together! Exiting ..."
         )
         return
     # Step#1: Load MovieLens train and test sets
@@ -87,7 +91,7 @@ def assembleModality(config: dict):
         audioDF = loadAudioFusedDF(config)
     if "visual_mmtf" in selectedModalities:
         visualDF = loadVisualFusedDF(config)
-    elif "visual_popcorn" in selectedModalities:
+    if "visual_popcorn" in selectedModalities:
         aggEmbeddingUrlDict = generateAllAggEmbeddingUrls(config)
         if aggEmbeddingUrlDict:
             # Take all generated addresses
@@ -101,6 +105,11 @@ def assembleModality(config: dict):
             visualDF = dfAggEmbedsMax
             # Apply anti-truncation to visual embeddings
             visualDF["visual"] = convertStrToListCol(visualDF, "visual")
+    elif "visual_ml25thumb" in selectedModalities:
+        variant = config["datasets"]["unimodal"]["ml_thumbnail"]["variant"]
+        visualDF = loadAllMovieLensThumbnailEmbeddings(variant)
+        # Apply anti-truncation to visual embeddings
+        visualDF["visual"] = convertStrToListCol(visualDF, "visual")
     # Step#5: Create a modality dictionary and fuse them
     multimodalDict = {}
     if textDF is not None:
