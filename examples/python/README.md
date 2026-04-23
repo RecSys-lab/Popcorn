@@ -41,3 +41,4 @@
 | [recommender_get_grid_vmf](/examples/python/recommender_get_grid_vmf.py)                     | Recommender | Hyperparameter optimization with grid search (VMF)      |
 | [recommender_get_grid_amr](/examples/python/recommender_get_grid_amr.py)                     | Recommender | Hyperparameter optimization with grid search (AMR)      |
 | [recommender_recom_list](/examples/python/recommender_recom_list.py)                         | Recommender | Recommendation list generation pipeline (CF)            |
+| [recommender_recom_list_ml25mthumb](/examples/python/recommender_recom_list_ml25mthumb.py)   | Recommender | Recommendation list generation pipeline (VBPR)          |

@@ -1,10 +1,10 @@
+import numpy as np
 import pandas as pd
 from popcorn.datasets.ml_thumbnail.utils import (
     MAX_PARTS,
     isValidPart,
     isValidVariant,
     EMBEDDINGS_URL,
-    SUPPORTED_VARIANTS,
 )
 
 
@@ -42,9 +42,14 @@ def loadMovieLensThumbnailEmbeddings(partId: int, variant: str) -> pd.DataFrame:
         embeddings.rename(columns={"movie_id": "item_id"}, inplace=True)
         embeddings["item_id"] = embeddings.item_id.astype(str)
         # Concat all other columns (except 'item_id') as a "visual" column in a list
-        tempDF = embeddings.drop(columns=["item_id"]).astype(str).agg(list, axis=1)
-        embeddings["visual"] = tempDF
-        print(f"- Fetched {len(embeddings):,} thumbnail embeddings using '{variant}' features.")
+        embeddings["visual"] = (
+            embeddings.drop(columns=["item_id"])
+            .astype(np.float32)
+            .apply(lambda row: row.to_numpy(dtype=np.float32), axis=1)
+        )
+        print(
+            f"- Fetched {len(embeddings):,} thumbnail embeddings using '{variant}' features."
+        )
         # Return the processed DataFrame
         return embeddings[["item_id", "visual"]]
     except Exception as e:

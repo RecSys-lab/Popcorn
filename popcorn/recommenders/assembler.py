@@ -1,4 +1,4 @@
-import os
+import numpy as np
 from popcorn.datasets.utils import applyKcore
 from popcorn.utils import convertStrToListCol
 from popcorn.modalities.fuse_all import createMultimodalDF
@@ -109,7 +109,13 @@ def assembleModality(config: dict):
         variant = config["datasets"]["unimodal"]["ml_thumbnail"]["variant"]
         visualDF = loadAllMovieLensThumbnailEmbeddings(variant)
         # Apply anti-truncation to visual embeddings
-        visualDF["visual"] = convertStrToListCol(visualDF, "visual")
+        visualDF["visual"] = visualDF["visual"].apply(
+            lambda x: (
+                np.array([float(i) for i in x], dtype=np.float32)
+                if not isinstance(x, np.ndarray)
+                else x.astype(np.float32)
+            )
+        )
     # Step#5: Create a modality dictionary and fuse them
     multimodalDict = {}
     if textDF is not None:
@@ -137,6 +143,7 @@ def assembleModality(config: dict):
             if (
                 "visual_mmtf" in selectedModalities
                 or "visual_popcorn" in selectedModalities
+                or "visual_ml25thumb" in selectedModalities
             )
             else None
         ),
