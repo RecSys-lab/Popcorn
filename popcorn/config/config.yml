@@ -34,7 +34,7 @@ datasets:
       # Dataset name
       name: MovieLens-25M-Thumbnails
       # Variant
-      variant: "clip" # 'raw_frame' | 'clip' | 'dino-v2'
+      variant: "clip" # 'raw_frame' | 'clip' | 'dino-v2' | 'siglip_base'
       # Temporary download path for 'raw_frame'
       download_path: "E:/Datasets/MovieLens-25M-Thumbnails"
   # Visual dataset (Popcorn)

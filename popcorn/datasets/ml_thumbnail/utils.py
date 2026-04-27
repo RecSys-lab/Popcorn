@@ -9,7 +9,7 @@ EMBEDDINGS_URL = (
 MAX_PARTS = 13
 
 # Supported variants
-SUPPORTED_VARIANTS = ["raw_frame", "clip", "dino-v2"]
+SUPPORTED_VARIANTS = ["raw_frame", "clip", "dino-v2", "siglip_base"]
 
 
 # Some checking functions
