@@ -1,22 +1,29 @@
 # URLs for accessing Popcorn dataset
 BASE_URL = "https://huggingface.co/datasets/alitourani/movielens-25m-thumb"
 RAW_DATA_URL = f"{BASE_URL}/resolve/main/thumbnails_ml25m_part{{part_id}}.zip"
-EMBEDDINGS_URL = (
-    f"{BASE_URL}/resolve/main/embedding_{{variant}}/thumbnails_ml25m_part{{part_id}}.csv"
-)
+EMBEDDINGS_URL = f"{BASE_URL}/resolve/main/embedding_{{variant}}/thumbnails_ml25m_part{{part_id}}.csv"
 
 # Maximum number of parts
 MAX_PARTS = 13
 
 # Supported variants
-SUPPORTED_VARIANTS = ["raw_frame", "clip", "dino-v2", "siglip_base"]
+SUPPORTED_VARIANTS = [
+    "clip",
+    "dino-v2-base",
+    "dino-v2-large",
+    "siglip-base",
+    "siglip2-base",
+    "openclip-l14",
+]
 
 
 # Some checking functions
 def isValidVariant(variant: str) -> bool:
     isValid = variant in SUPPORTED_VARIANTS
     if not isValid:
-        print(f"- [Error] Invalid CNN model '{variant}'. Choose from {SUPPORTED_VARIANTS}.")
+        print(
+            f"- [Error] Invalid CNN model '{variant}'. Choose from {SUPPORTED_VARIANTS}."
+        )
     return isValid
 
 
