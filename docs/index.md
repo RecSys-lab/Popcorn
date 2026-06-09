@@ -17,3 +17,15 @@ This project is licensed under the GPL-3.0 license - see the [LICENSE](/LICENSE)
 ## 📬 Contact
 
 If you have any questions or collaboration opportunities, please open an issue or contact the authors.
+
+## 📚 Citation
+
+```bibtex
+@article{popcorn,
+  title={Popcorn: A Configurable Benchmark for Visual Evidence in Multimodal Movie Recommendation},
+  author={Tourani, Ali and Nazary, Fatemeh and Deldjoo, Yashar and Di Noia, Tommaso},
+  journal={arXiv preprint arXiv:2606.09595},
+  year={2026}
+  doi={https://doi.org/10.48550/arXiv.2606.09595}
+}
+```
