@@ -1,4 +1,4 @@
-# 🔎 Experiments VBPR — VLM & CNN (Top-2)
+# 🔎 VBPR — VLM & CNN (Top-2)
 
 **Dataset:** MovieLens 1M  |  **Model:** VBPR  |  **Top-N:** 2
 
@@ -9,7 +9,7 @@
 
 ## 🧩 10 Epochs
 
-### Visual CLIP + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual CLIP + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -19,7 +19,7 @@
 | pca_90 | 0.1144 | 10.647 | 0.0665 | 0.8143 | 0.7367 | 0.5111 | 0.0000 | 0.0325 | 8.4925 | 0.7360 | 0.3680 | 0.0568 |
 | cca_40 | 0.1182 | 10.630 | 0.0689 | 0.8093 | 0.6891 | 0.6163 | 0.0000 | 0.0292 | 8.5439 | 0.7655 | 0.3828 | 0.0590 |
 
-### Visual Dino-v2-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual Dino-v2-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -29,7 +29,7 @@
 | pca_90 | 0.1122 | 10.461 | 0.0643 | 0.7868 | 0.7497 | 0.5630 | 0.0000 | 0.0339 | 8.5108 | 0.7284 | 0.3642 | 0.0555 |
 | cca_40 | 0.1136 | 11.065 | 0.0664 | 0.8471 | 0.7143 | 0.6459 | 0.0000 | 0.0247 | 8.5956 | 0.7346 | 0.3673 | 0.0568 |
 
-### Visual Dino-v2-large + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual Dino-v2-large + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -39,7 +39,7 @@
 | pca_90 | 0.1170 | 10.556 | 0.0680 | 0.7976 | 0.7300 | 0.4874 | 0.0000 | 0.0325 | 8.5240 | 0.7491 | 0.3745 | 0.0586 |
 | cca_40 | 0.1178 | 10.866 | 0.0685 | 0.8257 | 0.7061 | 0.7111 | 0.0000 | 0.0299 | 8.6945 | 0.7434 | 0.3717 | 0.0591 |
 
-### Visual SigLip-Base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual SigLip-Base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -49,7 +49,7 @@
 | pca_90 | 0.1282 | 11.157 | 0.0796 | 0.8439 | 0.7384 | 0.5514 | 0.0000 | 0.0207 | 8.2217 | 0.7122 | 0.3561 | 0.0689 |
 | cca_40 | 0.1266 | 11.576 | 0.0786 | 0.8941 | 0.7190 | 0.6728 | 0.0000 | 0.0183 | 8.3766 | 0.7020 | 0.3510 | 0.0679 |
 
-### Visual Sig2Lip-Base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual Sig2Lip-Base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -59,7 +59,7 @@
 | pca_90 | 0.1071 | 11.193 | 0.0614 | 0.8569 | 0.7167 | 0.4163 | 0.0000 | 0.0232 | 8.2746 | 0.7089 | 0.3545 | 0.0525 |
 | cca_40 | 0.1092 | 10.765 | 0.0634 | 0.8172 | 0.7280 | 0.5941 | 0.0000 | 0.0262 | 8.6837 | 0.7130 | 0.3565 | 0.0542 |
 
-### Visual OpenCLIP + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual OpenCLIP + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -73,7 +73,7 @@
 
 ## 🧩 2 Epochs
 
-### Visual CLIP + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual CLIP + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -83,7 +83,7 @@
 | pca_90 | 0.0853 | 10.276 | 0.0470 | 0.7489 | 0.7533 | 0.1911 | 0.0000 | 0.0335 | 8.8760 | 0.6001 | 0.3001 | 0.0401 |
 | cca_40 | 0.0915 | 11.190 | 0.0514 | 0.8429 | 0.8143 | 0.2444 | 0.0000 | 0.0201 | 9.2061 | 0.6364 | 0.3182 | 0.0431 |
 
-### Visual Dino-v2-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual Dino-v2-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -93,7 +93,7 @@
 | pca_90 | 0.0887 | 10.791 | 0.0499 | 0.8141 | 0.7778 | 0.1763 | 0.0000 | 0.0296 | 8.5930 | 0.6098 | 0.3049 | 0.0423 |
 | cca_40 | 0.0963 | 10.841 | 0.0536 | 0.8059 | 0.7897 | 0.2711 | 0.0000 | 0.0244 | 8.9431 | 0.6627 | 0.3314 | 0.0461 |
 
-### Visual Dino-v2-large + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual Dino-v2-large + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -103,7 +103,7 @@
 | pca_90 | 0.0885 | 10.615 | 0.0487 | 0.7925 | 0.7936 | 0.2015 | 0.0000 | 0.0327 | 9.0053 | 0.6125 | 0.3063 | 0.0418 |
 | cca_40 | 0.0954 | 10.073 | 0.0527 | 0.7412 | 0.7643 | 0.1778 | 0.0000 | 0.0327 | 8.9691 | 0.6515 | 0.3257 | 0.0457 |
 
-### Visual SigLip-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual SigLip-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -113,7 +113,7 @@
 | pca_90 | 0.1151 | 10.944 | 0.0695 | 0.8195 | 0.7501 | 0.2675 | 0.0000 | 0.0276 | 8.4699 | 0.6558 | 0.3279 | 0.0603 |
 | cca_40 | 0.1165 | 11.485 | 0.0717 | 0.8779 | 0.8075 | 0.2469 | 0.0000 | 0.0175 | 8.6999 | 0.6642 | 0.3321 | 0.0613 |
 
-### Visual SigLip2-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
+> Visual SigLip2-base + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM)
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -125,7 +125,7 @@
 
 ---
 
-### Visual CNN MMTF + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM) — 10 Epochs
+> Visual CNN MMTF + Audio (BLF) MMTF + Text RAG-Plus (Llama LLM) — 10 Epochs
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Popularity Bias | Calibration Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|

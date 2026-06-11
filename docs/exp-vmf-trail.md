@@ -1,4 +1,4 @@
-# 🔎 Experiments VMF — CNN (Trailer)
+# 🔎 VMF — CNN (Trailer)
 
 **Dataset:** MovieLens 1M + Popcorn-Vis + RAG-Text  |  **Model:** VMF  |  **Visual-CNN:** Inception
 
@@ -11,7 +11,7 @@
 
 ## 🧩 Top-N = 2
 
-### Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -20,7 +20,7 @@
 | `cca_40` | 0.1270 | 11.6836 | 0.1067 | 0.9370 | 0.7128 | 1.0000 | 0.0000 | 0.0284 | 9.0203 | 0.3700 | 0.1850 | 0.0878 |
 | `pca_80` | 0.1221 | 12.1736 | 0.1043 | 0.9867 | 0.6952 | 1.0000 | 0.0000 | 0.0060 | 9.4554 | 0.3547 | 0.1774 | 0.0853 |
 
-### Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -29,7 +29,7 @@
 | `cca_40` | 0.1299 | 12.0079 | 0.1078 | 0.9698 | 0.7019 | 1.0000 | 0.0000 | 0.0136 | 8.8370 | 0.3800 | 0.1900 | 0.0900 |
 | `pca_80` | 0.1182 | 12.1779 | 0.1003 | 0.9869 | 0.7227 | 1.0000 | 0.0000 | 0.0058 | 9.2162 | 0.3432 | 0.1716 | 0.0824 |
 
-### Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -38,7 +38,7 @@
 | `cca_8` | 0.1237 | 11.9268 | 0.1040 | 0.9616 | 0.6920 | 1.0000 | 0.0000 | 0.0173 | 9.1677 | 0.3648 | 0.1824 | 0.0850 |
 | `pca_80` | 0.1221 | 12.1736 | 0.1043 | 0.9867 | 0.6952 | 1.0000 | 0.0000 | 0.0060 | 9.4554 | 0.3547 | 0.1774 | 0.0853 |
 
-### Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -47,7 +47,7 @@
 | `cca_8` | 0.1233 | 11.9852 | 0.1036 | 0.9675 | 0.6881 | 1.0000 | 0.0000 | 0.0147 | 9.1771 | 0.3593 | 0.1797 | 0.0855 |
 | `pca_80` | 0.1182 | 12.1779 | 0.1003 | 0.9869 | 0.7227 | 1.0000 | 0.0000 | 0.0058 | 9.2162 | 0.3432 | 0.1716 | 0.0824 |
 
-### Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -56,7 +56,7 @@
 | `cca_40` | 0.1183 | 11.9031 | 0.0992 | 0.9592 | 0.7060 | 1.0000 | 0.0000 | 0.0184 | 9.2468 | 0.3458 | 0.1729 | 0.0824 |
 | `pca_80` | 0.1136 | 12.1768 | 0.0965 | 0.9868 | 0.7374 | 1.0000 | 0.0000 | 0.0059 | 9.3600 | 0.3414 | 0.1707 | 0.0781 |
 
-### Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -65,7 +65,7 @@
 | `cca_40` | 0.1334 | 11.7949 | 0.1133 | 0.9483 | 0.7108 | 1.0000 | 0.0000 | 0.0233 | 8.8450 | 0.3844 | 0.1922 | 0.0930 |
 | `pca_80` | 0.1186 | 12.1183 | 0.1016 | 0.9809 | 0.7104 | 1.0000 | 0.0000 | 0.0086 | 9.3345 | 0.3545 | 0.1773 | 0.0819 |
 
-### Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -74,7 +74,7 @@
 | `cca_8` | 0.1212 | 11.5755 | 0.1013 | 0.9261 | 0.7052 | 1.0000 | 0.0000 | 0.0333 | 9.0154 | 0.3600 | 0.1800 | 0.0834 |
 | `pca_80` | 0.1136 | 12.1768 | 0.0965 | 0.9868 | 0.7374 | 1.0000 | 0.0000 | 0.0059 | 9.3600 | 0.3414 | 0.1707 | 0.0781 |
 
-### Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 2, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -85,7 +85,7 @@
 
 ## 🧩 Top-N = 10
 
-### Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -94,7 +94,7 @@
 | `cca_40` | 0.2773 | 11.8047 | 0.3873 | 0.5537 | 0.7288 | 1.0000 | 0.0000 | 0.0228 | 3.8088 | 1.3975 | 0.1398 | 0.1746 |
 | `pca_80` | 0.2651 | 11.9428 | 0.3729 | 0.6808 | 0.7161 | 1.0000 | 0.0000 | 0.0165 | 3.8195 | 1.3377 | 0.1338 | 0.1669 |
 
-### Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -103,7 +103,7 @@
 | `cca_40` | 0.2789 | 11.8722 | 0.3855 | 0.6109 | 0.7298 | 1.0000 | 0.0000 | 0.0197 | 3.7212 | 1.3901 | 0.1390 | 0.1763 |
 | `pca_80` | 0.2625 | 11.9688 | 0.3705 | 0.7046 | 0.7153 | 1.0000 | 0.0000 | 0.0153 | 3.9179 | 1.3316 | 0.1332 | 0.1642 |
 
-### Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -112,7 +112,7 @@
 | `cca_8` | 0.2748 | 11.8633 | 0.3853 | 0.6039 | 0.7289 | 1.0000 | 0.0000 | 0.0202 | 3.8306 | 1.3949 | 0.1395 | 0.1720 |
 | `pca_80` | 0.2651 | 11.9428 | 0.3729 | 0.6808 | 0.7161 | 1.0000 | 0.0000 | 0.0165 | 3.8195 | 1.3377 | 0.1338 | 0.1669 |
 
-### Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
+> Text = OpenAI, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -121,7 +121,7 @@
 | `cca_8` | 0.2707 | 11.8893 | 0.3772 | 0.6294 | 0.7247 | 1.0000 | 0.0000 | 0.0190 | 3.8669 | 1.3661 | 0.1366 | 0.1702 |
 | `pca_80` | 0.2625 | 11.9688 | 0.3705 | 0.7046 | 0.7153 | 1.0000 | 0.0000 | 0.0153 | 3.9179 | 1.3316 | 0.1332 | 0.1642 |
 
-### Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -130,7 +130,7 @@
 | `cca_40` | 0.2714 | 11.8049 | 0.3867 | 0.5528 | 0.7298 | 1.0000 | 0.0000 | 0.0228 | 3.7382 | 1.3949 | 0.1395 | 0.1696 |
 | `pca_80` | 0.2548 | 11.9980 | 0.3595 | 0.7304 | 0.7046 | 1.0000 | 0.0000 | 0.0140 | 3.8806 | 1.3157 | 0.1316 | 0.1589 |
 
-### Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 40, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -139,7 +139,7 @@
 | `cca_40` | 0.2804 | 11.8347 | 0.3871 | 0.5788 | 0.7222 | 1.0000 | 0.0000 | 0.0215 | 3.7128 | 1.3892 | 0.1389 | 0.1779 |
 | `pca_80` | 0.2625 | 11.9731 | 0.3695 | 0.7131 | 0.7126 | 1.0000 | 0.0000 | 0.0151 | 3.8478 | 1.3438 | 0.1344 | 0.1646 |
 
-### Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = True, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -148,7 +148,7 @@
 | `cca_8` | 0.2638 | 11.7548 | 0.3671 | 0.5103 | 0.7273 | 1.0000 | 0.0000 | 0.0251 | 3.8671 | 1.3388 | 0.1339 | 0.1649 |
 | `pca_80` | 0.2548 | 11.9980 | 0.3595 | 0.7304 | 0.7046 | 1.0000 | 0.0000 | 0.0140 | 3.8806 | 1.3157 | 0.1316 | 0.1589 |
 
-### Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
+> Text = Llama, Text-Aug = False, Visual-CNN = incp, Top-N = 10, CCA = 8, CCA-Lambda = 0.01
 
 | Modality | NDCG@N | Novelty | Recall@N | Fairness | Diversity | Coverage@N | Cold Start Rate | Pop. Bias | Cal. Bias | Hit Rate | Precision | MAP |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
