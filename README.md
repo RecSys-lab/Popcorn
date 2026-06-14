@@ -2,12 +2,12 @@
 
 ![Popcorn Framework](./docs/img/flowchart.jpg "Popcorn Framework")
 
-This is **Popcorn**; a multi-faceted resource that recommends movies with the power of **Computer Vision**, **Generative AI**, and **Recommender Systems**.
+This is **Popcorn**; a multi-faceted, multimodal resource that recommends movies as a combination of **visual** (VLM-driven or CNN-based), **audio** (block-level audio features or i-vector), and **textual** (LLM-augmented or raw) content.
 Whether you are a researcher, developer, or just a movie lover, **Popcorn** helps you explore smarter, more immersive ways to get movie recommendations. 🎥
 
 ## ✨ Why Popcorn?
 
-- 🎬 **Movie-focused**: Built specifically for movie recommendation tasks.
+- 🎬 **Movie-focused**: Built specifically for movie (and general video) recommendation tasks.
 - 👁️ **Visual-centric**: Supports integrating _visual_ features as well as _audio_ and _textual_ to capture the “look and feel” of films.
 - 🧩 **Flexiblity and Reproducibility**: Includes a wide range of tools for dataset downloading, preprocessing, feature extraction, and benchmarking.
 
@@ -24,13 +24,13 @@ cd popcorn
 pip install -e .
 ```
 
-### II. Installation via pip (Coming Soon)
+<!-- ### II. Installation via pip (Coming Soon)
 
 The package is not yet fully available on `PyPI`. Once released, it will be installable via:
 
 ```bash
 pip install popcorn-recsys
-```
+``` -->
 
 ## 🚀 Quick Start
 
@@ -70,7 +70,8 @@ As the framework supports multi-modal processing and covers **text**, **visual**
 
 - 🖹 **Textual Data:** `MovieLens` ([link](https://grouplens.org/datasets/movielens)) variants can be simply loaded in the framework to provide metadata about movies, user interactions, _etc._. Additionally, `RAG+` dataset ([link](https://github.com/yasdel/Poison-RAG-Plus/tree/main)) provides rich textual features extracted and augmented using Retrieval-Augmented Generation (RAG) techniques.
 
-- 📸 **Visual Data:** `Popcorn-Visual` ([link](https://huggingface.co/datasets/alitourani/Popcorn_Dataset)) is collected by the team using this framework and includes visual features extracted from full-length movie videos, trailers, and shots using various visual content extractors. Additionally, `MMTF-14K` ([link](https://mmprj.github.io/mtrm_dataset/)) provides multi-modal features extracted from movie trailers and can be easily loaded by the framework.
+- 📸 **Visual Data:** `Popcorn-Visual` ([link](https://huggingface.co/datasets/alitourani/Popcorn_Dataset)) is collected by the team using this framework and includes visual features extracted from full-length movie videos, trailers, and shots using various visual content extractors. Additionally, `Thumbnails-VLM` ([link](https://huggingface.co/datasets/alitourani/movielens-25m-thumb)) is collected by `Popcorn` and contains over **300K** visual embeddings using six state-of-the-art Vision-Language Models (VLMs).
+  Finally, `MMTF-14K` ([link](https://mmprj.github.io/mtrm_dataset/)) provides multi-modal features extracted from movie trailers and can be easily loaded by the framework.
 
 - 🔊 **Audio Data:** `MMTF-14K` ([link](https://mmprj.github.io/mtrm_dataset/)) also provides audio features extracted from movie trailers and can be easily loaded by the framework.
 
@@ -87,7 +88,7 @@ You can find below where to search for the codes in the framework inside the `po
   title={Popcorn: A Configurable Benchmark for Visual Evidence in Multimodal Movie Recommendation},
   author={Tourani, Ali and Nazary, Fatemeh and Deldjoo, Yashar and Di Noia, Tommaso},
   journal={arXiv preprint arXiv:2606.09595},
-  year={2026}
+  year={2026},
   doi={https://doi.org/10.48550/arXiv.2606.09595}
 }
 ```
