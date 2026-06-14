@@ -80,13 +80,15 @@ You can find below where to search for the codes in the framework inside the `po
 
 ![Popcorn Framework](./docs/img/file_structure.png "Popcorn Framework")
 
-## 📝 Citation
+## 📚 Citation
 
-If you find **Popcorn** useful for your research or development, please cite the following [paper](#):
-
-```
-@article{tbd,
-  title={TBD}
+```bibtex
+@article{popcorn,
+  title={Popcorn: A Configurable Benchmark for Visual Evidence in Multimodal Movie Recommendation},
+  author={Tourani, Ali and Nazary, Fatemeh and Deldjoo, Yashar and Di Noia, Tommaso},
+  journal={arXiv preprint arXiv:2606.09595},
+  year={2026}
+  doi={https://doi.org/10.48550/arXiv.2606.09595}
 }
 ```
 
