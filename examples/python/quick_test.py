@@ -22,7 +22,7 @@ def main():
     configs["setup"]["is_fast_prototype"] = True  # Enable fast prototype mode
     configs["modalities"]["fusion_methods"]["selected"] = ["cca", "pca"]
     configs["datasets"]["unimodal"]["movielens"]["version"] = "1m"  # Use MovieLens 1M
-    configs["modalities"]["selected"] = ["visual_mmtf", "text_rag_plus"]
+    configs["modalities"]["selected"] = ["audio_mmtf", "visual_ml25thumb", "text_rag_plus"]
     
     # Step-1: Data ingestion and modality assembly
     trainDF, testDF, trainSet, modalitiesDict, genreDict = assembleModality(configs)
